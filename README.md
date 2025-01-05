@@ -28,6 +28,12 @@ and its submodules inside your workspace:
 git clone --recurse-submodules https://github.com/LnxFCA/balatro-mod-dev.git dev
 ```
 
+Git submodules:
+
+```sh
+git submodule update --init --recursive
+```
+
 After successfully cloning the repository, you must append the settings on the
 [`.vscode/settings.json`](.vscode/settings.json) file to your workspace configuration.
 

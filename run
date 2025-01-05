@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+WORKDIR="$(dirname "$(realpath "${BASH_SOURCE[@]}")")" # dev environment
+WORKSPACE="$(dirname "$WORKDIR")" # project workspace
+
+export INSTALLDIR="$XDG_CONFIG_HOME/love/Mods"
+export MODNAME="${MODNAME:-""}"
+
+[ -z "$MODNAME" ] && exit 1
+
+if [ ! -d "$INSTALLDIR/smods" ]; then
+  cp -r "$WORKDIR/smods" "$INSTALLDIR"
+fi
+
+"$WORKDIR/install"
+
+LD_PRELOAD="$WORKDIR/lovely/target/release/liblovely.so" love "$WORKDIR/balatro"

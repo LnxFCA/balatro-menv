@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+# Required variables
+MODNAME="${MODNAME:-$MOD}"
+INSTALLDIR="${DESTDIR:-$INSTALLDIR}"
+
+[ -z "$MODNAME" ] && exit 1
+[ -z "$INSTALLDIR" ] && exit 1
+
+# $INSTALLDIR is the parent folder
+INSTALLDIR="$INSTALLDIR/$MODNAME"
+
+# balatro-mods directory
+WORKDIR="$(dirname "$(realpath "${BASH_SOURCE[@]}")")" # dev environment
+WORKSPACE="$(dirname "$WORKDIR")" # project workspace
+
+MODDIR="$WORKSPACE/$MODNAME"
+TARGET="${1:-dev}"
+
+# files to skip from copy
+IGNORE_FILES=('README.md'
+              '.gitignore')
+
+pushdir() {
+  pushd "$1" &>/dev/null || exit 1
+}
+
+popdir() {
+  popd &>/dev/null || exit 1
+}
+
+do_install() {
+  # Create $INSTALLDIR
+  [ ! -d "$INSTALLDIR" ] && mkdir -p "$INSTALLDIR"
+
+  # Install each file in $MODDIR, skip the ones in $IGNORE_FILES
+  echo ":: Installing $MODNAME files..."
+
+  pushdir "$MODDIR"
+  for file in *
+  do
+    if [[ ! "${IGNORE_FILES[*]}" =~ $file  ]]
+    then
+      cp -r "$MODDIR/$file" "$INSTALLDIR"
+    fi
+  done
+  popdir
+}
+
+
+if [ "$TARGET" = "dev" ]
+then
+  echo ":: Development install"
+  do_install
+elif [ "$TARGET" = "release" ]
+then
+  echo ":: Release install"
+  do_install
+
+  ZIP_FILE="$WORKSPACE/$MODNAME-v$(cat "$MODDIR/VERSION").zip"
+  INSTALL_BASE="$(dirname "$INSTALLDIR")"
+
+  # Create zip package
+  pushdir "$INSTALL_BASE"
+  zip -r9 "$ZIP_FILE" "$MODNAME"
+  popdir
+fi

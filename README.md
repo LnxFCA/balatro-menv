@@ -1,4 +1,4 @@
-# balatro-mod-dev
+# balatro-mod-env
 
 A mod development environment for [Balatro](https://www.playbalatro.com/)
 that I use for mod development.

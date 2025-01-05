@@ -4,10 +4,10 @@
     "files.trimTrailingWhitespace": true,
     "Lua.workspace.useGitIgnore": false,
     "Lua.workspace.library": [
-        "${workspaceFolder}/dev/love2d-dev",
-        "${workspaceFolder}/dev/balatro",
-        "${workspaceFolder}/dev/balatro-dev",
-        "${workspaceFolder}/dev/smods",
-        "${workspaceFolder}/dev/smods-dev"
+        "dev/love2d-dev",
+        "dev/balatro",
+        "dev/balatro-dev",
+        "dev/smods/src",
+        "dev/smods-dev"
     ],
 }

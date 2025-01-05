@@ -75,3 +75,16 @@ MODNAME=my-mod-dir ./dev/run # only works if this repository is cloned as `dev`
 
 The above line will install the mod files and execute the game with
 `lovely` and `smods` enabled.
+
+## LICENSE
+
+This repository is licensed under the  the GNU General Public License version 3 or later. However, it includes other projects that may have different licenses. Please refer to the respective project
+directory for their licensing information.
+
+A copy of the license can be found in the `LICENSE` file in the root of this repository.
+
+### Projects used
+
+- [lovely-injector](https://github.com/ethangreen-dev/lovely-injector) - Refer to its repository for license details.
+- [smods](https://github.com/Steamodded/smods) - Refer to its repository for license details.
+- [love2d-dev](https://github.com/LuaCATS/love2d.git) - Refer to its repository for license details.

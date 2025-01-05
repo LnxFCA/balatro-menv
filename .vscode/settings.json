@@ -1,0 +1,13 @@
+{
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "Lua.workspace.useGitIgnore": false,
+    "Lua.workspace.library": [
+        "${workspaceFolder}/dev/love2d-dev",
+        "${workspaceFolder}/dev/balatro",
+        "${workspaceFolder}/dev/balatro-dev",
+        "${workspaceFolder}/dev/smods",
+        "${workspaceFolder}/dev/smods-dev"
+    ],
+}

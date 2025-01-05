@@ -1,0 +1,9 @@
+[submodule "lovely"]
+	path = lovely
+	url = https://github.com/ethangreen-dev/lovely-injector.git
+[submodule "smods"]
+	path = smods
+	url = https://github.com/Steamodded/smods.git
+[submodule "love2d-dev"]
+	path = love2d-dev
+	url = https://github.com/LuaCATS/love2d.git

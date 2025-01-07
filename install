@@ -63,5 +63,6 @@ then
   # Create zip package
   pushdir "$INSTALL_BASE"
   zip -r9 "$ZIP_FILE" "$MODNAME"
+  sha256sum "$ZIP_FILE" > "$ZIP_FILE.sha256sums"
   popdir
 fi

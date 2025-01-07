@@ -84,6 +84,15 @@ MODNAME=my-mod-dir ./dev/run # only works if this repository is cloned as `dev`
 The above line will install the mod files and execute the game with
 `lovely` and `smods` enabled.
 
+Example `install`:
+
+```sh
+MODNAME=my-mod-dir DESTDIR=/tmp/balatro-mods ./dev/install release
+```
+
+The above example will create the release files for `my-mod-dir`
+inside of the `/tmp/balatro-mods`. 
+
 ## LICENSE
 
 This repository is licensed under the  the GNU General Public License version 3 or later. However, it includes other projects that may have different licenses. Please refer to the respective project

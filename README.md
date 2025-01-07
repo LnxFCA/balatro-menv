@@ -51,6 +51,8 @@ You can do that by using `7zip`, `bsdtar`, or `p7zip`.
 
 ## Linux guide
 
+> The information here also applies to WSL (Windows Subsystem for Linux).
+
 This a guide for Linux users on how to use the tools here.
 
 Before using the scripts provided by this repository, you must first compile

@@ -100,6 +100,7 @@ Functions:
 ```lua
 ---@return UIDef
 function create_my_ui()
+    ---@type UIDef
     return {}
 end
 ```

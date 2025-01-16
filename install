@@ -19,7 +19,8 @@ TARGET="${1:-dev}"
 
 # files to skip from copy
 IGNORE_FILES=('README.md'
-              '.gitignore')
+              '.gitignore'
+              'images')
 
 pushdir() {
   pushd "$1" &>/dev/null || exit 1

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "workspace.library": [
+    "love2d-dev",
+    "balatro",
+    "balatro-dev",
+    "smods/src",
+    "smods-dev"
+  ],
+  "diagnostics.disable": [
+    "lowercase-global"
+  ]
+}

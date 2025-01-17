@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 WORKDIR="$(dirname "$(realpath "${BASH_SOURCE[@]}")")" # dev environment
+NOLOVELY=${NOLOVELY:-false}
 
 export INSTALLDIR="$XDG_CONFIG_HOME/love/Mods"
 export MODNAME="${MODNAME:-""}"
@@ -14,4 +15,9 @@ then
   "$WORKDIR/install"
 fi
 
-LD_PRELOAD="$WORKDIR/lovely/target/release/liblovely.so" love "$WORKDIR/balatro"
+if [ "$NOLOVELY" = true ]
+then
+  love "$WORKDIR/balatro"
+else
+  LD_PRELOAD="$WORKDIR/lovely/target/release/liblovely.so" love "$WORKDIR/balatro"
+fi

@@ -12,6 +12,9 @@ if [ ! -d "$INSTALLDIR/smods" ]; then
   cp -r "$WORKDIR/smods" "$INSTALLDIR"
 fi
 
-"$WORKDIR/install"
+if [ ! "$MODNAME" = "" ]
+then
+  "$WORKDIR/install"
+fi
 
 LD_PRELOAD="$WORKDIR/lovely/target/release/liblovely.so" love "$WORKDIR/balatro"

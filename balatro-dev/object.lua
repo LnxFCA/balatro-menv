@@ -1,27 +1,26 @@
 ---@meta
 
+BALATRO_T = {}
 
 ---@class BALATRO_T.Object
-Object = {}
+---@field __index BALATRO_T.Object
+BALATRO_T.Object = {}
 
 
 ---@class BALATRO_T.ObjectClass : BALATRO_T.Object
 ---@field super BALATRO_T.Object
-local ObjectClass = {}
 
 ---@return nil
-function Object:init() end
+function BALATRO_T.Object:init() end
 
 ---@return BALATRO_T.ObjectClass
-function Object:extend() end
+function BALATRO_T.Object:extend() end
 
 ---@param obj any
 ---@return boolean
-function Object:is(obj) end
+function BALATRO_T.Object:is(obj) end
 
 
 ---@vararg table<any, any>
 ---@overload fun(...): BALATRO_T.Object
-Object = setmetatable({}, {
-    __call = function (...) end
-})
+BALATRO_T.Object = function(...) end

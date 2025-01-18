@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WORKDIR="$(dirname "$(realpath "${BASH_SOURCE[@]}")")" # dev environment
+DEVDIR="$(dirname "$(realpath "${BASH_SOURCE[@]}")")" # dev environment
 NOLOVELY=${NOLOVELY:-false}
 RUNMODE="${RUNMODE:-"normal"}"
 
@@ -8,22 +8,30 @@ export INSTALLDIR="$XDG_CONFIG_HOME/love/Mods"
 export MODNAME="${MODNAME:-""}"
 
 if [ ! -d "$INSTALLDIR/smods" ]; then
-  cp -r "$WORKDIR/smods" "$INSTALLDIR"
+  cp -r "$DEVDIR/smods" "$INSTALLDIR"
 fi
 
 if [ "$RUNMODE" == "dev" ]
 then
-  cp -r "$WORKDIR/test" "$INSTALLDIR"
+  cp -r "$DEVDIR/test" "$INSTALLDIR"
 fi
 
 if [ ! "$MODNAME" = "" ]
 then
-  "$WORKDIR/install"
+  "$DEVDIR/install"
 fi
 
 if [ "$NOLOVELY" = true ]
 then
-  love "$WORKDIR/balatro"
+  _PRELOAD=""
 else
-  LD_PRELOAD="$WORKDIR/lovely/target/release/liblovely.so" love "$WORKDIR/balatro"
+  _PRELOAD="$DEVDIR/lovely/target/release/liblovely.so"
+  if [ ! -f "$_PRELOAD" ]
+  then
+    pushd "$DEVDIR/lovely" &>/dev/null || exit
+    cargo build --release
+    popd || exit
+  fi
 fi
+
+LD_PRELOAD="$_PRELOAD" love "$DEVDIR/balatro"

@@ -18,9 +18,12 @@ MODDIR="$WORKSPACE/$MODNAME"
 TARGET="${1:-dev}"
 
 # files to skip from copy
-IGNORE_FILES=('README.md'
-              '.gitignore'
-              'images')
+IGNORE=('README.md'
+        '.gitignore'
+        'images'
+        '.luarc.json')
+
+IGNORE_FILES=("${IGNORE_FILES:-${IGNORE[@]}}")
 
 pushdir() {
   pushd "$1" &>/dev/null || exit 1

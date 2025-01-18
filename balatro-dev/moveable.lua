@@ -3,7 +3,7 @@
 BALATRO_T = {}
 
 
----@class BALATRO_T.Moveable : Node
+---@class BALATRO_T.Moveable : BALATRO_T.Node
 ---@field VT BALATRO_T.Node.Transform Visible transform, easing towards `T`
 ---@field velocity {x: number, y: number, r: number, scale: number, mag: number} Velocity used for easing movement
 ---@field role {role_type: string, offset: {x: number, y: number}, major: BALATRO_T.Moveable?, draw_major: Moveable, xy_bond: string, wh_bond: string, r_bond: string, scale_bond: string} Role describing the hierarchy and movement

@@ -16,8 +16,8 @@
 ---@field config table The mod configuration. Same as `config.lua`.
 ---@field description string A description of the mod.
 ---@field priority number The priority of the mod.
----@field badge_colour Color The badge color of the mod.
----@field badge_text_colour Color The badge text color of the mod.
+---@field badge_colour BALATRO_T.UIDef.Config.Colour The badge color of the mod.
+---@field badge_text_colour BALATRO_T.UIDef.Config.Colour The badge text color of the mod.
 ---@field display_name string The display name of the mod.
 ---@field json boolean Indicates if the mod was loaded from a JSON file.
 ---@field dependencies table A table of dependencies for the mod.

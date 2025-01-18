@@ -13,7 +13,7 @@ BALATRO_T = {}
 
 ---@class BALATRO_T.NodeArgs
 ---@field T BALATRO_T.Node.Transform Transform initializer, with keys for position, size, and rotation
----@field container Node? Optional container for this Node, defaults to G.ROOM
+---@field container BALATRO_T.Node? Optional container for this Node, defaults to G.ROOM
 
 ---@class BALATRO_T.Node : BALATRO_T.ObjectClass
 ---@field T BALATRO_T.Node.Transform Transform data for this Node
@@ -24,8 +24,8 @@ BALATRO_T = {}
 ---@field ID number Unique identifier for the Node
 ---@field FRAME {DRAW: number, MOVE: number} Frame tracking for optimizations
 ---@field states table State flags for visibility, collision, interaction, etc.
----@field container Node Parent container of this Node
----@field children table Child Nodes under this Node
+---@field container BALATRO_T.Node Parent container of this Node
+---@field children BALATRO_T.Node[] Child Nodes under this Node
 ---@field ARGS table Argument reuse table to reduce garbage generation
 ---@field RETS table Return value reuse table
 ---@field config table Metadata for this Node

@@ -1,5 +1,8 @@
 ---@meta
 
+BALATRO_T = {}
+BALATRO_T.UIDef = {}
+
 ---@enum UITEnum
 local UITEnum = {
     T=1, --text
@@ -10,19 +13,18 @@ local UITEnum = {
     ROOT=7,
     S=8, --slider
     I=9, --input text box
-    padding = 0, --default padding
 }
 
 ---@alias BALATRO_T.UIDef.Config.Colour integer[] | table
 
 ---@alias BALATRO_T.UIDef.Config.Align "tl" | "tm" | "tr" | "cl" | "cm" | "cr" | "bl" | "bm" | "br"
----@alias UIC_InstanceT "NODE" | "MOVEABLE" | "UIBOX" | "CARDAREA" | "CARD" | "UI_BOX" | "ALERT" | "POPUP"
+---@alias BALATRO_T.UIDef.Config.InstanceType "NODE" | "MOVEABLE" | "UIBOX" | "CARDAREA" | "CARD" | "UI_BOX" | "ALERT" | "POPUP"
 
----@class UIC_TooltipT
+---@class BALATRO_T.UIDef.Config.Tooltip
 ---@field title string
 ---@field text string[]
 
----@class UIC_RoleTypeT
+---@class BALATRO_T.UIDef.Config.RoleType
 ---@field role_type "Major" | "Minor" | "Glued"
 
 ---@class BALATRO_T.UIDef.Common
@@ -31,71 +33,63 @@ local UITEnum = {
 ---@field nodes BALATRO_T.UIDef.Common List of child nodes in this definition
 
 ---@class BALATRO_T.UIDef.Config.Common
----@field align BALATRO_T.UIDef.Config.Align Alignment (e.g., 'cm', 'cl')
----@field padding number Padding values (e.g., 0.1, 0.2)
----@field colour BALATRO_T.UIDef.Config.Colour Color of the node (e.g., G.C.WHITE)
----@field r number Radius or rounding of the node (e.g., 0.1)
----@field hover boolean Indicates if the node should respond to hover events
----@field button string Button action associated with the node
----@field shadow boolean Indicates if the node should have a shadow
----@field minw number Minimum width of the node
----@field minh number Minimum height of the node
----@field maxw number Maximum width of the node
----@field maxh number Maximum height of the node
----@field emboss number Emboss effect on the node (e.g., 0.05)
----@field draw_layer number Drawing layer for the node
----@field object table An object associated with the node (e.g., DynaText)
+---@field id string? Unique identifier for the element
+---@field align BALATRO_T.UIDef.Config.Align? Alignment (e.g., 'cm', 'cl')
+---@field padding number? Padding values (e.g., 0.1, 0.2)
+---@field colour BALATRO_T.UIDef.Config.Colour? Color of the node (e.g., G.C.WHITE)
+---@field r? number Radius or rounding of the node (e.g., 0.1)
+---@field hover boolean? Indicates if the node should respond to hover events
+---@field button string? Button action associated with the node
+---@field shadow boolean? Indicates if the node should have a shadow
+---@field minw number? Minimum width of the node
+---@field minh number? Minimum height of the node
+---@field maxw number? Maximum width of the node
+---@field maxh number? Maximum height of the node
+---@field emboss number? Emboss effect on the node (e.g., 0.05)
+---@field draw_layer number? Drawing layer for the node
+---@field object table? An object associated with the node (e.g., DynaText)
 
----@class UIDefConf
----@field id string | nil
----@field align UIC_AlignT | nil
----@field h number | nil
----@field w number | nil
----@field minh number | nil
----@field maxh number | nil
----@field minw number | nil
----@field maxw number | nil
----@field padding number | nil
----@field r number | nil
----@field colour Color | nil
----@field no_fill boolean | nil
----@field outline number | nil
----@field outline_colour Color | nil
----@field emboss number | nil
----@field hover boolean | nil
----@field shadow boolean | nil
----@field juice boolean | nil
----@field instance_type UIC_InstanceT | nil
----@field ref_table table | nil
----@field ref_value string | nil
----@field func string | nil
----@field button string | nil
----@field tooltip UIC_TooltipT | nil
----@field detailed_tooltip UIC_TooltipT | nil
+---@class BALATRO_T.UIDef.Config.Extra : BALATRO_T.UIDef.Config.Common
+---@field h number?
+---@field w number?
+---@field no_fill boolean?
+---@field outline number?
+---@field outline_colour BALATRO_T.UIDef.Config.Colour?
+---@field juice boolean?
+---@field instance_type BALATRO_T.UIDef.Config.InstanceType?
+---@field ref_table table?
+---@field ref_value string?
+---@field func string?
+---@field tooltip BALATRO_T.UIDef.Config.Tooltip?
+---@field detailed_tooltip BALATRO_T.UIDef.Config.Tooltip?
 
 
----@class UIDefConf_T : UIDefConf
+---@class BALATRO_T.UIDef.Text.Config : BALATRO_T.UIDef.Config.Extra
 ---@field text string
----@field colour Color
+---@field colour BALATRO_T.UIDef.Config.Colour
 ---@field scale number
----@field vert number | nil
+---@field vert number?
 
----@class UIDef_T : UIDef
+---@class BALATRO_T.UIDef.Text : BALATRO_T.UIDef.Common
 ---@field nodes nil
----@field config UIDefConf_T
-local UIDef_T = {
+---@field config BALATRO_T.UIDef.Text.Config
+BALATRO_T.UIDef.Text = {
     n = UITEnum.T,
     nodes = nil,
 }
 
 
----@class UIDefConf_O : UIDefConf
+---@class BALATRO_T.UIDef.Object.Config : BALATRO_T.UIDef.Config.Common
 ---@field object table
----@field role_type UIC_RoleTypeT | nil
+---@field role_type BALATRO_T.UIDef.Config.InstanceType?
 
----@class UIDef_O : UIDef
----@field config UIDefConf_O
+---@class BALATRO_T.UIDef.Object : BALATRO_T.UIDef.Common
+---@field config BALATRO_T.UIDef.Object.Config
 ---@field nodes nil
+BALATRO_T.UIDef.Object = {
+    n = UITEnum.O,
+    nodes = nil,
+}
 
 --[[
 **UIDef type**
@@ -133,7 +127,7 @@ local myUI = {}
 ```
 
 --]]
----@class UIDef
+---@class UIDef : BALATRO_T.UIDef.Common
 ---@field n UITEnum
----@field config UIDefConf
----@field nodes UIDef[] | UIDef_T[] | UIDef_O[]
+---@field config BALATRO_T.UIDef.Config.Common
+---@field nodes UIDef[] | BALATRO_T.UIDef.Common[] | BALATRO_T.UIDef.Text[] | BALATRO_T.UIDef.Object[]

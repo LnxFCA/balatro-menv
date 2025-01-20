@@ -2,6 +2,10 @@
 
 SMODS = {}
 
+
+---@type SMODS.Keybind[]
+SMODS.Keybinds = {}
+
 ---@see SMODS_T.Mod
 ---@type SMODS_T.Mod The mod being executed.
 SMODS.current_mod = {}
@@ -51,4 +55,3 @@ function  SMODS.load_file(path, id) end
 --- It provides a cleaner interface to the same functionality.
 ---@param args SMODS_T.CreateCardArgs
 function SMODS.create_card(args) end
-

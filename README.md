@@ -1,4 +1,4 @@
-# balatro-mod-env
+# balatro-menv
 
 A development environment for [Balatro](https://www.playbalatro.com/) mods,
 providing essential utilities and API definitions to streamline the modding process.

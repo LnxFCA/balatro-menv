@@ -2,7 +2,7 @@
 
 ---@class BALATRO_T.Card.Config
 ---@field card table The card data
----@field center BALATRO_T.Card | BALATRO_T.Moveable The center data
+---@field center BALATRO_T.Card.Config.Center The center data
 ---@field card_key string The key for the card
 ---@field center_key string The key for the center
 ---@field h_popup table The hover popup configuration
@@ -67,6 +67,43 @@
 ---@field mult number Multiplier of the edition
 ---@field chips number Chips of the edition
 ---@field x_mult number X multiplier of the edition
+
+
+---@class BALATRO_T.Card.Config.Center
+---@field key string The unique identifier for the center
+---@field calculate? function A function that calculates specific properties or effects for the card
+---@field consumeable? boolean Indicates if the card is a consumable item
+---@field no_suit? boolean Indicates if the card has no suit
+---@field any_suit? boolean Indicates if the card can be any suit
+---@field always_scores? boolean Indicates if the card always scores
+---@field shatters? boolean Indicates if the card shatters
+---@field get_weight function? A function that returns the weight of the card
+---@field on_load? function A function that is called when the card is loaded
+---@field extra? table Additional properties or enhancements for the card
+---@field edition? string The edition of the card
+---@field set string The set to which the card belongs
+---@field card_key? string The key used for the card
+---@field above_stake? boolean Indicates if the card is above stake
+---@field stake_level? number The stake level of the card
+---@field order number The order of the card in the pool
+---@field pos table The position of the card
+---@field discovered boolean Indicates if the card is discovered
+---@field unlocked boolean Indicates if the card is unlocked
+---@field alerted? boolean Indicates if the card is alerted
+---@field wip? boolean Indicates if the card is a work in progress
+---@field demo? boolean Indicates if the card is a demo
+---@field primary_colour? string The primary color of the card
+---@field secondary_colour? string The secondary color of the card
+---@field loc_vars? table Localization variables for the card
+---@field loc_txt? string Localization text for the card
+---@field collection_rows? table The collection rows for the card
+---@field config? table Additional configuration for the card
+---@field cost number The cost of the card
+---@field blueprint_compat? boolean Indicates if the card is compatible with blueprints
+---@field eternal_compat? boolean Indicates if the card is compatible with eternal items
+---@field perishable_compat? boolean Indicates if the card is compatible with perishable items
+---@field rarity string The rarity of the card
+
 
 ---@class BALATRO_T.Card : BALATRO_T.Moveable
 ---@field params BALATRO_T.Card.Params Parameters of the card

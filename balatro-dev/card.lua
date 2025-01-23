@@ -60,13 +60,14 @@
 ---@field eternal boolean Whether the ability is eternal
 
 ---@class BALATRO_T.Card.Edition
----@field holo boolean Whether the edition is holographic
----@field foil boolean Whether the edition is foil
----@field polychrome boolean Whether the edition is polychrome
----@field negative boolean Whether the edition is negative
+---@field holo boolean? Whether the edition is holographic
+---@field foil boolean? Whether the edition is foil
+---@field polychrome boolean? Whether the edition is polychrome
+---@field negative boolean? Whether the edition is negative
 ---@field mult number Multiplier of the edition
 ---@field chips number Chips of the edition
 ---@field x_mult number X multiplier of the edition
+---@field type string The card edition type
 
 
 ---@class BALATRO_T.Card.Config.Center
@@ -126,7 +127,7 @@
 ---@field sell_cost number Sell cost of the card
 ---@field sell_cost_label number Sell cost label of the card
 ---@field unique_val number Unique value of the card
----@field edition BALATRO_T.Card.Edition Edition of the card
+---@field edition? BALATRO_T.Card.Edition Edition of the card
 ---@field zoom boolean Whether the card is zoomed
 ---@field discard_pos table Discard position of the card
 ---@field facing string Facing of the card

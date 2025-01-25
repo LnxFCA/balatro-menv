@@ -46,8 +46,8 @@ function  SMODS.load_file(path, id) end
 ---@field key_append string? An additional RNG seeding string. This should be used to put different sources of card generation on different queues.
 ---@field no_edition boolean? If `true`, the generated card is guaranteed to have no randomly generated edition.
 ---@field edition table? Applies the specified edition modifier to the card.
----@field enhancement table? Applies the specified enhancement modifier to the card.
----@field seal table? Applies the specified seal modifier to the card.
+---@field enhancement string? Applies the specified enhancement modifier to the card.
+---@field seal string? Applies the specified seal modifier to the card.
 ---@field stickers table? This should be an array of sticker keys. Applies all specified stickers to the card.
 
 

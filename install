@@ -34,39 +34,40 @@ popdir() {
 }
 
 do_install() {
-  # Create $INSTALLDIR
-  [ ! -d "$INSTALLDIR" ] && mkdir -p "$INSTALLDIR"
+  local from="$1"
+  local to="$2"
 
-  # Install each file in $MODDIR, skip the ones in $IGNORE_FILES
-  echo ":: Installing $MODNAME files..."
+  [ ! -d "$to" ] && mkdir -p "$to"
 
-  pushdir "$MODDIR"
-  for file in *
-  do
-    if [[ ! "${IGNORE_FILES[*]}" =~ $file  ]]
-    then
-      cp -r "$MODDIR/$file" "$INSTALLDIR"
+  pushdir "$from"
+  for file in *; do
+    if [[ ! "${IGNORE_FILES[*]}" =~ $file ]]; then
+      cp -r "$from/$file" "$to/"
     fi
   done
   popdir
 }
 
 
-if [ "$TARGET" = "dev" ]
-then
-  echo ":: Development install"
-  do_install
-elif [ "$TARGET" = "release" ]
-then
-  echo ":: Release install"
-  do_install
+if [ "$TARGET" == "dev" ]; then
+  echo ":: Installing for development..."
+  echo ":: Installing files for $MODNAME"
+  do_install "$MODDIR" "$INSTALLDIR"
+else
+  echo ":: Installing for release..."
+  echo ":: Installing files for $MODNAME..."
+  do_install "$MODDIR" "$INSTALLDIR"
 
-  INSTALL_BASE="$(dirname "$INSTALLDIR")"
-  ZIP_FILE="$MODNAME-v$(cat "$MODDIR/VERSION").zip"
+  echo ":: Installng common files..."
+  do_install "$WORKSPACE/common" "$INSTALLDIR/common"
 
-  # Create zip package
-  pushdir "$INSTALL_BASE"
-  zip -r9 "$ZIP_FILE" "$MODNAME"
-  sha256sum "$ZIP_FILE" > "$ZIP_FILE.sha256sums"
+  echo ":: Creating release file..."
+  BASEINSTALL="$(realpath "$INSTALLDIR/..")"
+  pushdir "$BASEINSTALL"
+  RELFILENAME="$MODNAME-v$(cat "$MODDIR/VERSION")".zip
+  SUMSFILENAME="$RELFILENAME.sha256sums"
+
+  zip -r "$BASEINSTALL/$RELFILENAME" "$MODNAME"
+  sha256sum "$RELFILENAME" > "$SUMSFILENAME"
   popdir
 fi

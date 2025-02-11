@@ -18,6 +18,7 @@
 ---@field delete function? Function to delete the object.
 ---@field inject function? Function to inject the object into the game.
 ---@field atlas string? Atlas associated with the consumable.
+---@field pos { x: number, y: number } The position of the sprite on this atlas, row and column.
 ---@field cost number? Cost of the consumable.
 
 

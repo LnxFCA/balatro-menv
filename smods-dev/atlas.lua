@@ -11,3 +11,7 @@
 ---@field inject function Function to inject the atlas into the game.
 ---@field process_loc_text function Function to process localization text for the atlas.
 ---@field pre_inject_class function Function to perform actions before injecting the class.
+
+
+---@overload fun(args: SMODS.Atlas): SMODS.Atlas | SMODS.Atlas
+SMODS.Atlas = function(args) end

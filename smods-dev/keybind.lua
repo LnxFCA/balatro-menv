@@ -10,11 +10,11 @@ SMODS = {}
 --- when the key is pressed, held, or released.
 ---
 --- For full typing support use: `---@type SMODS.Keybind | SMODS_T.GameObjectClass`
----@class SMODS.Keybind : SMODS_T.KeybindArgs
+---@class SMODS.Keybind : SMODS_T.Keybind.Args
 SMODS.Keybind = {}
 
 
----@class SMODS_T.KeybindArgs
+---@class SMODS_T.Keybind.Args
 ---@field key_pressed string The key that triggers the action.
 ---@field held_keys string[] | nil A list of other keys that need to be held for the action to be executed.
 ---@field event 'pressed' | 'held' | 'release' The event type that triggers the action. Can be `pressed`, `held`, or `released`.

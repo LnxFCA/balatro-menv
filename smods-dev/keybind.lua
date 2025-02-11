@@ -22,5 +22,5 @@ SMODS.Keybind = {}
 ---@field action fun(self: SMODS.Keybind) The function to be executed when the key event is triggered.
 
 
----@overload fun(args: SMODS_T.KeybindArgs): SMODS.Keybind
+---@overload fun(args: SMODS_T.Keybind.Args): SMODS.Keybind
 SMODS.Keybind = function (args) end

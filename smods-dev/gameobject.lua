@@ -135,5 +135,5 @@ SMODS.GameObject = function(o) end
 ---@field dependencies table? A list of one or more mod IDs. Your object will only be loaded when all specified mods are present.
 ---@field display_size { w: number, h: number}? Changes the display size of cards by scaling them by a factor relative to pixel size.
 ---@field pixel_size { w: number, h: number}? Changes how large the sprite of this card is considered.
----@field calculate fun(self: SMODS.GameObject, card: BALATRO_T.Card, content: table): SMODS_T.GameObject.CalculateEffect? A function that calculates the card's effect.
----@field loc_vars fun(self: SMODS.GameObject, info_queue: table, card: BALATRO_T.Card): table? A function that returns a table of localization variables.
+---@field calculate (fun(self: SMODS.GameObject, card: BALATRO_T.Card, content: table): SMODS_T.GameObject.CalculateEffect?)? A function that calculates the card's effect.
+---@field loc_vars (fun(self: SMODS.GameObject, info_queue: table, card: BALATRO_T.Card): table?)? A function that returns a table of localization variables.

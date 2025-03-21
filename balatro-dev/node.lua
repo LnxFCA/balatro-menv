@@ -69,6 +69,8 @@
 ---@field collides_with_point_rotation BALATRO.Node.Rotation
 ---@field set_offset_point BALATRO.Node.Point
 ---@field set_offset_translation BALATRO.Node.Point
+---@field drag_cursor_trans BALATRO.Node.Point
+---@field drag_translation BALATRO.Node.Point
 
 
 --- Node represent any game object that needs to have some transform available in the game itself.
@@ -92,20 +94,19 @@
 ---@field under_overlay boolean
 ---@field DEBUG_VALUE? string
 ---@field CALCING? boolean
-Node = {}
+local Node = {}
 
 
 ---@class BALATRO.Node.Super : BALATRO.Node
 ---@field __index BALATRO.Node Metatable index pointing to the Node class itself, used for inheritance.
 ---@field super BALATRO.Node Reference to the parent class, used for accessing methods and properties of the parent class.
----@field extend fun(self: BALATRO.Node): BALATRO.Node.Super Extends the class with the child class.
 
 
 ---@class BALATRO.Node.Class : BALATRO.Object.Super
----@field init fun(self: BALATRO.Node, args?: BALATRO.Node.Arguments) Initializes a new instance of Node.
----@field draw_boundingrect fun(self: BALATRO.Node) Draws the bounding rectangle of the node.
----@field draw fun(self: BALATRO.Node) Draws the node and its children.
+---@field init fun(self: BALATRO.Node, args: BALATRO.Node.Arguments) Initializes a new instance of Node.
 ---@field collides_with_point fun(self: BALATRO.Node, point: BALATRO.Node.Point): boolean Checks if the node collides with a point.
+---@field draw fun(self: BALATRO.Node) Draws the node and its children.
+---@field draw_boundingrect fun(self: BALATRO.Node) Draws the bounding rectangle of the node.
 ---@field set_offset fun(self: BALATRO.Node, point: BALATRO.Node.Point, type: BALATRO.Node.OffsetType) Sets the offset of the node.
 ---@field drag fun(self: BALATRO.Node) Drags the node.
 ---@field can_drag fun(self: BALATRO.Node): BALATRO.Node? Checks if the node can be dragged.
@@ -121,6 +122,7 @@ Node = {}
 ---@field click fun(self: BALATRO.Node) Node click - prototype.
 ---@field animate fun(self: BALATRO.Node) Animates the node - prototype.
 ---@field update fun(self: BALATRO.Node) Updates the node - prototype.
+---@field extend fun(self: BALATRO.Node): BALATRO.Node.Super Extends the class with the child class.
 
 
 --- [Node](lua://BALATRO.Node) instance.
@@ -129,9 +131,11 @@ Node = {}
 
 
 --- `Node()` - creates a new instance of [Node](lua://BALATRO.Node).
---- @param args BALATRO.Node.Arguments
---- @return BALATRO.Node.Instance
-Node = function(args) end
+---@alias BALATRO.Node.Callable BALATRO.Node | fun(self: BALATRO.Node, args: BALATRO.Node.Arguments): BALATRO.Node.Instance
 
+
+---@param self BALATRO.Object
+---@return BALATRO.Node
+function Object.extend(self) end
 
 ---@alias Node BALATRO.Node

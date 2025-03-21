@@ -1,104 +1,128 @@
 ---@meta
 
-BALATRO_T = {}
+
+---@class BALATRO.Moveable.Frame : BALATRO.Node.Frame
+---@field OLD_MAJOR BALATRO.Moveable
+---@field MAJOR BALATRO.Moveable
 
 
----@class BALATRO_T.Moveable : BALATRO_T.Node
----@field VT BALATRO_T.Node.Transform Visible transform, easing towards `T`
----@field velocity {x: number, y: number, r: number, scale: number, mag: number} Velocity used for easing movement
----@field role {role_type: string, offset: {x: number, y: number}, major: BALATRO_T.Moveable?, draw_major: Moveable, xy_bond: string, wh_bond: string, r_bond: string, scale_bond: string} Role describing the hierarchy and movement
----@field alignment {type: string, offset: {x: number, y: number}, prev_type: string, prev_offset: {x: number, y: number}, lr_clamp: boolean?} Alignment details
----@field pinch {x: boolean, y: boolean} Determines if width or height of `VT` eases to 0
----@field last_moved number Last timestamp this Moveable was moved
----@field last_aligned number Last timestamp this Moveable was aligned
----@field shadow_parrallax {x: number, y: number} Parallax values for shadow effects
----@field layered_parallax {x: number, y: number} Parallax values for layers
----@field shadow_height number Shadow height for rendering
----@field juice {scale: number, scale_amt: number, r: number, r_amt: number, start_time: number, end_time: number} Animation "juice" effects
-BALATRO_T.Moveable = {}
+---@class BALATRO.Moveable.Velocity : BALATRO.Node.Point
+---@field scale number
+---@field r number
+---@field mag number
 
----Initializes a new Moveable instance.
----@param X number|table X-coordinate or initialization table
----@param Y number? Y-coordinate
----@param W number? Width
----@param H number? Height
-function BALATRO_T.Moveable:init(X, Y, W, H) end
 
----Draws the Moveable, including its bounding rectangle.
-function BALATRO_T.Moveable:draw() end
+---@alias BALATRO.Moveable.Role.Type string | "Major" | "Minor"
+---@alias BALATRO.Moveable.Role.Bond string | "Strong" | "Weak"
+---@alias BALATRO.Moveable.Alignment.Type string | "a"
 
----Sets the alignment of the Moveable using roles.
----@param args {major: BALATRO_T.Moveable?, bond: string?, offset: {x: number, y: number}?, type: string?} Alignment arguments
-function BALATRO_T.Moveable:set_alignment(args) end
 
----Aligns the Moveable to its major role.
-function BALATRO_T.Moveable:align_to_major() end
+---@class BALATRO.Moveable.Role
+---@field role_type BALATRO.Moveable.Role.Type
+---@field offset BALATRO.Node.Point
+---@field major? BALATRO.Moveable
+---@field draw_major BALATRO.Moveable
+---@field xy_bond BALATRO.Moveable.Role.Bond
+---@field wh_bond BALATRO.Moveable.Role.Bond
+---@field r_bond BALATRO.Moveable.Role.Bond
+---@field scale_bond BALATRO.Moveable.Role.Bond
 
----Directly sets the `T` transform values.
----@param X number X-coordinate
----@param Y number Y-coordinate
----@param W number Width
----@param H number Height
-function BALATRO_T.Moveable:hard_set_T(X, Y, W, H) end
 
----Directly sets `VT` to match `T`.
-function BALATRO_T.Moveable:hard_set_VT() end
+---@class BALATRO.Moveable.Juice
+---@field scale number
+---@field scale_amt number
+---@field r number
+---@field r_amt number
+---@field start_time number
+---@field end_time number
+---@field handled_elsewhere? boolean
 
----Handles drag operations for the Moveable.
----@param offset {x: number, y: number}? Offset for the drag operation
-function BALATRO_T.Moveable:drag(offset) end
 
----Applies a "juice" animation effect to the Moveable.
----@param amount number? Scale amount
----@param rot_amt number? Rotation amount
-function BALATRO_T.Moveable:juice_up(amount, rot_amt) end
+---@class BALATRO.Moveable.Alignment
+---@field type BALATRO.Moveable.Alignment.Type
+---@field offset BALATRO.Node.Point
+---@field prev_type BALATRO.Moveable.Alignment.Type
+---@field prev_offset BALATRO.Node.Point
+---@field lr_clamp? number
 
----Moves the "juice" animation over time.
----@param dt number Delta time
-function BALATRO_T.Moveable:move_juice(dt) end
 
----Updates the position, rotation, and scale of the Moveable.
----@param dt number Delta time
-function BALATRO_T.Moveable:move(dt) end
+---@alias BALATRO.Moveable.Pinch { x: boolean, y: boolean }
 
----Clamps the Moveable within the left-right bounds of the room.
-function BALATRO_T.Moveable:lr_clamp() end
 
----Glues the Moveable to a major role.
----@param major_tab BALATRO_T.Moveable The major Moveable to glue to
-function BALATRO_T.Moveable:glue_to_major(major_tab) end
+---@class BALATRO.Moveable.Super : BALATRO.Moveable
+---@field __index BALATRO.Moveable
+---@field super BALATRO.Moveable
+---@field extend fun(self:BALATRO.Moveable): BALATRO.Moveable.Super
 
----Moves the Moveable relative to its major role.
----@param dt number Delta time
-function BALATRO_T.Moveable:move_with_major(dt) end
 
----Updates the x and y position of the Moveable.
----@param dt number Delta time
-function BALATRO_T.Moveable:move_xy(dt) end
+---@class BALATRO.Moveable : BALATRO.Moveable.Class
+---@field T BALATRO.Node.Transform
+---@field VT BALATRO.Node.Transform
+---@field FRAME BALATRO.Moveable.Frame
+---@field NEW_ALIGNMENT boolean
+---@field juice BALATRO.Moveable.Juice
+---@field velocity BALATRO.Moveable.Velocity
+---@field role BALATRO.Moveable.Role
+---@field alignment BALATRO.Moveable.Alignment
+---@field pinch BALATRO.Moveable.Pinch
+---@field last_moved number
+---@field last_aligned number
+---@field static_rotation boolean
+---@field offset BALATRO.Node.Point
+---@field Mid BALATRO.Moveable
+---@field shadow_parrallax BALATRO.Node.Point
+---@field layered_parallax BALATRO.Node.Point
+---@field shadow_height number
+Moveable = Node:extend()
 
----Updates the scale of the Moveable.
----@param dt number Delta time
-function BALATRO_T.Moveable:move_scale(dt) end
 
----Updates the width and height of the Moveable.
----@param dt number Delta time
-function BALATRO_T.Moveable:move_wh(dt) end
+---@class BALATRO.Moveable.Class : BALATRO.Node.Super
+---@field align_to_major fun(self: BALATRO.Moveable) Aligns the moveable to the major axis.
+---@field hard_set_T fun(self: BALATRO.Moveable, X: number, Y: number, W: number, H: number) Sets the T property of the moveable.
+---@field hard_set_VT fun(self: BALATRO.Moveable, X: number, Y: number, W: number, H: number) Sets the VT property of the moveable.
+---@field drag fun(self: BALATRO.Moveable, X: number, Y: number) Drags the moveable.
+---@field juice_up fun(self: BALATRO.Moveable, amount: number, rot_amt) Juices up the moveable.
+---@field move_juice fun(self: BALATRO.Moveable, dt: number) Moves the juice of the moveable.
+---@field move fun(self: BALATRO.Moveable, dt: number) Moves the moveable.
 
----Updates the rotation of the Moveable.
----@param dt number Delta time
----@param vel {x: number, y: number, r: number, scale: number, mag: number} Velocity for rotation
-function BALATRO_T.Moveable:move_r(dt, vel) end
+--- [Moveable](lua://BALATRO.Moveable) instance.
+---@class BALATRO.Moveable.Instance : BALATRO.Moveable
+---@field __index BALATRO.Moveable
 
----Calculates the shadow parallax values.
-function BALATRO_T.Moveable:calculate_parrallax() end
 
----Sets the role for the Moveable.
----@param args {role_type: string?, offset: {x: number, y: number}?, major: BALATRO_T.Moveable?, xy_bond: string?, wh_bond: string?, r_bond: string?, scale_bond: string?, draw_major: Moveable?} Role arguments
-function BALATRO_T.Moveable:set_role(args) end
+--- `Moveable()` - creates a new instance of [Moveable](lua://BALATRO.Moveable).
+---@param X BALATRO.Node.Arguments | number
+---@param Y number
+---@param W number
+---@param H number
+---@return BALATRO.Moveable.Instance
+Moveable = function(X, Y, W, H) end
 
----Retrieves the major Moveable for this instance.
----@return {major: BALATRO_T.Moveable, offset: {x: number, y: number}} Information about the major Moveable
-function BALATRO_T.Moveable:get_major() end
 
----Removes the Moveable from global lists and cleans up its children.
-function BALATRO_T.Moveable:remove() end
+--- Extends the class with the child class.
+---@param self BALATRO.Node
+---@return BALATRO.Moveable
+function Node.extend(self) end
+
+local Node = Object:extend()
+
+
+---@param self BALATRO.Node
+---@param args BALATRO.Node.Arguments
+function Node.init(self, args) end
+
+
+---@alias Moveable BALATRO.Moveable
+
+
+---@class BALATRO.Moveable.set_alignment.Args : BALATRO.Moveable.Role, BALATRO.Moveable.Alignment
+---@field wh_bond? BALATRO.Moveable.Role.Bond
+---@field r_bond? BALATRO.Moveable.Role.Bond
+---@field scale_bond? BALATRO.Moveable.Role.Bond
+---@field lr_clamp? number
+
+
+--- Sets the alignment of the moveable.
+---@param self BALATRO.Moveable
+---@param args { }
+function Moveable.set_alignment(self, args) end

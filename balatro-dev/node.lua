@@ -71,8 +71,10 @@
 ---@field set_offset_translation BALATRO.Node.Point
 
 
---- [Node](lua://BALATRO.Node) instance.
----@class BALATRO.Node.Instance : BALATRO.Node.Class
+--- Node represent any game object that needs to have some transform available in the game itself.
+--- Everything that you see in the game is a Node, and some invisible things like the G.ROOM are also
+--- represented here.
+---@class BALATRO.Node : BALATRO.Node.Class
 ---@field ARGS BALATRO.Node.ARGS
 ---@field RETS table
 ---@field T BALATRO.Node.Transform
@@ -85,46 +87,44 @@
 ---@field ID number
 ---@field FRAME BALATRO.Node.Frame
 ---@field states BALATRO.Node.States
----@field container BALATRO.Node.Instance
----@field children table<string, BALATRO.Node.Instance> | BALATRO.Node.Instance[]
+---@field container BALATRO.Node
+---@field children table<string, BALATRO.Node> | BALATRO.Node[]
 ---@field under_overlay boolean
 ---@field DEBUG_VALUE? string
 ---@field CALCING? boolean
+Node = {}
 
 
----@class BALATRO.Node.Super : BALATRO.Node.Class
+---@class BALATRO.Node.Super : BALATRO.Node
 ---@field __index BALATRO.Node Metatable index pointing to the Node class itself, used for inheritance.
 ---@field super BALATRO.Node Reference to the parent class, used for accessing methods and properties of the parent class.
----@field extend fun(self: BALATRO.Node.Arguments): BALATRO.Node.Super Extends the class with the child class.
+---@field extend fun(self: BALATRO.Node): BALATRO.Node.Super Extends the class with the child class.
 
 
 ---@class BALATRO.Node.Class : BALATRO.Object.Super
----@field init fun(self: BALATRO.Node.Instance, args?: BALATRO.Node.Arguments) Initializes the node.
----@field draw_boundingrect fun(self: BALATRO.Node.Instance) Draws the bounding rectangle of the node.
----@field draw fun(self: BALATRO.Node.Instance) Draws the node and its children.
----@field collides_with_point fun(self: BALATRO.Node.Instance, point: BALATRO.Node.Point): boolean Checks if the node collides with a point.
----@field set_offset fun(self: BALATRO.Node.Instance, point: BALATRO.Node.Point, type: BALATRO.Node.OffsetType) Sets the offset of the node.
----@field drag fun(self: BALATRO.Node.Instance) Drags the node.
----@field can_drag fun(self: BALATRO.Node.Instance): BALATRO.Node.Instance? Checks if the node can be dragged.
----@field stop_drag fun(self: BALATRO.Node.Instance) Stops dragging the node.
----@field hover fun(self: BALATRO.Node.Instance) Node hover.
----@field stop_hover fun(self: BALATRO.Node.Instance) Stops hovering the node.
----@field put_focused_cursor fun(self: BALATRO.Node.Instance) Puts the focused cursor on the node.
----@field set_container fun(self: BALATRO.Node.Instance, container: BALATRO.Node.Instance) Sets the container of the node.
----@field translate_container fun(self: BALATRO.Node.Instance) Translates the container of the node.
----@field remove fun(self: BALATRO.Node.Instance) Removes the node.
----@field fast_mid_dist fun(self: BALATRO.Node.Instance, other_node: BALATRO.Node.Instance): number Calculates the fast mid distance between the node and a point.
----@field release fun(self: BALATRO.Node.Instance, released: boolean) Releases the node - prototype.
----@field click fun(self: BALATRO.Node.Instance) Node click - prototype.
----@field animate fun(self: BALATRO.Node.Instance) Animates the node - prototype.
----@field update fun(self: BALATRO.Node.Instance) Updates the node - prototype.
+---@field draw_boundingrect fun(self: BALATRO.Node) Draws the bounding rectangle of the node.
+---@field draw fun(self: BALATRO.Node) Draws the node and its children.
+---@field collides_with_point fun(self: BALATRO.Node, point: BALATRO.Node.Point): boolean Checks if the node collides with a point.
+---@field set_offset fun(self: BALATRO.Node, point: BALATRO.Node.Point, type: BALATRO.Node.OffsetType) Sets the offset of the node.
+---@field drag fun(self: BALATRO.Node) Drags the node.
+---@field can_drag fun(self: BALATRO.Node): BALATRO.Node? Checks if the node can be dragged.
+---@field stop_drag fun(self: BALATRO.Node) Stops dragging the node.
+---@field hover fun(self: BALATRO.Node) Node hover.
+---@field stop_hover fun(self: BALATRO.Node) Stops hovering the node.
+---@field put_focused_cursor fun(self: BALATRO.Node) Puts the focused cursor on the node.
+---@field set_container fun(self: BALATRO.Node, container: BALATRO.Node) Sets the container of the node.
+---@field translate_container fun(self: BALATRO.Node) Translates the container of the node.
+---@field remove fun(self: BALATRO.Node) Removes the node.
+---@field fast_mid_dist fun(self: BALATRO.Node, other_node: BALATRO.Node): number Calculates the fast mid distance between the node and a point.
+---@field release fun(self: BALATRO.Node, released: boolean) Releases the node - prototype.
+---@field click fun(self: BALATRO.Node) Node click - prototype.
+---@field animate fun(self: BALATRO.Node) Animates the node - prototype.
+---@field update fun(self: BALATRO.Node) Updates the node - prototype.
 
 
---- Node represent any game object that needs to have some transform available in the game itself.
---- Everything that you see in the game is a Node, and some invisible things like the G.ROOM are also
---- represented here.
----@class BALATRO.Node : BALATRO.Node.Class
-Node = {}
+--- [Node](lua://BALATRO.Node) instance.
+---@class BALATRO.Node.Instance : BALATRO.Node
+---@field __index BALATRO.Node Metatable index pointing to the Node class itself, used for inheritance.
 
 
 --- `Node()` - creates a new instance of [Node](lua://BALATRO.Node).
@@ -133,4 +133,4 @@ Node = {}
 Node = function(args) end
 
 
----@alias Node BALATRO.Node | BALATRO.Node.Instance
+---@alias Node BALATRO.Node

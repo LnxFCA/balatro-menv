@@ -59,7 +59,7 @@
 ---@field hover BALATRO.Node.State
 ---@field click BALATRO.Node.State
 ---@field drag BALATRO.Node.State
----@field released_on BALATRO.Node.State
+---@field release_on BALATRO.Node.State
 
 
 --- Node arguments table.
@@ -88,23 +88,24 @@
 ---@field container BALATRO.Node.Instance
 ---@field children table<string, BALATRO.Node.Instance> | BALATRO.Node.Instance[]
 ---@field under_overlay boolean
----@field DEBUG_VALUE boolean
----@field CALCING boolean
+---@field DEBUG_VALUE? string
+---@field CALCING? boolean
 
 
 ---@class BALATRO.Node.Super : BALATRO.Node.Class
 ---@field __index BALATRO.Node Metatable index pointing to the Node class itself, used for inheritance.
 ---@field super BALATRO.Node Reference to the parent class, used for accessing methods and properties of the parent class.
+---@field extend fun(self: BALATRO.Node.Arguments): BALATRO.Node.Super Extends the class with the child class.
 
 
 ---@class BALATRO.Node.Class : BALATRO.Object.Super
----@field init fun(self: BALATRO.Node, args: BALATRO.Node.Arguments) Initializes the node.
+---@field init fun(self: BALATRO.Node.Instance, args?: BALATRO.Node.Arguments) Initializes the node.
 ---@field draw_boundingrect fun(self: BALATRO.Node.Instance) Draws the bounding rectangle of the node.
 ---@field draw fun(self: BALATRO.Node.Instance) Draws the node and its children.
 ---@field collides_with_point fun(self: BALATRO.Node.Instance, point: BALATRO.Node.Point): boolean Checks if the node collides with a point.
 ---@field set_offset fun(self: BALATRO.Node.Instance, point: BALATRO.Node.Point, type: BALATRO.Node.OffsetType) Sets the offset of the node.
 ---@field drag fun(self: BALATRO.Node.Instance) Drags the node.
----@field can_drag fun(self: BALATRO.Node.Instance): boolean Checks if the node can be dragged.
+---@field can_drag fun(self: BALATRO.Node.Instance): BALATRO.Node.Instance? Checks if the node can be dragged.
 ---@field stop_drag fun(self: BALATRO.Node.Instance) Stops dragging the node.
 ---@field hover fun(self: BALATRO.Node.Instance) Node hover.
 ---@field stop_hover fun(self: BALATRO.Node.Instance) Stops hovering the node.
@@ -125,9 +126,11 @@
 ---@class BALATRO.Node : BALATRO.Node.Class
 Node = {}
 
+
 --- `Node()` - creates a new instance of [Node](lua://BALATRO.Node).
 --- @param args BALATRO.Node.Arguments
 --- @return BALATRO.Node.Instance
 Node = function(args) end
 
----@alias Node BALATRO.Node
+
+---@alias Node BALATRO.Node | BALATRO.Node.Instance

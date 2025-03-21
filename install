@@ -21,7 +21,8 @@ TARGET="${1:-dev}"
 IGNORE=('README.md'
         '.gitignore'
         'images'
-        '.luarc.json')
+        '.luarc.json'
+        'LICENSE')
 
 IGNORE_FILES=("${IGNORE_FILES:-${IGNORE[@]}}")
 

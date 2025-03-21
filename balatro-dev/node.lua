@@ -102,6 +102,7 @@ Node = {}
 
 
 ---@class BALATRO.Node.Class : BALATRO.Object.Super
+---@field init fun(self: BALATRO.Node, args?: BALATRO.Node.Arguments) Initializes a new instance of Node.
 ---@field draw_boundingrect fun(self: BALATRO.Node) Draws the bounding rectangle of the node.
 ---@field draw fun(self: BALATRO.Node) Draws the node and its children.
 ---@field collides_with_point fun(self: BALATRO.Node, point: BALATRO.Node.Point): boolean Checks if the node collides with a point.

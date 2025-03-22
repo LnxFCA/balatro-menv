@@ -54,7 +54,10 @@ file in the workspace root with the following content:
       ],
       "diagnostics.disable": [
         "lowercase-global"
-      ]
+      ],
+      "types": {
+        "weakUnionCheck": true
+      }
     }
     ```
 

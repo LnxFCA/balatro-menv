@@ -9,5 +9,8 @@
   ],
   "diagnostics.disable": [
     "lowercase-global"
-  ]
+  ],
+  "type": {
+    "weakUnionCheck": true
+  }
 }

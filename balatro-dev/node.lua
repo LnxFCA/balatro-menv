@@ -35,8 +35,8 @@
 
 --- Node configuration.
 ---@class BALATRO.Node.Config
----@field d_hpopup BALATRO.UIBox.Instance
----@field h_popup_config BALATRO.UIBox.Config
+---@field d_hpopup? BALATRO.UIBox
+---@field h_popup_config? BALATRO.UIBox.Config
 
 
 --- Node FRAME values.
@@ -128,7 +128,7 @@ local Node = {}
 
 
 --- `Node()` - creates a new instance of [Node](lua://BALATRO.Node).
----@alias BALATRO.Node.Callable BALATRO.Node | fun(args: BALATRO.Node.Arguments): BALATRO.Node
+---@alias BALATRO.Node.Callable BALATRO.Node | (fun(args: BALATRO.Node.Arguments): BALATRO.Node)
 
 
 ---@param self BALATRO.Object

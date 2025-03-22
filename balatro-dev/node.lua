@@ -14,7 +14,7 @@
 --- Node instance arguments.
 ---@class BALATRO.Node.Arguments
 ---@field T? number[] | BALATRO.Node.Transform
----@field container? BALATRO.Node.Instance
+---@field container? BALATRO.Node
 
 
 --- Node point.
@@ -77,6 +77,7 @@
 --- Everything that you see in the game is a Node, and some invisible things like the G.ROOM are also
 --- represented here.
 ---@class BALATRO.Node : BALATRO.Node.Class
+---@field __index BALATRO.Node
 ---@field ARGS BALATRO.Node.ARGS
 ---@field RETS table
 ---@field T BALATRO.Node.Transform
@@ -94,6 +95,7 @@
 ---@field under_overlay boolean
 ---@field DEBUG_VALUE? string
 ---@field CALCING? boolean
+---@field REMOVED? boolean
 local Node = {}
 
 
@@ -125,17 +127,13 @@ local Node = {}
 ---@field extend fun(self: BALATRO.Node): BALATRO.Node.Super Extends the class with the child class.
 
 
---- [Node](lua://BALATRO.Node) instance.
----@class BALATRO.Node.Instance : BALATRO.Node
----@field __index BALATRO.Node Metatable index pointing to the Node class itself, used for inheritance.
-
-
 --- `Node()` - creates a new instance of [Node](lua://BALATRO.Node).
----@alias BALATRO.Node.Callable BALATRO.Node | fun(self: BALATRO.Node, args: BALATRO.Node.Arguments): BALATRO.Node.Instance
+---@alias BALATRO.Node.Callable BALATRO.Node | fun(args: BALATRO.Node.Arguments): BALATRO.Node
 
 
 ---@param self BALATRO.Object
 ---@return BALATRO.Node
 function Object.extend(self) end
+
 
 ---@alias Node BALATRO.Node

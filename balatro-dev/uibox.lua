@@ -10,7 +10,7 @@
 ---@alias BALATRO.UIBox.Config.Alignment string
 
 
----@class BALATRO.UIBox.Config: BALATRO.Moveable.Config
+---@class BALATRO.UIBox.Config
 ---@field major? BALATRO.UI.Object
 ---@field parent? BALATRO.UI.Object
 ---@field align BALATRO.UIBox.Config.Alignment
@@ -58,10 +58,6 @@ local UIBox = {}
 
 --- `UIBox()` - creates a new instance of [Moveable](lua://BALATRO.UIBox).
 ---@alias BALATRO.UIBox.Callable BALATRO.UIBox | (fun(args: BALATRO.UIBox.Arguments): BALATRO.UIBox)
-
-
----@overload fun(obj: BALATRO.UIBox, T?: BALATRO.Node.Transform[])
-function Moveable.init(obj, T) end
 
 
 ---@type number

@@ -110,7 +110,7 @@ local Node = {}
 ---@field stop_drag fun(self: BALATRO.Node) Stops dragging the node.
 ---@field hover fun(self: BALATRO.Node) Node hover.
 ---@field stop_hover fun(self: BALATRO.Node) Stops hovering the node.
----@field put_focused_cursor fun(self: BALATRO.Node) Puts the focused cursor on the node.
+---@field put_focused_cursor fun(self: BALATRO.Node): number, number Puts the focused cursor on the node.
 ---@field set_container fun(self: BALATRO.Node, container: BALATRO.Node) Sets the container of the node.
 ---@field translate_container fun(self: BALATRO.Node) Translates the container of the node.
 ---@field remove fun(self: BALATRO.Node) Removes the node.
@@ -118,7 +118,7 @@ local Node = {}
 ---@field release fun(self: BALATRO.Node, released: boolean) Releases the node - prototype.
 ---@field click fun(self: BALATRO.Node) Node click - prototype.
 ---@field animate fun(self: BALATRO.Node) Animates the node - prototype.
----@field update fun(self: BALATRO.Node) Updates the node - prototype.
+---@field update fun(self: BALATRO.Node, dt: number) Updates the node - prototype.
 ---@field extend fun(self: BALATRO.Node): BALATRO.Node.Super Extends the class with the child class.
 
 

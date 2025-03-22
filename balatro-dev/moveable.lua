@@ -84,10 +84,6 @@
 ---@field extend fun(self:BALATRO.Moveable): BALATRO.Moveable.Super
 
 
----@class BALATRO.Moveable.Config : BALATRO.Node.Config
----@field refresh_movement? boolean
-
-
 ---@class BALATRO.Moveable : BALATRO.Moveable.Class
 ---@field ARGS BALATRO.Moveable.ARGS
 ---@field FRAME BALATRO.Moveable.Frame
@@ -105,9 +101,9 @@
 ---@field shadow_parrallax BALATRO.Node.Point
 ---@field layered_parallax BALATRO.Node.Point
 ---@field shadow_height number
----@field children BALATRO.Moveable[] | table<string, BALATRO.Moveable>
+---@field children BALATRO.UI.Object[] | table<string, BALATRO.UI.Object>
 ---@field STATIONARY? boolean
----@field config BALATRO.Moveable.Config
+---@field config BALATRO.UI.Definition.Config
 ---@field temp_offs BALATRO.Node.Point
 ---@field major? BALATRO.UI.Object
 ---@field zoom? boolean

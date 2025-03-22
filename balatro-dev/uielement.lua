@@ -145,6 +145,7 @@
 ---@field h_popup_config? BALATRO.UIBox.Config
 ---@field d_popup? UINode
 ---@field d_popup_config? BALATRO.UIBox.Config
+---@field refresh_movement? boolean
 
 
 ---@class BALATRO.UI.Node.Common
@@ -181,7 +182,7 @@ local UIELement = {}
 ---@field init fun(self: BALATRO.UIElement, parent: BALATRO.UIElement, new_UIBox: BALATRO.UIBox, new_UIT: BALATRO.UI.T, config: BALATRO.UI.Definition.Config)
 ---@field set_values fun(self: BALATRO.UIElement, _T: BALATRO.Node.Transform, recalculate: boolean)
 ---@field print_topology fun(self: BALATRO.UIElement, indent?: number): string
----@field initialize_VT fun(self: BALATRO.UIElement)
+---@field initialize_VT fun(self: BALATRO.UIElement, foo?: boolean)
 ---@field draw_children fun(self: BALATRO.UIElement, layer?: BALATRO.UIElement)
 ---@field set_wh fun(self: BALATRO.UIElement): number, number
 ---@field align fun(self: BALATRO.UIElement, x: number, y: number)
@@ -195,7 +196,3 @@ local UIELement = {}
 
 ---@alias BALATRO.UIElement.Call fun(parent: BALATRO.UIElement, new_UIBox: BALATRO.UIBox, new_UIT: BALATRO.UI.T, config: BALATRO.UI.Definition.Config): BALATRO.UIElement
 ---@alias BALATRO.UIElement.Callable BALATRO.UIElement | BALATRO.UIElement.Call
-
-
----@overload fun(obj: BALATRO.UIElement, args: BALATRO.Node.Arguments)
-function Moveable.init(obj, args) end

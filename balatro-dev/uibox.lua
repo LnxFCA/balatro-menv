@@ -7,15 +7,12 @@
 ---@field config? BALATRO.UIBox.Config
 
 
----@alias BALATRO.UI.Major BALATRO.UIBox | BALATRO.Moveable
 ---@alias BALATRO.UIBox.Config.Alignment string
----@alias BALATRO.UIBox.Parent BALATRO.UIBox | BALATRO.Moveable
----@alias BALATRO.UIBox.Mid BALATRO.UIBox | BALATRO.Moveable | BALATRO.UIElement
 
 
 ---@class BALATRO.UIBox.Config: BALATRO.Moveable.Config
----@field major? BALATRO.UI.Major
----@field parent? BALATRO.UIBox.Parent
+---@field major? BALATRO.UI.Object
+---@field parent? BALATRO.UI.Object
 ---@field align BALATRO.UIBox.Config.Alignment
 ---@field type? BALATRO.Moveable.Role.Type
 ---@field bond? BALATRO.Moveable.Role.Bond 
@@ -34,24 +31,38 @@
 ---@field draw_layers BALATRO.UIElement[] | table<string, BALATRO.UIElement>
 ---@field definition BALATRO.UI.Definition
 ---@field config BALATRO.UIBox.Config
----@field parent BALATRO.UIBox.Parent
----@field major BALATRO.UI.Major
----@field layered_parallax BALATRO.UI.Major
----@field Mid BALATRO.UIBox.Mid
+---@field parent BALATRO.UI.Object
+---@field major BALATRO.UI.Object
+---@field layered_parallax BALATRO.UI.Object
+---@field Mid BALATRO.UI.Object
 ---@field UIRoot BALATRO.UIElement
 local UIBox = {}
 
 
 ---@class BALATRO.UIBox.Class : BALATRO.Moveable.Super
 ---@field init fun(self: BALATRO.UIBox, args: BALATRO.UIBox.Arguments)
----@field calculate_xywh fun(self: BALATRO.UIBox, node: BALATRO.UIElement, T: BALATRO.Node.Transform, recalculate: boolean, scale: number): number, number
----@field set_parent_child fun(self: BALATRO.UIBox, node: BALATRO.UI.Definition, parent_rect?: BALATRO.UI.Definition)
+---@field get_UIE_by_ID fun(self: BALATRO.UIBox, id: string, node?: BALATRO.UIElement): BALATRO.UIElement | nil
+---@field calculate_xywh fun(self: BALATRO.UIBox, node: BALATRO.UIElement, T: BALATRO.Node.Transform, recalculate?: boolean, scale?: number): number, number
+---@field remove_group fun(self: BALATRO.UIBox, node?: BALATRO.UIElement, group?: number): boolean | nil
+---@field get_group fun(self: BALATRO.UIBox, node?: BALATRO.UIElement, group?: number, ingroup?: BALATRO.UIElement[]): BALATRO.UIElement[]
+---@field set_parent_child fun(self: BALATRO.UIBox, node: BALATRO.UI.Definition | BALATRO.UI.Node.Common, parent?: BALATRO.UIElement)
+---@field remove fun(self: BALATRO.UIBox)
+---@field draw fun(self: BALATRO.UIBox)
 ---@field recalculate fun(self: BALATRO.UIBox)
+---@field move fun(self: BALATRO.UIBox, dt?: number)
+---@field drag fun(self: BALATRO.UIBox, offset: BALATRO.Node.Point)
+---@field add_child fun(self: BALATRO.UIBox, node: UINode, parent?: BALATRO.UIElement)
+---@field set_container fun(self: BALATRO.UIBox, container: BALATRO.UI.Object)
+---@field print_topology fun(self: BALATRO.UIBox, indent?: number): string
 
 
 --- `UIBox()` - creates a new instance of [Moveable](lua://BALATRO.UIBox).
 ---@alias BALATRO.UIBox.Callable BALATRO.UIBox | (fun(args: BALATRO.UIBox.Arguments): BALATRO.UIBox)
 
 
----@overload fun(object: BALATRO.UIBox, T?: BALATRO.Node.Transform)
+---@overload fun(obj: BALATRO.UIBox, T?: BALATRO.Node.Transform[])
 function Moveable.init(obj, T) end
+
+
+---@type number
+dt = 0

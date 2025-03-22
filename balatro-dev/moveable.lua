@@ -115,7 +115,7 @@ local Moveable = {}
 
 
 ---@class BALATRO.Moveable.Class : BALATRO.Node.Super
----@field init fun(self: BALATRO.Moveable, X: BALATRO.Node.Arguments | number, Y: number, W: number, H: number) Initializes the moveable.
+---@field init fun(self: BALATRO.Moveable, X: BALATRO.Node.Arguments | number, Y?: number, W?: number, H?: number) Initializes the moveable.
 ---@field draw fun(self: BALATRO.Moveable) Draws the moveable.
 ---@field align_to_major fun(self: BALATRO.Moveable) Aligns the moveable to the major axis.
 ---@field hard_set_T fun(self: BALATRO.Moveable, X: number, Y: number, W: number, H: number) Sets the T property of the moveable.
@@ -137,7 +137,7 @@ local Moveable = {}
 
 
 --- `Moveable()` - creates a new instance of [Moveable](lua://BALATRO.Moveable).
----@alias BALATRO.Moveable.Callable BALATRO.Moveable | (fun(X: BALATRO.Node.Arguments | number, Y: number, W: number, H: number): BALATRO.Moveable)
+---@alias BALATRO.Moveable.Callable BALATRO.Moveable | (fun(X: BALATRO.Node.Arguments | number, Y?: number, W?: number, H?: number): BALATRO.Moveable)
 
 
 --- Extends the class with the child class.
@@ -164,7 +164,7 @@ function Node.extend(self) end
 
 --- Sets the alignment of the moveable.
 ---@param self BALATRO.Moveable
----@param args BALATRO.Moveable.set_alignment.Args
+---@param args? BALATRO.Moveable.set_alignment.Args
 function Moveable.set_alignment(self, args) end
 
 

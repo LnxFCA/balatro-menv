@@ -3,11 +3,8 @@
 
 ---@class BALATRO.UIBox.Arguments
 ---@field T? BALATRO.Node.Transform
----@field definition BALATRO.UIBox.Definition
+---@field definition BALATRO.UI.Definition
 ---@field config? BALATRO.UIBox.Config
-
-
----@class BALATRO.UIBox.DrawLayer
 
 
 ---@alias BALATRO.UI.Major BALATRO.UIBox | BALATRO.Moveable
@@ -18,9 +15,9 @@
 
 ---@class BALATRO.UIBox.Config: BALATRO.Moveable.Config
 ---@field major? BALATRO.UI.Major
----@field parent BALATRO.UIBox.Parent
+---@field parent? BALATRO.UIBox.Parent
 ---@field align BALATRO.UIBox.Config.Alignment
----@field type BALATRO.Moveable.Role.Type
+---@field type? BALATRO.Moveable.Role.Type
 ---@field bond? BALATRO.Moveable.Role.Bond 
 ---@field offset? BALATRO.Node.Point
 ---@field lr_clamp? number
@@ -33,12 +30,9 @@
 ---@field instance_type? string
 
 
----@class BALATRO.UIBox.Definition
-
-
 ---@class BALATRO.UIBox : BALATRO.UIBox.Class
----@field draw_layers BALATRO.UIBox.DrawLayer[] | table<string, BALATRO.UIBox.DrawLayer>
----@field definition BALATRO.UIBox.Definition
+---@field draw_layers BALATRO.UIElement[] | table<string, BALATRO.UIElement>
+---@field definition BALATRO.UI.Definition
 ---@field config BALATRO.UIBox.Config
 ---@field parent BALATRO.UIBox.Parent
 ---@field major BALATRO.UI.Major
@@ -50,8 +44,9 @@ local UIBox = {}
 
 ---@class BALATRO.UIBox.Class : BALATRO.Moveable.Super
 ---@field init fun(self: BALATRO.UIBox, args: BALATRO.UIBox.Arguments)
----@field get_UIE_by_ID fun(self: BALATRO.UIBox, id: string, node?: BALATRO.UIBox.Parent): BALATRO.UIElement
----@field set_parent_child fun(self: BALATRO.UIBox, definition: BALATRO.UIBox.Definition, child?: BALATRO.UIBox.Parent)
+---@field calculate_xywh fun(self: BALATRO.UIBox, node: BALATRO.UIElement, T: BALATRO.Node.Transform, recalculate: boolean, scale: number): number, number
+---@field set_parent_child fun(self: BALATRO.UIBox, node: BALATRO.UI.Definition, parent_rect?: BALATRO.UI.Definition)
+---@field recalculate fun(self: BALATRO.UIBox)
 
 
 --- `UIBox()` - creates a new instance of [Moveable](lua://BALATRO.UIBox).

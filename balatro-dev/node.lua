@@ -33,12 +33,6 @@
 ---@alias BALATRO.Node.OffsetType "Click" | "Hover"
 
 
---- Node configuration.
----@class BALATRO.Node.Config
----@field d_hpopup? BALATRO.UIBox
----@field h_popup_config? BALATRO.UIBox.Config
-
-
 --- Node FRAME values.
 ---@class BALATRO.Node.Frame
 ---@field DRAW number
@@ -83,7 +77,7 @@
 ---@field T BALATRO.Node.Transform
 ---@field VT BALATRO.Node.Transform
 ---@field CT BALATRO.Node.Transform
----@field config BALATRO.Node.Config
+---@field config BALATRO.UI.Definition.Config
 ---@field click_offset BALATRO.Node.Point
 ---@field hover_offset BALATRO.Node.Point
 ---@field created_on_pause boolean
@@ -96,6 +90,7 @@
 ---@field DEBUG_VALUE? string
 ---@field CALCING? boolean
 ---@field REMOVED? boolean
+---@field jiggle? number
 local Node = {}
 
 
@@ -106,7 +101,7 @@ local Node = {}
 
 ---@class BALATRO.Node.Class : BALATRO.Object.Super
 ---@field init fun(self: BALATRO.Node, args: BALATRO.Node.Arguments) Initializes a new instance of Node.
----@field collides_with_point fun(self: BALATRO.Node, point: BALATRO.Node.Point): boolean Checks if the node collides with a point.
+---@field collides_with_point fun(self: BALATRO.Node, point: BALATRO.Node.Point): boolean | nil Checks if the node collides with a point.
 ---@field draw fun(self: BALATRO.Node) Draws the node and its children.
 ---@field draw_boundingrect fun(self: BALATRO.Node) Draws the bounding rectangle of the node.
 ---@field set_offset fun(self: BALATRO.Node, point: BALATRO.Node.Point, type: BALATRO.Node.OffsetType) Sets the offset of the node.
@@ -129,11 +124,6 @@ local Node = {}
 
 --- `Node()` - creates a new instance of [Node](lua://BALATRO.Node).
 ---@alias BALATRO.Node.Callable BALATRO.Node | (fun(args: BALATRO.Node.Arguments): BALATRO.Node)
-
-
----@param self BALATRO.Object
----@return BALATRO.Node
-function Object.extend(self) end
 
 
 ---@alias Node BALATRO.Node

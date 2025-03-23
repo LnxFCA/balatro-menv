@@ -10,7 +10,7 @@
 ---@alias UINode UIDefinition | BALATRO.UI.Node.Common
 
 
----@alias BALATRO.UI.Object BALATRO.UIElement | BALATRO.UIBox | BALATRO.Moveable
+---@alias BALATRO.UI.Object BALATRO.UIElement | BALATRO.UIBox | BALATRO.Moveable | BALATRO.Sprite | BALATRO.Card
 
 
 ---@class BALATRO.UIElement.Parallax
@@ -21,13 +21,6 @@
 ---@class BALATRO.UIElement.Dimension
 ---@field h number
 ---@field w number
-
-
----@class BALATRO.UIElement.ARGS : BALATRO.Moveable.ARGS
----@field xywh_node_trans BALATRO.Node.Transform
----@field text_parallax BALATRO.UIElement.Parallax
----@field button_colours BALATRO.UI.Colour[]
----@field FUNC_TRACKER table<string, number>
 
 
 ---@class BALATRO.UIElement.PixellatedRect
@@ -161,7 +154,7 @@
 
 
 ---@class BALATRO.UIElement : BALATRO.UIElement.Class
----@field ARGS BALATRO.UIElement.ARGS
+---@field ARGS BALATRO.ARGS
 ---@field config BALATRO.UI.Definition.Config
 ---@field parent BALATRO.UI.Object
 ---@field UIT BALATRO.UI.T | number

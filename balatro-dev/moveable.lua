@@ -6,9 +6,6 @@
 ---@field offset BALATRO.Node.Point
 
 
----@class BALATRO.Moveable.ARGS : BALATRO.Node.ARGS
----@field get_major BALATRO.Moveable.ARGS.get_major
-
 ---@class BALATRO.Moveable.Frame : BALATRO.Node.Frame
 ---@field OLD_MAJOR BALATRO.UI.Object
 ---@field MAJOR BALATRO.UI.Object
@@ -85,7 +82,7 @@
 
 
 ---@class BALATRO.Moveable : BALATRO.Moveable.Class
----@field ARGS BALATRO.Moveable.ARGS
+---@field ARGS BALATRO.ARGS
 ---@field FRAME BALATRO.Moveable.Frame
 ---@field NEW_ALIGNMENT boolean
 ---@field juice BALATRO.Moveable.Juice

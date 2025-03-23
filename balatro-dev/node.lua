@@ -56,8 +56,11 @@
 ---@field release_on BALATRO.Node.State
 
 
+---@class BALATRO.ARGS.prep_shader
+---@field cursor_pos? number[]
+
 --- Node arguments table.
----@class BALATRO.Node.ARGS
+---@class BALATRO.ARGS
 ---@field collides_with_point_point BALATRO.Node.Point
 ---@field collides_with_point_translation BALATRO.Node.Point
 ---@field collides_with_point_rotation BALATRO.Node.Rotation
@@ -65,6 +68,16 @@
 ---@field set_offset_translation BALATRO.Node.Point
 ---@field drag_cursor_trans BALATRO.Node.Point
 ---@field drag_translation BALATRO.Node.Point
+---@field get_major BALATRO.Moveable.ARGS.get_major
+---@field xywh_node_trans BALATRO.Node.Transform
+---@field text_parallax BALATRO.UIElement.Parallax
+---@field button_colours BALATRO.UI.Colour[]
+---@field FUNC_TRACKER table<string, number>
+---@field prep_shader BALATRO.ARGS.prep_shader
+
+
+---@class BALATRO.RETS
+---@field get_pos_pixel number[]
 
 
 --- Node represent any game object that needs to have some transform available in the game itself.
@@ -72,8 +85,8 @@
 --- represented here.
 ---@class BALATRO.Node : BALATRO.Node.Class
 ---@field __index BALATRO.Node
----@field ARGS BALATRO.Node.ARGS
----@field RETS table
+---@field ARGS BALATRO.ARGS
+---@field RETS BALATRO.RETS
 ---@field T BALATRO.Node.Transform
 ---@field VT BALATRO.Node.Transform
 ---@field CT BALATRO.Node.Transform

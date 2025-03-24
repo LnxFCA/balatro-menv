@@ -74,6 +74,7 @@
 ---@field button_colours BALATRO.UI.Colour[]
 ---@field FUNC_TRACKER table<string, number>
 ---@field prep_shader BALATRO.ARGS.prep_shader
+---@field send_to_shader number[]
 
 
 ---@class BALATRO.RETS

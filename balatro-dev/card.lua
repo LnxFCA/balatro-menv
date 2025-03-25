@@ -129,6 +129,7 @@
 ---@field label? string
 ---@field eternal_compat? boolean
 ---@field perishable_compat? boolean
+---@field blueprint_compat? boolean
 ---@field increase? number
 ---@field rarity? number
 
@@ -159,7 +160,7 @@
 ---@alias BALATRO.Card.Seal string | number
 
 
----@alias BALATRO.Card.Ability.Set string | "Joker" | "Booster" | "Tarot" | "Planet" | "Edition" | "Spectral" | "Voucher" | "Default" | "Enhanced" | "Base"
+---@alias BALATRO.Card.Ability.Set string | "Joker" | "Booster" | "Tarot" | "Planet" | "Edition" | "Spectral" | "Voucher" | "Default" | "Enhanced" | "Base" | "Tarot_Planet"
 
 
 ---@class BALATRO.Card.Ability
@@ -361,9 +362,6 @@ local Card = {}
 ---@field remove fun(self: BALATRO.Card)
 
 
----@alias BALATRO.Card.Callable BALATRO.Card | fun(X: number, Y: number, W: number, H: number, card: BALATRO.Card.Front, center: BALATRO.Card.Center, params?: BALATRO.Card.Params)
-
-
 --- Creates a new game Card
 ---@param self BALATRO.Card
 ---@param X number
@@ -373,4 +371,15 @@ local Card = {}
 ---@param card BALATRO.Card.Front
 ---@param center BALATRO.Card.Center
 ---@param params BALATRO.Card.Params
-function Card.init(self, X, Y, W, H, card, center, params) end
+Card.init = function(self, X, Y, W, H, card, center, params) end
+
+
+--- `Card()` - Creates a new [Card](lua://BALATRO.Card) object
+---@param X number
+---@param Y number
+---@param W number
+---@param H number
+---@param card? BALATRO.Card.Front
+---@param center BALATRO.Card.Center
+---@param params? BALATRO.Card.Params
+_G.Card = function (X, Y, W, H, card, center, params) end

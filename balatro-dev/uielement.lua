@@ -185,6 +185,7 @@ local UIELement = {}
 ---@field draw_self fun(self: BALATRO.UIElement)
 ---@field draw_pixellated_rect fun(self: BALATRO.UIElement, type, parallax: number, emboss?: number, progesss?: number)
 ---@field update fun(self: BALATRO.UIElement, dt: number)
+---@field put_focused_cursor (fun(self: BALATRO.UIElement)) | (fun(self: BALATRO.UIElement): number, number)
 
 
 ---@alias BALATRO.UIElement.Call fun(parent: BALATRO.UIElement, new_UIBox: BALATRO.UIBox, new_UIT: BALATRO.UI.T, config: BALATRO.UI.Definition.Config): BALATRO.UIElement

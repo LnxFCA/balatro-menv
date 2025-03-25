@@ -15,13 +15,14 @@
 ---@field extend fun(self: BALATRO.Object): BALATRO.Object.Super Creates a new subclass of the object.
 ---@field is fun(self: BALATRO.Object, obj: BALATRO.Object.Instance): boolean Checks if the object is an instance of the given class.
 
+
 --- Base class for all objects in the game.
 ---@class BALATRO.Object : BALATRO.Object.Class
 ---@field __index BALATRO.Object Metatable index pointing to the Object class itself, used for inheritance.
-Object = {}
+local Object = {}
 
 
 --- `Object()` - creates a new instance of [Object](lua://BALATRO.Object).
 ---@param ... unknown
 ---@return BALATRO.Object.Instance
-Object = function(...) end
+_G.Object = function(...) end

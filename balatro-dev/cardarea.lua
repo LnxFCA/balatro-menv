@@ -1,122 +1,129 @@
 ---@meta
 
----@class BALATRO_T.CardArea.Config
----@field card_w number Width of the card
----@field highlight_limit number Maximum number of highlighted cards
----@field card_limit number Maximum number of cards
----@field temp_limit number Temporary limit of cards
----@field card_count number Current count of cards
----@field type string Type of the card area (e.g., 'deck', 'discard')
----@field sort string Sorting order (e.g., 'asc', 'desc')
----@field lr_padding number Left-right padding
 
----@class BALATRO_T.CardArea : BALATRO_T.Moveable
----@field states table Table containing state information
----@field config BALATRO_T.CardArea.Config Configuration for the card area
----@field card_w number Width of the card
----@field cards table List of cards in the area
----@field children table List of child elements
----@field highlighted table List of highlighted cards
----@field shuffle_amt number Amount of shuffle
-CardArea2 = {}
+---@alias BALATRO.CardArea.Type string | "deck" | "shop" | "discard" | "joker" | "consumeable" | "play" | "voucher" | "title" | "hand"
+---@alias BALATRO.CardArea.Sort string | "desc" | "asc" | "suit desc" | "suit asc" | "order"
 
---- Initializes a new CardArea instance
----@param X number X coordinate
----@param Y number Y coordinate
----@param W number Width of the area
----@param H number Height of the area
----@param config BALATRO_T.CardArea.Config Configuration for the card area
-function CardArea:init(X, Y, W, H, config) end
 
---- Emplaces a card in the card area
----@param card table The card to be emplaced
----@param location string Location to place the card ('front' or other)
----@param stay_flipped boolean Whether the card should stay flipped
-function CardArea:emplace(card, location, stay_flipped) end
+---@class BALATRO.CardArea.Config.Arg
+---@field card_w? number
+---@field highlight_limit? number
+---@field card_limit? number
+---@field type? BALATRO.CardArea.Type
+---@field sort? BALATRO.CardArea.Sort
+---@field lr_padding? number
+---@field collection? boolean
 
---- Removes a card from the card area
----@param card table The card to be removed
----@param discarded_only boolean Whether to remove only discarded cards
----@return table The removed card
-function CardArea:remove_card(card, discarded_only) end
 
---- Changes the size of the card area
----@param delta number The change in size
-function CardArea:change_size(delta) end
+---@class BALATRO.CardArea.SaveTable
+---@field cards BALATRO.Card.SaveTable[]
+---@field config BALATRO.CardArea.Config
 
---- Checks if a card can be highlighted
----@param card table The card to check
----@return boolean Whether the card can be highlighted
-function CardArea:can_highlight(card) end
 
---- Adds a card to the highlighted list
----@param card table The card to highlight
----@param silent boolean Whether to suppress sound
-function CardArea:add_to_highlighted(card, silent) end
+---@class BALATRO.CardArea.Config
+---@field card_w? number
+---@field highlighted_limit number
+---@field card_limit number
+---@field temp_limit? number
+---@field card_count number
+---@field type BALATRO.CardArea.Type
+---@field sort BALATRO.CardArea.Sort
+---@field lr_padding number
+---@field real_card_limit? number
+---@field last_poll_size? number
+---@field draw_layers? string[]
+---@field thin_draw? number
+---@field deck_height? number
+---@field spread? boolean
+---@field collection? boolean
 
---- Parses the highlighted cards
-function CardArea:parse_highlighted() end
 
---- Removes a card from the highlighted list
----@param card table The card to remove from highlighted
----@param force boolean Whether to force removal
-function CardArea:remove_from_highlighted(card, force) end
+---@class BALATRO.CardArea : BALATRO.CardArea.Class
+---@field card_w number
+---@field config BALATRO.CardArea.Config
+---@field cards BALATRO.Card[]
+---@field highlighted BALATRO.Card[]
+---@field shuffle_amt number
+local CardArea = {}
 
---- Unhighlights all cards
-function CardArea:unhighlight_all() end
 
---- Sets the ranks of the cards
-function CardArea:set_ranks() end
+---@class BALATRO.CardArea.Class : BALATRO.Moveable.Super
+---@field change_size fun(self: BALATRO.CardArea, delta?: number)
+---@field parse_highlighted fun(self: BALATRO.CardArea)
+---@field unhighlight_all fun(self: BALATRO.CardArea)
+---@field set_ranks fun(self: BALATRO.CardArea)
+---@field align_cards fun(self: BALATRO.CardArea)
+---@field hard_set_cards fun(self: BALATRO.CardArea)
+---@field shuffle fun(self: BALATRO.CardArea, seed?: number | string)
+---@field sort fun(self: BALATRO.CardArea, method?: BALATRO.CardArea.Sort)
+---@field save fun(self: BALATRO.CardArea): BALATRO.CardArea.SaveTable?
+---@field load fun(self: BALATRO.CardArea, save: BALATRO.CardArea.SaveTable)
 
---- Moves the card area
----@param dt number Delta time
-function CardArea:move(dt) end
 
---- Updates the card area
----@param dt number Delta time
-function CardArea:update(dt) end
+--- Initializes a new CardArea object
+---@param self BALATRO.CardArea
+---@param X number | BALATRO.Node.Arguments
+---@param Y? number
+---@param W? number
+---@param H? number
+---@param config? BALATRO.CardArea.Config.Arg
+CardArea.init = function(self, X, Y, W, H, config) end
 
---- Draws the card area
-function CardArea:draw() end
 
---- Aligns the cards in the card area
-function CardArea:align_cards() end
+--- Emplace a Card object into the CardArea
+---@param self BALATRO.CardArea
+---@param card BALATRO.Card
+---@param location? string | "front"
+---@param stay_flipped? boolean
+CardArea.emplace = function(self, card, location, stay_flipped) end
 
---- Hard sets the transformation of the card area
----@param X number X coordinate
----@param Y number Y coordinate
----@param W number Width of the area
----@param H number Height of the area
-function CardArea:hard_set_T(X, Y, W, H) end
 
---- Hard sets the transformation of the cards
-function CardArea:hard_set_cards() end
+--- Remove a matching Card object from the CardArea
+---@param self BALATRO.CardArea
+---@param card? BALATRO.Card
+---@param discarded_only? boolean
+CardArea.remove_card = function(self, card, discarded_only) end
 
---- Shuffles the cards in the card area
----@param _seed string Seed for shuffling
-function CardArea:shuffle(_seed) end
 
---- Sorts the cards in the card area
----@param method string Sorting method
-function CardArea:sort(method) end
+--- Returns whatever the Card object can be highlighted or not
+---@param self BALATRO.CardArea
+---@param card? BALATRO.Card
+CardArea.can_highlight = function(self, card) end
 
---- Draws a card from another card area
----@param area CardArea The card area to draw from
----@param stay_flipped boolean Whether the card should stay flipped
----@param discarded_only boolean Whether to draw only discarded cards
----@return boolean Whether the draw was successful
-function CardArea:draw_card_from(area, stay_flipped, discarded_only) end
 
---- Handles click events on the card area
-function CardArea:click() end
+--- Highlight Card object
+---@param self BALATRO.CardArea
+---@param card BALATRO.Card
+---@param silent? boolean
+CardArea.add_to_highlighted = function(self, card, silent) end
 
---- Saves the state of the card area
----@return table The saved state
-function CardArea:save() end
 
---- Loads the state of the card area
----@param cardAreaTable table The saved state to load
-function CardArea:load(cardAreaTable) end
+--- Remove Card object from highlighted
+---@param self BALATRO.CardArea
+---@param card BALATRO.Card
+---@param force? boolean
+CardArea.remove_from_highlighted = function(self, card, force) end
 
---- Removes the card area
-function CardArea:remove() end
+
+--- Draw/Remove Card object from `area` and emplace into this CardArea
+---@param self BALATRO.CardArea
+---@param area? BALATRO.CardArea
+---@param stay_flipped? boolean
+---@param discarded_only? boolean
+CardArea.draw_card_from = function(self, area, stay_flipped, discarded_only) end
+
+
+--- Check if object `T` is a CardArea instance
+---@param self BALATRO.CardArea
+---@param T any
+CardArea.is = function(self, T) end
+
+
+--- `CardArea(...)` Creates a new [CardArea](lua://BALATRO.CardArea) instance.
+---@param X number | BALATRO.Node.Arguments
+---@param Y? number
+---@param W? number
+---@param H? number
+---@param config? BALATRO.CardArea.Config.Arg
+---@return BALATRO.CardArea
+_G.CardArea = function(X, Y, W, H, config) end

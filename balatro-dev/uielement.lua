@@ -10,7 +10,7 @@
 ---@alias UINode UIDefinition | BALATRO.UI.Node.Common
 
 
----@alias BALATRO.UI.Object BALATRO.UIElement | BALATRO.UIBox | BALATRO.Moveable | BALATRO.Sprite | BALATRO.Card
+---@alias BALATRO.UI.Object BALATRO.UIElement | BALATRO.UIBox | BALATRO.Moveable | BALATRO.Sprite | BALATRO.Card | BALATRO.CardArea | BALATRO.Sprite
 
 
 ---@class BALATRO.UIElement.Parallax
@@ -161,7 +161,6 @@
 ---@field UIBox BALATRO.UIBox
 ---@field children BALATRO.UI.Object[] | table<string, BALATRO.UI.Object>
 ---@field content_dimensions BALATRO.UIElement.Dimension
----@field is fun(self: BALATRO.UIElement, T: BALATRO.UIElement.Callable)
 ---@field object_focus_timer? number
 ---@field focus_timer? number
 ---@field pixellated_rect? BALATRO.UIElement.PixellatedRect
@@ -188,5 +187,16 @@ local UIELement = {}
 ---@field put_focused_cursor (fun(self: BALATRO.UIElement)) | (fun(self: BALATRO.UIElement): number, number)
 
 
----@alias BALATRO.UIElement.Call fun(parent: BALATRO.UIElement, new_UIBox: BALATRO.UIBox, new_UIT: BALATRO.UI.T, config: BALATRO.UI.Definition.Config): BALATRO.UIElement
----@alias BALATRO.UIElement.Callable BALATRO.UIElement | BALATRO.UIElement.Call
+--- Check if `T` is an UIElement instance
+---@param self BALATRO.UIElement
+---@param T any
+UIELement.is = function(self, T) end
+
+
+--- `UIElement()` - Creates a new [UIElement](lua://BALATRO.UIElement) object
+---@param parent BALATRO.UIElement
+---@param new_UIBox BALATRO.UIBox
+---@param new_UIT BALATRO.UI.T
+---@param config BALATRO.UI.Definition.Config
+---@return BALATRO.UIElement
+_G.UIElement = function (parent, new_UIBox, new_UIT, config) end

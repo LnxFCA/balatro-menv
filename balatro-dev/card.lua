@@ -57,6 +57,7 @@
 ---@field pos BALATRO.Node.Point
 ---@field atlas? string
 ---@field no_ui? boolean
+---@field order? number
 
 
 ---@alias BALATRO.Card.Config.Extra number | BALATRO.Card.Center.Config
@@ -106,6 +107,8 @@
 ---@field planets? number
 ---@field mod_num? number
 ---@field increase? number
+---@field choose? number
+---@field min_highlighted? number
 
 
 ---@class BALATRO.Card.Center
@@ -156,7 +159,7 @@
 ---@alias BALATRO.Card.Seal string | number
 
 
----@alias BALATRO.Card.Ability.Set string | "Joker" | "Booster" | "Tarot" | "Planet" | "Edition" | "Spectral" | "Voucher" | "Default" | "Enhanced"
+---@alias BALATRO.Card.Ability.Set string | "Joker" | "Booster" | "Tarot" | "Planet" | "Edition" | "Spectral" | "Voucher" | "Default" | "Enhanced" | "Base"
 
 
 ---@class BALATRO.Card.Ability
@@ -204,6 +207,36 @@
 ---@field wheel_flipped? boolean
 ---@field perma_debuff? boolean
 ---@field blueprint_compat? string
+---@field discarded? boolean
+---@field played_this_ante? boolean
+
+
+---@class BALATRO.Card.SaveTable
+---@field sort_id number
+---@field save_fields table<string, unknown> | { card?: string, center: string }
+---@field params BALATRO.Card.Params
+---@field no_ui? boolean
+---@field base_cost number
+---@field extra_cost number
+---@field cost number
+---@field sell_cost number
+---@field facing string | "front" | "back"
+---@field sprite_facing string | "front" | "back"
+---@field flipping? string
+---@field highlighted? boolean
+---@field debuff boolean
+---@field rank? number
+---@field added_to_deck? boolean
+---@field label string
+---@field playing_card? boolean | number
+---@field base BALATRO.Card.Base
+---@field ability BALATRO.Card.Ability
+---@field pinned boolean
+---@field edition BALATRO.Card.Edition
+---@field seal BALATRO.Card.Seal
+---@field bypass_discovery_center? boolean
+---@field bypass_discovery_ui? boolean
+---@field bypass_lock? boolean
 
 
 ---@class BALATRO.Card : BALATRO.Card.Class, BALATRO.Card.Params
@@ -256,7 +289,7 @@
 ---@field greyed? boolean
 ---@field hover_tilt number
 ---@field no_shadow? boolean
----@field vortext? boolean
+---@field vortex? boolean
 ---@field back_overlay? number[]
 ---@field pinned? boolean
 ---@field removed? boolean
@@ -289,11 +322,43 @@ local Card = {}
 ---@field get_original_rank fun(self: BALATRO.Card): string?
 ---@field get_chip_bonus fun(self: BALATRO.Card): number
 ---@field get_chip_mult fun(self: BALATRO.Card): number
----@field get_chip_x_mult fun(self: BALATRO.Card): number
+---@field get_chip_x_mult fun(self: BALATRO.Card, context?: BALATRO.Calc.Context): number
 ---@field get_chip_h_mult fun(self: BALATRO.Card): number
 ---@field get_chip_h_x_mult fun(self: BALATRO.Card): number
 ---@field get_edition fun(self: BALATRO.Card): BALATRO.Card.Edition.Ret?
+---@field get_end_of_round_effect fun(self: BALATRO.Card, context?: BALATRO.Calc.Context)
+---@field get_p_dollars fun(self: BALATRO.Card): number
+---@field use_consumeable fun(self: BALATRO.Card, area: BALATRO.CardArea, copier?: BALATRO.Card): nil?
+---@field can_use_consumeable fun(self: BALATRO.Card, any_state?: boolean, skip_check?: boolean): boolean
+---@field check_use fun(self: BALATRO.Card): boolean?
+---@field sell_card fun(self: BALATRO.Card)
+---@field can_sell_card fun(self: BALATRO.Card, context?: BALATRO.Calc.Context): boolean
+---@field calculate_dollar_bonus fun(self: BALATRO.Card): number?
+---@field open fun(self: BALATRO.Card)
+---@field redeem fun(self: BALATRO.Card)
+---@field apply_to_run fun(self: BALATRO.Card, center?: BALATRO.Card.Center)
+---@field explode fun(self: BALATRO.Card, dissolve_colours?: BALATRO.UI.Colour[], explode_time_fac?: number)
+---@field start_materialize fun(self: BALATRO.Card, dissolve_colours?: BALATRO.UI.Colour[], silent?: boolean, timefac?: number)
+---@field shatter fun(self: BALATRO.Card)
+---@field start_dissolve fun(self: BALATRO.Card, dissolve_colours?: BALATRO.UI.Colour[], silent?: boolean, dissolve_time_fac?: number, no_juice?: boolean)
+---@field calculate_seal fun(self: BALATRO.Card, context?: BALATRO.Calc.Context): BALATRO.Calc.Ret?
+---@field calculate_rental fun(self: BALATRO.Card)
+---@field calculate_perishable fun(self: BALATRO.Card)
+---@field calculate_joker fun(self: BALATRO.Card, context?: BALATRO.Calc.Context): BALATRO.Calc.Ret?
+---@field is_suit fun(self: BALATRO.Card, suit?: string, bypass_debuff?: boolean, flush_calc?: boolean): boolean?
+---@field set_card_area fun(self: BALATRO.Card, area?: BALATRO.CardArea)
+---@field remove_from_area fun(self: BALATRO.Card)
+---@field align fun(self: BALATRO.Card)
+---@field flip fun(self: BALATRO.Card)
+---@field hard_set_T fun(self: BALATRO.Card, X?: number, Y?: number, W?: number, H?: number)
+---@field align_h_popup fun(self: BALATRO.Card): BALATRO.UIBox.Config
 ---@field draw fun(self: BALATRO.Card, layer?: BALATRO.Card.DrawLayer)
+---@field release fun(self: BALATRO.Card, dragged?: boolean)
+---@field highlight fun(self: BALATRO.Card, is_higlighted?: boolean)
+---@field click fun(self: BALATRO.Card)
+---@field save fun(self: BALATRO.Card): BALATRO.Card.SaveTable
+---@field load fun(self: BALATRO.Card, card: BALATRO.Card.SaveTable, other_card?: BALATRO.Card.Front)
+---@field remove fun(self: BALATRO.Card)
 
 
 ---@alias BALATRO.Card.Callable BALATRO.Card | fun(X: number, Y: number, W: number, H: number, card: BALATRO.Card.Front, center: BALATRO.Card.Center, params?: BALATRO.Card.Params)

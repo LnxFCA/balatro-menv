@@ -69,30 +69,6 @@
 ---@field title_2 number
 
 
---- Node arguments table.
----@class BALATRO.ARGS
----@field collides_with_point_point BALATRO.Node.Point
----@field collides_with_point_translation BALATRO.Node.Point
----@field collides_with_point_rotation BALATRO.Node.Rotation
----@field set_offset_point BALATRO.Node.Point
----@field set_offset_translation BALATRO.Node.Point
----@field drag_cursor_trans BALATRO.Node.Point
----@field drag_translation BALATRO.Node.Point
----@field get_major BALATRO.Moveable.ARGS.get_major
----@field xywh_node_trans BALATRO.Node.Transform
----@field text_parallax BALATRO.UIElement.Parallax
----@field button_colours BALATRO.UI.Colour[]
----@field FUNC_TRACKER table<string, number>
----@field prep_shader BALATRO.ARGS.prep_shader
----@field send_to_shader number[]
----@field invisible_area_types? BALATRO.ARGS.area_types
----@field draw_layers? string[]
-
-
----@class BALATRO.RETS
----@field get_pos_pixel? number[]
-
-
 --- Node represent any game object that needs to have some transform available in the game itself.
 --- Everything that you see in the game is a Node, and some invisible things like the G.ROOM are also
 --- represented here.
@@ -148,8 +124,7 @@ local Node = {}
 ---@field extend fun(self: BALATRO.Node): BALATRO.Node.Super Extends the class with the child class.
 
 
---- `Node()` - creates a new instance of [Node](lua://BALATRO.Node).
----@alias BALATRO.Node.Callable BALATRO.Node | (fun(args: BALATRO.Node.Arguments): BALATRO.Node)
-
-
----@alias Node BALATRO.Node
+--- `Node()` - Creates a new instance of [Node](lua://BALATRO.Node).
+---@param args BALATRO.Node.Arguments
+---@return BALATRO.Node
+_G.Node = function(args) end

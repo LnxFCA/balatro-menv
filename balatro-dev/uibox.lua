@@ -56,9 +56,10 @@ local UIBox = {}
 ---@field print_topology fun(self: BALATRO.UIBox, indent?: number): string
 
 
---- `UIBox()` - creates a new instance of [Moveable](lua://BALATRO.UIBox).
----@alias BALATRO.UIBox.Callable BALATRO.UIBox | (fun(args: BALATRO.UIBox.Arguments): BALATRO.UIBox)
+--- `UIBox()` - Creates a new instance of [Moveable](lua://BALATRO.UIBox).
+---@param args BALATRO.UIBox.Arguments
+---@return BALATRO.UIBox
+_G.UIBox = function(args) end
 
 
----@type number
-dt = 0
+_G.dt = 0

@@ -48,7 +48,7 @@ local UIBox = {}
 ---@field set_parent_child fun(self: BALATRO.UIBox, node: BALATRO.UI.Definition | BALATRO.UI.Node.Common, parent?: BALATRO.UIElement)
 ---@field remove fun(self: BALATRO.UIBox)
 ---@field draw fun(self: BALATRO.UIBox)
----@field recalculate fun(self: BALATRO.UIBox)
+---@field recalculate fun(self: BALATRO.UIBox, _?: boolean)
 ---@field move fun(self: BALATRO.UIBox, dt?: number)
 ---@field drag fun(self: BALATRO.UIBox, offset: BALATRO.Node.Point)
 ---@field add_child fun(self: BALATRO.UIBox, node: UINode, parent?: BALATRO.UIElement)

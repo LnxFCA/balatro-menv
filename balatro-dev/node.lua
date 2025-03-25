@@ -59,6 +59,16 @@
 ---@class BALATRO.ARGS.prep_shader
 ---@field cursor_pos? number[]
 
+
+---@class BALATRO.ARGS.area_types
+---@field discard number
+---@field voucher number
+---@field play number
+---@field consumeable number
+---@field title number
+---@field title_2 number
+
+
 --- Node arguments table.
 ---@class BALATRO.ARGS
 ---@field collides_with_point_point BALATRO.Node.Point
@@ -75,10 +85,12 @@
 ---@field FUNC_TRACKER table<string, number>
 ---@field prep_shader BALATRO.ARGS.prep_shader
 ---@field send_to_shader number[]
+---@field invisible_area_types? BALATRO.ARGS.area_types
+---@field draw_layers? string[]
 
 
 ---@class BALATRO.RETS
----@field get_pos_pixel number[]
+---@field get_pos_pixel? number[]
 
 
 --- Node represent any game object that needs to have some transform available in the game itself.

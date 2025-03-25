@@ -129,16 +129,6 @@ local Moveable = {}
 ---@field remove fun(self: BALATRO.Moveable) Removes the moveable.
 
 
---- `Moveable()` - creates a new instance of [Moveable](lua://BALATRO.Moveable).
----@alias BALATRO.Moveable.Callable BALATRO.Moveable | (fun(X: BALATRO.Node.Arguments | number, Y?: number, W?: number, H?: number): BALATRO.Moveable)
-
-
---- Extends the class with the child class.
----@param self BALATRO.Node
----@return BALATRO.Moveable.Callable
-function Node.extend(self) end
-
-
 ---@alias Moveable BALATRO.Moveable
 
 
@@ -157,8 +147,8 @@ function Node.extend(self) end
 
 --- Sets the alignment of the moveable.
 ---@param self BALATRO.Moveable
----@param args? BALATRO.Moveable.set_alignment.Args
-function Moveable.set_alignment(self, args) end
+---@param args? BALATRO.Moveable.set_alignment.Args | BALATRO.UIBox.Config
+Moveable.set_alignment = function(self, args) end
 
 
 ---@class BALATRO.Moveable.set_role.Args : BALATRO.Moveable.Role.Common
@@ -169,4 +159,12 @@ function Moveable.set_alignment(self, args) end
 --- Sets the role of the moveable.
 ---@param self BALATRO.Moveable
 ---@param args BALATRO.Moveable.set_role.Args
-function Moveable.set_role(self, args) end
+Moveable.set_role = function(self, args) end
+
+
+--- `Moveable()` - Creates a new instance of [Moveable](lua://BALATRO.Moveable).
+---@param X number | BALATRO.Node.Arguments
+---@param Y? number
+---@param W? number
+---@param H? number
+_G.Moveable = function(X, Y, W, H) end

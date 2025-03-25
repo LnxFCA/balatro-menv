@@ -57,6 +57,7 @@
 ---@field alerted? boolean
 ---@field discovered? boolean
 ---@field vars? table<number, string | number>
+---@field boss_colour? BALATRO.UI.Colour
 
 
 ---@class BALATRO.Blind.Config
@@ -159,4 +160,5 @@ Blind.debuff_hand = function(self, cards, hand, handname, check) end
 ---@param Y? number
 ---@param W? number
 ---@param H? number
-_G.BlindTemp = function(X, Y, W, H) end
+---@return BALATRO.Blind
+_G.Blind = function(X, Y, W, H) end

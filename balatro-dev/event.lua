@@ -30,7 +30,7 @@
 
 
 ---@class BALATRO.Event.Config.Base
----@field trigger? string
+---@field trigger? BALATRO.Event.Trigger
 ---@field blocking? boolean
 ---@field blockable? boolean
 ---@field start_timer? boolean

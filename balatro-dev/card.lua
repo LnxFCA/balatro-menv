@@ -134,6 +134,7 @@
 ---@field blueprint_compat? boolean
 ---@field increase? number
 ---@field rarity? number
+---@field key? string
 
 
 ---@class (exact) BALATRO.Card.Config
@@ -296,6 +297,7 @@
 ---@field back_overlay? number[]
 ---@field pinned? boolean
 ---@field removed? boolean
+---@field jimbo? BALATRO.Card_Character
 local Card = {}
 
 
@@ -356,7 +358,7 @@ local Card = {}
 ---@field hard_set_T fun(self: BALATRO.Card, X?: number, Y?: number, W?: number, H?: number)
 ---@field align_h_popup fun(self: BALATRO.Card): BALATRO.UIBox.Config
 ---@field draw fun(self: BALATRO.Card, layer?: BALATRO.Card.DrawLayer)
----@field release fun(self: BALATRO.Card, dragged?: boolean)
+---@field release fun(self: BALATRO.Card, dragged?: BALATRO.Card)
 ---@field highlight fun(self: BALATRO.Card, is_higlighted?: boolean)
 ---@field click fun(self: BALATRO.Card)
 ---@field save fun(self: BALATRO.Card): BALATRO.Card.SaveTable

@@ -1,6 +1,8 @@
 ---@meta
 
 
+---@alias BALATRO.Card.Edition.Type string | "polychrome" | "negative" | "foil" | "holo"
+
 ---@class BALATRO.TiltVar
 ---@field mx number
 ---@field my number
@@ -43,7 +45,7 @@
 ---@field negative? boolean
 ---@field foil? boolean
 ---@field holo? boolean
----@field type? string | "polychrome" | "negative" | "foil" | "holo"
+---@field type? BALATRO.Card.Edition.Type
 ---@field mult? number
 ---@field chips? number
 ---@field x_mult? number
@@ -382,4 +384,5 @@ Card.init = function(self, X, Y, W, H, card, center, params) end
 ---@param card? BALATRO.Card.Front
 ---@param center BALATRO.Card.Center
 ---@param params? BALATRO.Card.Params
+---@return BALATRO.Card
 _G.Card = function (X, Y, W, H, card, center, params) end

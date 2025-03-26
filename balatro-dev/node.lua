@@ -103,7 +103,7 @@ local Node = {}
 
 ---@class BALATRO.Node.Class : BALATRO.Object.Super
 ---@field init fun(self: BALATRO.Node, args: BALATRO.Node.Arguments) Initializes a new instance of Node.
----@field collides_with_point fun(self: BALATRO.Node, point: BALATRO.Node.Point): boolean | nil Checks if the node collides with a point.
+---@field collides_with_point fun(self: BALATRO.Node, point: BALATRO.Node.Point | BALATRO.Node.Transform): boolean | nil Checks if the node collides with a point.
 ---@field draw fun(self: BALATRO.Node) Draws the node and its children.
 ---@field draw_boundingrect fun(self: BALATRO.Node) Draws the bounding rectangle of the node.
 ---@field set_offset fun(self: BALATRO.Node, point: BALATRO.Node.Point, type: BALATRO.Node.OffsetType) Sets the offset of the node.
@@ -117,7 +117,7 @@ local Node = {}
 ---@field translate_container fun(self: BALATRO.Node) Translates the container of the node.
 ---@field remove fun(self: BALATRO.Node) Removes the node.
 ---@field fast_mid_dist fun(self: BALATRO.Node, other_node: BALATRO.Node): number Calculates the fast mid distance between the node and a point.
----@field release fun(self: BALATRO.Node, released: boolean) Releases the node - prototype.
+---@field release fun(self: BALATRO.Node, released?: BALATRO.Node) Releases the node - prototype.
 ---@field click fun(self: BALATRO.Node) Node click - prototype.
 ---@field animate fun(self: BALATRO.Node) Animates the node - prototype.
 ---@field update fun(self: BALATRO.Node, dt: number) Updates the node - prototype.

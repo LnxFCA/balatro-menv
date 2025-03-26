@@ -32,3 +32,6 @@
 ---@field FONT love.Font
 ---@field FONTSCALE number
 ---@field TEXT_HEIGHT_SCALE number
+
+
+---@alias BALATRO.UI.Align string

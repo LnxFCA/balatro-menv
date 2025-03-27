@@ -1,8 +1,6 @@
 ---@meta
 
 
----@alias BALATRO.UI.T 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
----@alias BALATRO.UI.Colour number[]
 ---@alias BALATRO.UIElement.Vertice { vertices: number[] }
 ---@alias BALATRO.UI.Definition.Config.FocusArgs.Type string | "none" | "tab" | "cycle" | "slide"
 ---@alias BALATRO.UI.Controller.Button string | "leftshoulder" | "rightshoulder"
@@ -18,9 +16,7 @@
 ---@field sy number
 
 
----@class BALATRO.UIElement.Dimension
----@field h number
----@field w number
+
 
 
 ---@class BALATRO.UIElement.PixellatedRect
@@ -161,7 +157,7 @@
 ---@field UIT BALATRO.UI.T | number
 ---@field UIBox BALATRO.UIBox
 ---@field children BALATRO.UI.Object[] | table<string, BALATRO.UI.Object>
----@field content_dimensions BALATRO.UIElement.Dimension
+---@field content_dimensions BALATRO.UI.Resolution
 ---@field object_focus_timer? number
 ---@field focus_timer? number
 ---@field pixellated_rect? BALATRO.UIElement.PixellatedRect

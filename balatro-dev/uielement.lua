@@ -4,7 +4,7 @@
 ---@alias BALATRO.UI.T 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 ---@alias BALATRO.UI.Colour number[]
 ---@alias BALATRO.UIElement.Vertice { vertices: number[] }
----@alias BALATRO.UI.Definition.Config.FocusArgs.Type string | "none" | "tab"
+---@alias BALATRO.UI.Definition.Config.FocusArgs.Type string | "none" | "tab" | "cycle" | "slide"
 ---@alias BALATRO.UI.Controller.Button string | "leftshoulder" | "rightshoulder"
 ---@alias UIDefinition BALATRO.UI.Definition
 ---@alias UINode UIDefinition | BALATRO.UI.Node.Common
@@ -46,6 +46,7 @@
 ---@field type? BALATRO.UI.Definition.Config.FocusArgs.Type
 ---@field set_button_pip? boolean
 ---@field orientation? string
+---@field no_loop? boolean
 
 
 ---@class BALATRO.UI.Definition.Config.ProgressBar

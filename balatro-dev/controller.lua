@@ -9,6 +9,8 @@
 ---@alias BALATRO.Controller.Button.Dpad "dpright" | "dpleft" | "dpdown" | "dpup"
 ---@alias BALATRO.Controller.ConsoleType string | "Xbox" | "Playstation" | "Nintendo" | "Generic"
 ---@alias BALATRO.Controller.HID.Type string | "axis" | "button" | "hat" | "touch" | "mouse"
+---@alias BALATRO.Controller.InputType string | "press" | "hold"
+---@alias BALATRO.Controller.Direction string | "L" | "R" | "U" | "D"
 
 
 ---@class BALATRO.Controller.Interrupt
@@ -93,6 +95,9 @@
 
 
 ---@class BALATRO.Controller.CursorContext.Context
+---@field node? BALATRO.Controller.Target
+---@field cursor_pos? BALATRO.Node.Point
+---@field interrupt? boolean
 
 
 ---@class BALATRO.Controller.CursorContext
@@ -108,7 +113,7 @@
 
 ---@class BALATRO.Controller.SnapTo.Arg
 ---@field node BALATRO.Controller.Target
----@field T? BALATRO.Node.Transform
+---@field T? BALATRO.Node.Transform | BALATRO.Node.Point
 
 
 ---@class BALATRO.Controller : BALATRO.Controller.Class
@@ -192,8 +197,9 @@ local Controller = {}
 ---@field L_cursor_press fun(self: BALATRO.Controller, x?: number, y?: number)
 ---@field L_cursor_release fun(self: BALATRO.Controller, x?: number, y?: number)
 ---@field is_node_focusable fun(self: BALATRO.Controller, node: BALATRO.Controller.Target): boolean
----@field update_focus fun(self: BALATRO.Controller, dir: BALATRO.Controller.Direction)
----@field capture_focused_input fun(self: BALATRO.Controller, button: BALATRO.Controller.Button.Dpad, input_type: BALATRO.Controller.InputType, dt: number)
+---@field update_focus fun(self: BALATRO.Controller, dir?: BALATRO.Controller.Direction)
+---@field capture_focused_input fun(self: BALATRO.Controller, button: BALATRO.Controller.Button.Dpad, input_type: BALATRO.Controller.InputType, dt: number): boolean?
+---@field navigate_focus fun(self: BALATRO.Controller, dir?: BALATRO.Controller.Direction)
 
 
 --- `Controller()` - Creates a new [Controller](lua://BALATRO/Controller) object

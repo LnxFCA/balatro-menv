@@ -34,7 +34,7 @@
 
 
 --- Node FRAME values.
----@class BALATRO.Node.Frame
+---@class BALATRO.UI.FRAME
 ---@field DRAW number
 ---@field MOVE number
 
@@ -84,7 +84,7 @@
 ---@field hover_offset BALATRO.Node.Point
 ---@field created_on_pause boolean
 ---@field ID number
----@field FRAME BALATRO.Node.Frame
+---@field FRAME BALATRO.UI.FRAME
 ---@field states BALATRO.Node.States
 ---@field container BALATRO.Node
 ---@field children table<string, BALATRO.Node> | BALATRO.Node[]

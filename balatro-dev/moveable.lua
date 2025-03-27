@@ -6,7 +6,7 @@
 ---@field offset BALATRO.Node.Point
 
 
----@class BALATRO.Moveable.Frame : BALATRO.Node.Frame
+---@class BALATRO.Moveable.FRAME : BALATRO.UI.FRAME
 ---@field OLD_MAJOR BALATRO.UI.Object
 ---@field MAJOR BALATRO.UI.Object
 
@@ -83,7 +83,7 @@
 
 ---@class BALATRO.Moveable : BALATRO.Moveable.Class
 ---@field ARGS BALATRO.ARGS
----@field FRAME BALATRO.Moveable.Frame
+---@field FRAME BALATRO.Moveable.FRAME
 ---@field NEW_ALIGNMENT boolean
 ---@field juice BALATRO.Moveable.Juice
 ---@field velocity BALATRO.Moveable.Velocity

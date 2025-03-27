@@ -42,7 +42,7 @@
 ---@field image_dims table<number, number, number>
 ---@field draw_steps BALATRO.Sprite.DrawStep[]
 ---@field video? love.Drawable | love.Texture
----@field video_dims? BALATRO.UIElement.Dimension
+---@field video_dims? BALATRO.UI.Resolution
 ---@field shader_tab? boolean
 local Sprite = {}
 

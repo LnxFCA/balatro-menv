@@ -16,6 +16,7 @@
 
 
 ---@class BALATRO.AnimatedSprite : BALATRO.AnimatedSprite.Class
+---@field atlas BALATRO.Atlas.Animation
 ---@field animation BALATRO.AnimatedSprite.Animation
 ---@field frame_offset number
 ---@field current_animation BALATRO.AnimatedSprite.CurrentAnimation
@@ -35,7 +36,7 @@ local Sprite = {}
 ---@param Y? number
 ---@param W? number
 ---@param H? number
----@param new_sprite_atlas BALATRO.Sprite.Atlas
+---@param new_sprite_atlas BALATRO.Atlas.Animation
 ---@param sprite_pos BALATRO.Sprite.Position
 ---@return BALATRO.AnimatedSprite
 _G.AnimatedSprite = function(X, Y, W, H, new_sprite_atlas, sprite_pos) end

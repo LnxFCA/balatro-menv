@@ -1,7 +1,7 @@
 ---@meta
 
 
----@class (exact) BALATRO.Game.Globals
+---@class BALATRO.Game.Globals
 ---@field VERSION BALATRO.VersionType
 ---@field F_QUIT_BUTTON boolean
 ---@field F_SKIP_TUTORIAL boolean
@@ -62,8 +62,8 @@
 ---@field ARGS BALATRO.ARGS
 ---@field FUNCS BALATRO.FUNCS.Type
 ---@field I BALATRO.Instances
----@field ANIMATION_ATLAS table<BALATRO.Atlas.Animation.Type, BALATRO.Atlas.Animation>
----@field ASSET_ATLAS table<BALATRO.Atlas.Assets.Type, BALATRO.Atlas.Asset>
+---@field ANIMATION_ATLAS BALATRO.Game.Atlas.Animation
+---@field ASSET_ATLAS BALATRO.Game.Atlas.Asset
 ---@field MOVEABLES BALATRO.Moveable[]
 ---@field ANIMATIONS BALATRO.UIObject.Animation[]
 ---@field DRAW_HASH BALATRO.UIObject[]
@@ -80,16 +80,17 @@
 ---@field keybind_mapping BALATRO.KeybindMapping[]
 
 
----@class (exact) BALATRO.Game : BALATRO.Game.Class, BALATRO.Game.Globals
+---@class BALATRO.Game : BALATRO.Game.Class, BALATRO.Game.Globals
 ---@field SOUND_MANAGER BALATRO.Game.Manager.Sound
 ---@field SAVE_MANAGER BALATRO.Game.Manager.Save
 ---@field HTTP_MANAGER BALATRO.Game.Manager.HTTP
 ---@field SHADERS BALATRO.SHADERS
 ---@field CONTROLLER BALATRO.Controller
+---@field shared_debuff BALATRO.Sprite
 local Game = {}
 
 
----@class (exact) BALATRO.Game.Class : BALATRO.Object.Super
+---@class BALATRO.Game.Class : BALATRO.Object.Super
 ---@field init fun(self: BALATRO.Game)
 ---@field set_globals fun(self: BALATRO.Game)
 ---@field start_up fun(self: BALATRO.Game)

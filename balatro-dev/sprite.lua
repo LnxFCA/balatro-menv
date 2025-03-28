@@ -4,13 +4,6 @@
 ---@alias BALATRO.Sprite.Shader.Type string | "dissolve" | "vortex"
 ---@alias BALATRO.Sprite.Position BALATRO.Node.Point | { v?: number }
 
----@class BALATRO.Sprite.Atlas
----@field name string
----@field py number
----@field px number
----@field image love.Image
----@field type? string
-
 
 ---@class BALATRO.Sprite.DrawStep.Send
 ---@field name? string
@@ -33,7 +26,7 @@
 
 
 ---@class BALATRO.Sprite : BALATRO.Sprite.Class
----@field atlas BALATRO.Sprite.Atlas
+---@field atlas BALATRO.Atlas.Asset
 ---@field scale BALATRO.Node.Point
 ---@field scale_mag number
 ---@field sprite_pos BALATRO.Node.Point
@@ -70,7 +63,7 @@ local Sprite = {}
 ---@param Y? number
 ---@param W? number
 ---@param H? number
----@param new_sprite_atlas BALATRO.Sprite.Atlas
+---@param new_sprite_atlas BALATRO.Atlas
 ---@param sprite_pos BALATRO.Sprite.Position
 Sprite.init = function(self, X, Y, W, H, new_sprite_atlas, sprite_pos) end
 
@@ -96,7 +89,7 @@ Sprite.draw_shader = function(self, shader, shadow_height, send, no_tilt, other_
 ---@param Y? number
 ---@param W? number
 ---@param H? number
----@param new_sprite_atlas BALATRO.Sprite.Atlas
+---@param new_sprite_atlas BALATRO.Atlas.Asset
 ---@param sprite_pos BALATRO.Sprite.Position
 ---@return BALATRO.Sprite
 _G.Sprite = function(X, Y, W, H, new_sprite_atlas, sprite_pos) end

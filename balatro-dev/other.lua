@@ -90,6 +90,19 @@
 ---@field bloom number
 
 
+---@class BALATRO.Settings.QueuedChange
+---@field vsync? number
+---@field screenmode? BALATRO.Settings.WINDOW.Screenmode
+---@field screenres? BALATRO.UI.Resolution
+---@field selected_display? number
+
+
+---@class BALATRO.Settings.MusicControl
+---@field desired_track string
+---@field current_track string
+---@field lerp number
+
+
 ---@class (exact) BALATRO.Settings.Base
 ---@field COMP BALATRO.Settings.COMP
 ---@field DEMO BALATRO.Settings.DEMO
@@ -114,6 +127,9 @@
 ---@field tutorial_progress? BALATRO.Settings.TutorialProgress
 ---@field version BALATRO.VersionType
 ---@field paused? boolean
+---@field QUEUED_CHANGE BALATRO.Settings.QueuedChange
+---@field music_control BALATRO.Settings.MusicControl
+---@field reduced_motion? boolean
 
 
 ---@class BALATRO.Instances

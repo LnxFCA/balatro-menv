@@ -174,6 +174,10 @@
 ---@alias BALATRO.Game.STATES BALATRO.Game.STATES.Base | table<string, number>
 ---@alias BALATRO.Game.STAGES BALATRO.Game.STAGES.Base | table<string, number>
 ---@alias BALATRO.Game.StageObject BALATRO.Card | BALATRO.DynaText | BALATRO.UIElement | BALATRO.UIBox
+---@alias BALATRO.Game.SharedStickers BALATRO.Game.Shared.Stickers | table<string, BALATRO.Sprite>
+---@alias BALATRO.Game.SharedSeals BALATRO.Game.Shared.Base | table<string, BALATRO.Sprite>
+---@alias BALATRO.Game.StickerMap.Value string | "White" | "Red" | "Green" | "Black" | "Blue" | "Purple" | "Gold"
+---@alias BALATRO.Game.StickerMap BALATRO.Game.StickerMap.Value[]
 
 
 ---@class (exact) BALATRO.Game.TIMERS
@@ -278,3 +282,33 @@
 ---@field thread love.Thread
 ---@field out_channel love.Channel
 ---@field in_channel love.Channel
+
+
+---@class BALATRO.Game.Shared.Base
+---@field Gold BALATRO.Sprite
+---@field Purple BALATRO.Sprite
+---@field Red BALATRO.Sprite
+---@field Blue BALATRO.Sprite
+
+
+---@class BALATRO.Game.Shared.Stickers
+---@field White BALATRO.Sprite
+---@field Green BALATRO.Sprite
+---@field Black BALATRO.Sprite
+---@field Orange BALATRO.Sprite
+
+
+---@class BALATRO.Game.WINDOWTRANS
+---@field x number
+---@field y number
+---@field w number
+---@field h number
+---@field real_window_w? number
+---@field real_window_h? number
+
+
+---@class BALATRO.Game.WindowPrev
+---@field h number
+---@field w number
+---@field orig_scale number
+---@field orig_ratio number

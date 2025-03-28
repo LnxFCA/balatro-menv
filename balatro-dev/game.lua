@@ -41,7 +41,7 @@
 ---@field SETTINGS BALATRO.Settings
 ---@field COLLABS BALATRO.Game.COLLABS
 ---@field METRICS BALATRO.Game.METRICS
----@field PROFILES BALATRO.Game.Profile[]
+---@field PROFILES BALATRO.Profile[]
 ---@field TILESIZE number
 ---@field TILESCALE number
 ---@field TILE_W number
@@ -86,7 +86,26 @@
 ---@field HTTP_MANAGER BALATRO.Game.Manager.HTTP
 ---@field SHADERS BALATRO.SHADERS
 ---@field CONTROLLER BALATRO.Controller
+---@field BRUTE_OVERLAY? BALATRO.UI.Colour
 ---@field shared_debuff BALATRO.Sprite
+---@field shared_soul BALATRO.Sprite
+---@field shared_undiscovered_joker BALATRO.Sprite
+---@field shared_undiscovered_tarot BALATRO.Sprite
+---@field shared_sticker_eternal BALATRO.Sprite
+---@field shared_sticker_perishable BALATRO.Sprite
+---@field shared_sticker_rental BALATRO.Sprite
+---@field shared_stickers BALATRO.Game.SharedStickers
+---@field shared_seals BALATRO.Game.SharedSeals
+---@field sticker_map BALATRO.Game.StickerMap
+---@field STAGE_OBJECT_INTERRUPT? boolean
+---@field CURSOR BALATRO.Sprite
+---@field E_MANAGER BALATRO.EventManager
+---@field SPEEDFACTOR number
+---@field LOADING? { font: love.Font } | [unknown]
+---@field ROOM_PADDING_H number
+---@field ROOM_PADDING_W number
+---@field WINDOWTRANS BALATRO.Game.WINDOWTRANS
+---@field window_prev BALATRO.Game.WindowPrev
 local Game = {}
 
 
@@ -94,6 +113,7 @@ local Game = {}
 ---@field init fun(self: BALATRO.Game)
 ---@field set_globals fun(self: BALATRO.Game)
 ---@field start_up fun(self: BALATRO.Game)
+---@field load_profile fun(self: BALATRO.Game, profile: number)
 
 
 --- `Game()` - Creates a new [Game](lua://BALATRO.Game) object

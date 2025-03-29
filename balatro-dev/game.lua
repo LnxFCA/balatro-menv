@@ -106,6 +106,9 @@
 ---@field ROOM_PADDING_W number
 ---@field WINDOWTRANS BALATRO.Game.WINDOWTRANS
 ---@field window_prev BALATRO.Game.WindowPrev
+---@field P_SEALS BALATRO.P_SEALS
+---@field P_TAGS BALATRO.P_TAGS
+---@field tagid number
 local Game = {}
 
 
@@ -114,6 +117,7 @@ local Game = {}
 ---@field set_globals fun(self: BALATRO.Game)
 ---@field start_up fun(self: BALATRO.Game)
 ---@field load_profile fun(self: BALATRO.Game, profile: number)
+---@field init_item_prototypes fun(self: BALATRO.Game)
 
 
 --- `Game()` - Creates a new [Game](lua://BALATRO.Game) object

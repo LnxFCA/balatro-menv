@@ -37,6 +37,10 @@
 ---@field video? love.Drawable | love.Texture
 ---@field video_dims? BALATRO.UI.Resolution
 ---@field shader_tab? boolean
+---@field float? boolean
+---@field hovering? boolean
+---@field hover_tilt? number
+---@field ability_UIBox_table? BALATRO.Card.AbilityUIBoxTable
 local Sprite = {}
 
 
@@ -55,6 +59,8 @@ local Sprite = {}
 ---@field draw_self fun(self: BALATRO.Sprite, overlay?: BALATRO.UI.Colour)
 ---@field draw fun(self: BALATRO.Sprite, overlay?: BALATRO.UI.Colour)
 ---@field draw_from fun(self: BALATRO.Sprite, other_obj: BALATRO.UI.Object, ms?: number, mr?: number, mx?: number, my?: number)
+---@field hover fun(self: BALATRO.Sprite)
+---@field stop_hover fun(self: BALATRO.Sprite)
 
 
 --- Initializes a new Sprite object

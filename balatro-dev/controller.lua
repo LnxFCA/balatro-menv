@@ -160,6 +160,7 @@
 ---@field collision_list? BALATRO.Controller.Target[]
 ---@field screen_keyboard? boolean
 ---@field no_holdcap? boolean
+---@field using_touch? boolean
 local Controller = {}
 
 

@@ -62,55 +62,9 @@
 ---@field order? number
 
 
----@alias BALATRO.Card.Config.Extra number | BALATRO.Card.Center.Config
+---@alias BALATRO.Card.Config.Extra number | BALATRO.Center.Config
 ---@alias BALATRO.Card.DrawLayer string | "both" | "front" | "back" | "shadow"
 
-
----@class BALATRO.Card.Center.Config
----@field bonus? number
----@field mult? number
----@field h_mult? number
----@field h_x_mult? number
----@field h_dollars? number
----@field p_dollars? number
----@field t_mult? number
----@field t_chips? number
----@field Xmult? number
----@field h_size? number
----@field d_size? number
----@field extra? BALATRO.Card.Config.Extra
----@field type? string
----@field discards? number
----@field every? number
----@field h_plays? number
----@field size? number
----@field hand_add? string
----@field discard_sub? string
----@field s_mult? number
----@field suit? string
----@field dollars? number
----@field faces? number
----@field min? number
----@field max? number
----@field d_remaining? number
----@field chips? number
----@field chip_mod? string | number
----@field odds? number
----@field poker_hand? string
----@field h_mod? number
----@field xmult? number
----@field max_highlighted? number
----@field mod_conv? number | string
----@field hand_type? string
----@field suit_conv? number | string
----@field remove_card? boolean
----@field destroy? number
----@field tarots? number
----@field planets? number
----@field mod_num? number
----@field increase? number
----@field choose? number
----@field min_highlighted? number
 
 
 ---@class BALATRO.Card.Center
@@ -125,7 +79,7 @@
 ---@field pos BALATRO.Node.Point
 ---@field name string
 ---@field soul_pos? BALATRO.Node.Point
----@field config BALATRO.Card.Center.Config
+---@field config BALATRO.Center.Config
 ---@field effect? string
 ---@field cost number
 ---@field label? string
@@ -169,7 +123,7 @@
 ---@class BALATRO.Card.Ability
 ---@field set BALATRO.Card.Ability.Set
 ---@field name? string
----@field consumeable? BALATRO.Card.Center.Config
+---@field consumeable? BALATRO.Center.Config
 ---@field bonus number | nil
 ---@field effect? string
 ---@field mult number

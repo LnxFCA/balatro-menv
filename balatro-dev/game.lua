@@ -108,6 +108,21 @@
 ---@field window_prev BALATRO.Game.WindowPrev
 ---@field P_SEALS BALATRO.P_SEALS
 ---@field P_TAGS BALATRO.P_TAGS
+---@field tag_undiscovered BALATRO.Prototype.Tag.Empty
+---@field P_STAKES BALATRO.P_STAKES
+---@field P_BLINDS BALATRO.P_BLINDS
+---@field b_undiscovered BALATRO.Prototype.Blind.Empty
+---@field P_CARDS BALATRO.P_CARDS
+---@field j_locked BALATRO.Prototype.Empty.Joker
+---@field v_locked BALATRO.Prototype.Empty.Voucher
+---@field c_locked BALATRO.Prototype.Empty.Tarot
+---@field j_undiscovered BALATRO.Prototype.Empty.Joker
+---@field t_undiscovered BALATRO.Prototype.Empty.Tarot
+---@field p_undiscovered BALATRO.Prototype.Empty.Planet
+---@field s_undiscovered BALATRO.Prototype.Empty.Spectral
+---@field v_undiscovered BALATRO.Prototype.Empty.Voucher
+---@field booster_undiscovered BALATRO.Prototype.Empty.Booster
+---@field P_CENTERS BALATRO.P_CENTERS
 ---@field tagid number
 local Game = {}
 

@@ -126,9 +126,12 @@
 ---@field P_CENTER_POOLS BALATRO.Prototype.CENTER_POOLS
 ---@field P_JOKER_RARITY_POOLS table<number, BALATRO.Prototype.Joker[]>
 ---@field P_LOCKED BALATRO.Center[]
+---@field LANGUAGES BALATRO.LANGUAGES
+---@field FONTS BALATRO.FONTS
+---@field LANG BALATRO.Language
+---@field localization BALATRO.LOCTABLE
 ---@field tagid number
 ---@field sort_id number
---- Other
 ---@field shop_demo? BALATRO.CardArea
 ---@field last_materialized? number
 local Game = {}
@@ -140,6 +143,7 @@ local Game = {}
 ---@field start_up fun(self: BALATRO.Game)
 ---@field load_profile fun(self: BALATRO.Game, profile: number)
 ---@field init_item_prototypes fun(self: BALATRO.Game)
+---@field set_language fun(self: BALATRO.Game)
 
 
 --- `Game()` - Creates a new [Game](lua://BALATRO.Game) object

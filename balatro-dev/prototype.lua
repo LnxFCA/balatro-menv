@@ -129,7 +129,7 @@
 
 ---@class BALATRO.Prototype.Tag.Base
 ---@field set BALATRO.Center.Set.Tag
----@field min_ante number
+---@field min_ante? number
 ---@field config BALATRO.Prototype.Tag.Config
 ---@field requires? string
 
@@ -396,7 +396,7 @@
 
 ---@class BALATRO.Center.UnlockCondition.Voucher
 ---@field type string
----@field extra number | BALATRO.Center.Config.Extra
+---@field extra string | BALATRO.Center.Config.Extra
 
 
 ---@class BALATRO.Prototype.Center.Base

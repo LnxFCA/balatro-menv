@@ -217,6 +217,7 @@
 ---@field pinned? boolean
 ---@field removed? boolean
 ---@field jimbo? BALATRO.Card_Character
+---@field from_tag? boolean
 local Card = {}
 
 

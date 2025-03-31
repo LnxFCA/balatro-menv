@@ -109,7 +109,7 @@
 ---@field ACHIEVEMENTS_EARNED BALATRO.Settings.AchievementsEarned
 ---@field crashreports boolean
 ---@field colourblind_option boolean
----@field language BALATRO.Language.Type
+---@field language BALATRO.Language.Key
 ---@field screenshake boolean
 ---@field run_stake_stickers boolean
 ---@field rumble number

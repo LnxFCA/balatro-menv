@@ -260,7 +260,6 @@ local Card = {}
 ---@field calculate_dollar_bonus fun(self: BALATRO.Card): number?
 ---@field open fun(self: BALATRO.Card)
 ---@field redeem fun(self: BALATRO.Card)
----@field apply_to_run fun(self: BALATRO.Card, center?: BALATRO.Center)
 ---@field explode fun(self: BALATRO.Card, dissolve_colours?: BALATRO.UI.Colour[], explode_time_fac?: number)
 ---@field start_materialize fun(self: BALATRO.Card, dissolve_colours?: BALATRO.UI.Colour[], silent?: boolean, timefac?: number)
 ---@field shatter fun(self: BALATRO.Card)
@@ -295,6 +294,12 @@ local Card = {}
 ---@param center BALATRO.Center
 ---@param params BALATRO.Card.Params
 Card.init = function(self, X, Y, W, H, card, center, params) end
+
+
+---@overload fun(self?: BALATRO.Card, center?: BALATRO.Center)
+---@param self BALATRO.Card
+---@param center? BALATRO.Center
+Card.apply_to_run = function(self, center) end
 
 
 --- `Card()` - Creates a new [Card](lua://BALATRO.Card) object

@@ -508,6 +508,9 @@
 ---@field count? number
 ---@field tally? string
 ---@field polychrome? boolean
+---@field reroll_discount? number
+---@field edition? string
+---@field edition_count? string
 
 
 ---@class BALATRO.Prototype.Empty.Joker : BALATRO.Prototype.Empty.Base

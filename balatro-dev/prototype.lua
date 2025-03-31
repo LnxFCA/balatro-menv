@@ -23,8 +23,6 @@
 
 ---@alias BALATRO.Prototype.Seal BALATRO.Prototype.Seal.Base | BALATRO.Prototype.Base
 ---@alias BALATRO.P_SEALS BALATRO.Prototype.SEALS | table<string, BALATRO.Prototype.Seal>
-
-
 ---@alias BALATRO.Prototype.Tag BALATRO.Prototype.Tag.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Tag.Empty
 ---@alias BALATRO.P_TAGS BALATRO.Prototype.TAGS | table<string, BALATRO.Prototype.Tag>
 ---@alias BALATRO.Prototype.Tag.Config.Type string
@@ -42,28 +40,23 @@
 
 ---@alias BALATRO.Prototype.Stake BALATRO.Prototype.Stake.Base | BALATRO.Prototype.Base
 ---@alias BALATRO.P_STAKES BALATRO.Prototype.STAKES | table<string, BALATRO.Prototype.Stake>
-
-
 ---@alias BALATRO.Prototype.Blind BALATRO.Prototype.Blind.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Blind.Empty
 ---@alias BALATRO.P_BLINDS BALATRO.Prototype.BLINDS | table<string, BALATRO.Prototype.Blind>
-
-
-
 ---@alias BALATRO.Prototype.Card BALATRO.Prototype.Card.Base | BALATRO.Prototype.Base
 ---@alias BALATRO.P_CARDS BALATRO.Prototype.CARDS | table<string, BALATRO.Prototype.Card>
 
 
----@alias BALATRO.Prototype.Default BALATRO.Prototype.Default.Base | BALATRO.Prototype.Base
----@alias BALATRO.Prototype.Joker BALATRO.Prototype.Joker.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Empty.Joker
----@alias BALATRO.Prototype.Tarot BALATRO.Prototype.Tarot.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Empty.Tarot
----@alias BALATRO.Prototype.Planet BALATRO.Prototype.Planet.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Empty.Planet
----@alias BALATRO.Prototype.Spectral BALATRO.Prototype.Spectral.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Empty.Spectral
----@alias BALATRO.Prototype.Voucher BALATRO.Prototype.Voucher.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Empty.Voucher
----@alias BALATRO.Prototype.Back BALATRO.Prototype.Back.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Empty.Back
----@alias BALATRO.Prototype.Enhanced BALATRO.Prototype.Enhanced.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Empty.Enhanced
----@alias BALATRO.Prototype.Edition BALATRO.Prototype.Edition.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Empty.Edition
----@alias BALATRO.Prototype.Booster BALATRO.Prototype.Booster.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Empty.Booster
----@alias BALATRO.Prototype.Other BALATRO.Prototype.Other.Base | BALATRO.Prototype.Base
+---@alias BALATRO.Prototype.Default BALATRO.Prototype.Default.Base | BALATRO.Prototype.Center
+---@alias BALATRO.Prototype.Joker BALATRO.Prototype.Joker.Base | BALATRO.Prototype.Center | BALATRO.Prototype.Empty.Joker
+---@alias BALATRO.Prototype.Tarot BALATRO.Prototype.Tarot.Base | BALATRO.Prototype.Center | BALATRO.Prototype.Empty.Tarot
+---@alias BALATRO.Prototype.Planet BALATRO.Prototype.Planet.Base | BALATRO.Prototype.Center | BALATRO.Prototype.Empty.Planet
+---@alias BALATRO.Prototype.Spectral BALATRO.Prototype.Spectral.Base | BALATRO.Prototype.Center | BALATRO.Prototype.Empty.Spectral
+---@alias BALATRO.Prototype.Voucher BALATRO.Prototype.Voucher.Base | BALATRO.Prototype.Center | BALATRO.Prototype.Empty.Voucher
+---@alias BALATRO.Prototype.Back BALATRO.Prototype.Back.Base | BALATRO.Prototype.Center
+---@alias BALATRO.Prototype.Enhanced BALATRO.Prototype.Enhanced.Base | BALATRO.Prototype.Center
+---@alias BALATRO.Prototype.Edition BALATRO.Prototype.Edition.Base | BALATRO.Prototype.Center
+---@alias BALATRO.Prototype.Booster BALATRO.Prototype.Booster.Base | BALATRO.Prototype.Center
+---@alias BALATRO.Prototype.Other BALATRO.Prototype.Other.Base | BALATRO.Prototype.Center
 ---@alias BALATRO.Prototype.Center BALATRO.Prototype.Base | BALATRO.Prototype.Center.Base
 ---@alias BALATRO.Center
 ---| BALATRO.Prototype.Default.Base
@@ -97,6 +90,7 @@
 ---@field key string
 ---@field demo? boolean
 ---@field wip? boolean
+---@field soul_pos BALATRO.Node.Point
 
 
 ---@class BALATRO.Prototype.Common
@@ -244,6 +238,9 @@
 ---@class BALATRO.Prototype.Card.Base
 ---@field value string
 ---@field suit BALATRO.Center.SuitType
+---@field atlas? string
+---@field label? string
+---@field no_ui? boolean
 
 
 ---@class BALATRO.Prototype.CARDS
@@ -368,17 +365,27 @@
 
 ---@alias BALATRO.Center.UnlockCondition
 ---| BALATRO.Center.UnlockCondition.Base
+---| BALATRO.Center.UnlockCondition.Common
 ---| BALATRO.Center.UnlockCondition.Joker
+---| BALATRO.Center.UnlockCondition.Voucher
 ---| BALATRO.Center.UnlockCondition.Back
 
 
 ---@class BALATRO.Center.UnlockCondition.Base
 ---@field type string
+
+
+---@class BALATRO.Center.UnlockCondition.Common
 ---@field ante number
 ---@field stake number
+---@field hidden boolean
 
 
 ---@class BALATRO.Center.UnlockCondition.Joker
+---@field n_rounds number
+---@field chips number
+---@field tarot_count number
+---@field planet_count number
 
 
 ---@class BALATRO.Center.UnlockCondition.Back
@@ -392,14 +399,12 @@
 ---@field extra number | BALATRO.Center.Config.Extra
 
 
-
 ---@class BALATRO.Prototype.Center.Base
 ---@field cost number
 ---@field effect BALATRO.Center.Effect
 ---@field config BALATRO.Center.Config
 ---@field cost_mult number
 ---@field unlock_condition BALATRO.Center.UnlockCondition
-
 
 
 ---@class BALATRO.Prototype.Empty.Base
@@ -422,7 +427,7 @@
 ---@field config BALATRO.Prototype.Default.Config
 
 
----@alias BALATRO.Center.Config.ModConv string
+---@alias BALATRO.Center.Enhancement string
 ---| "m_lucky"
 ---| "m_mult"
 ---| "m_bonus"
@@ -431,7 +436,6 @@
 ---| "m_glass"
 ---| "m_gold"
 ---| "up_rank"
----| "card"
 ---| "m_stone"
 
 
@@ -454,8 +458,7 @@
 ---@field every? number
 ---@field h_plays? number
 ---@field size? number
----@field hand_add? string
----@field discard_sub? string
+---@field discard_sub? number
 ---@field s_mult? number
 ---@field suit? BALATRO.Center.SuitType
 ---@field dollars? number
@@ -466,11 +469,11 @@
 ---@field chips? number
 ---@field chip_mod? number
 ---@field odds? number
----@field poker_hand? string
+---@field poker_hand? BALATRO.Hand.Type
 ---@field h_mod? number
 ---@field xmult? number
 ---@field max_highlighted? number
----@field mod_conv? number | string
+---@field mod_conv? BALATRO.Center.Enhancement
 ---@field hand_type? BALATRO.Hand.Type
 ---@field suit_conv? BALATRO.Center.SuitType
 ---@field remove_card? boolean
@@ -497,6 +500,14 @@
 ---@field remove_faces? boolean
 ---@field randomize_rank_suit? boolean
 ---@field ante_scaling? number
+---@field hand_add? number
+---@field remaining? string
+---@field hidden? boolean
+---@field e_key? BALATRO.Center.Enhancement
+---@field enhancement? string
+---@field count? number
+---@field tally? string
+---@field polychrome? boolean
 
 
 ---@class BALATRO.Prototype.Empty.Joker : BALATRO.Prototype.Empty.Base
@@ -532,9 +543,10 @@
 ---@field rarity number
 ---@field effect? string
 ---@field config? BALATRO.Center.Config
----@field unlock_condition? BALATRO.Center.UnlockCondition.Joker
-
-
+---@field unlock_condition? BALATRO.Center.UnlockCondition
+---@field no_pool_flag? string
+---@field enhancement_gate? BALATRO.Center.Enhancement
+---@field yes_pool_flag? string
 
 
 ---@class BALATRO.Prototype.Tarot.Base
@@ -562,12 +574,12 @@
 ---@field set BALATRO.Center.Set.Voucher
 ---@field available boolean
 ---@field requires? string[]
----@field unlock_condition? BALATRO.Center.UnlockCondition.Voucher
+---@field unlock_condition? BALATRO.Center.UnlockCondition
 
 
 ---@class BALATRO.Prototype.Back.Base
 ---@field set BALATRO.Center.Set.Back
----@field unlock_condition? BALATRO.Center.UnlockCondition.Back
+---@field unlock_condition? BALATRO.Center.UnlockCondition
 ---@field stake number
 ---@field omit? boolean
 
@@ -600,6 +612,7 @@
 
 ---@class BALATRO.Prototype.Other.Base
 ---@field pos BALATRO.Node.Point
+---@field skip_pool? boolean
 
 
 ---@class BALATRO.Prototype.JOKERS
@@ -929,3 +942,22 @@
 ---@field soul BALATRO.Prototype.Other
 ---@field undiscovered_joker BALATRO.Prototype.Other
 ---@field undiscovered_tarot BALATRO.Prototype.Other
+
+
+---@class BALATRO.Prototype.CENTER_POOLS
+---@field Booster BALATRO.Prototype.Booster[]
+---@field Default BALATRO.Prototype.Default[]
+---@field Enhanced BALATRO.Prototype.Enhanced[]
+---@field Edition BALATRO.Prototype.Edition[]
+---@field Joker BALATRO.Prototype.Joker[]
+---@field Tarot BALATRO.Prototype.Tarot[]
+---@field Planet BALATRO.Prototype.Planet[]
+---@field Tarot_Planet BALATRO.Center[]
+---@field Spectral BALATRO.Prototype.Spectral[]
+---@field Consumeables BALATRO.Center[]
+---@field Voucher BALATRO.Prototype.Voucher[]
+---@field Back BALATRO.Prototype.Back[]
+---@field Tag BALATRO.Prototype.Tag[]
+---@field Seal BALATRO.Prototype.Seal[]
+---@field Stake BALATRO.Prototype.Stake[]
+---@field Demo BALATRO.Center[]

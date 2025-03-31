@@ -123,7 +123,14 @@
 ---@field v_undiscovered BALATRO.Prototype.Empty.Voucher
 ---@field booster_undiscovered BALATRO.Prototype.Empty.Booster
 ---@field P_CENTERS BALATRO.P_CENTERS
+---@field P_CENTER_POOLS BALATRO.Prototype.CENTER_POOLS
+---@field P_JOKER_RARITY_POOLS table<number, BALATRO.Prototype.Joker[]>
+---@field P_LOCKED BALATRO.Center[]
 ---@field tagid number
+---@field sort_id number
+--- Other
+---@field shop_demo? BALATRO.CardArea
+---@field last_materialized? number
 local Game = {}
 
 

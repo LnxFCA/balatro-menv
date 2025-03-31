@@ -51,49 +51,13 @@
 ---@field x_mult? number
 
 
----@class BALATRO.Card.Front
----@field name string
----@field label? string
----@field suit string
----@field value string
----@field pos BALATRO.Node.Point
----@field atlas? string
----@field no_ui? boolean
----@field order? number
-
-
 ---@alias BALATRO.Card.Config.Extra number | BALATRO.Center.Config
 ---@alias BALATRO.Card.DrawLayer string | "both" | "front" | "back" | "shadow"
 
 
-
----@class BALATRO.Card.Center
----@field set? BALATRO.Card.Ability.Set
----@field atlas? string
----@field alerted? boolean
----@field discovered? boolean
----@field order number
----@field unlocked? boolean
----@field consumeable? boolean
----@field demo? boolean
----@field pos BALATRO.Node.Point
----@field name string
----@field soul_pos? BALATRO.Node.Point
----@field config BALATRO.Center.Config
----@field effect? string
----@field cost number
----@field label? string
----@field eternal_compat? boolean
----@field perishable_compat? boolean
----@field blueprint_compat? boolean
----@field increase? number
----@field rarity? number
----@field key? string
-
-
 ---@class (exact) BALATRO.Card.Config
----@field card? BALATRO.Card.Front
----@field center BALATRO.Card.Center
+---@field card? BALATRO.Prototype.Card
+---@field center BALATRO.Center
 ---@field card_key? string
 ---@field center_key? string
 ---@field h_popup? BALATRO.UI.Object
@@ -136,7 +100,8 @@
 ---@field x_mult number
 ---@field h_size number
 ---@field d_size number
----@field extra? BALATRO.Card.Config.Extra
+---@operator mul:number
+---@field extra? BALATRO.Center.Config.Extra
 ---@field extra_value number
 ---@field type string
 ---@field order? number
@@ -204,7 +169,7 @@
 ---@field ambient_tilt number
 ---@field sort_id number
 ---@field back string | "selected_back" | "viewed_back"
----@field children BALATRO.UI.Object[] | table<string, BALATRO.UI.Object>
+---@field children BALATRO.UIObject[] | table<string, BALATRO.UIObject>
 ---@field base_cost number
 ---@field extra_cost number
 ---@field cost number
@@ -258,9 +223,9 @@ local Card = {}
 ---@class BALATRO.Card.Class : BALATRO.Moveable.Super
 ---@field init fun(self, X, Y, W, H, card, center, params)
 ---@field update_alert fun(self: BALATRO.Card)
----@field set_base fun(self: BALATRO.Card, card?: BALATRO.Card.Front, initial?: boolean)
----@field set_sprites fun(self: BALATRO.Card, center?: BALATRO.Card.Center, front?: BALATRO.Card.Front)
----@field set_ability fun(self: BALATRO.Card, center?: BALATRO.Card.Center, initial?: boolean, delay_sprites?: boolean)
+---@field set_base fun(self: BALATRO.Card, card?: BALATRO.Prototype.Card, initial?: boolean)
+---@field set_sprites fun(self: BALATRO.Card, center?: BALATRO.Center, front?: BALATRO.Prototype.Card)
+---@field set_ability fun(self: BALATRO.Card, center?: BALATRO.Center, initial?: boolean, delay_sprites?: boolean)
 ---@field set_cost fun(self: BALATRO.Card)
 ---@field set_edition fun(self: BALATRO.Card, edition: BALATRO.Card.Edition.Arg, immediate?: boolean, silent?: boolean)
 ---@field set_seal fun(self: BALATRO.Card, seal?: BALATRO.Card.Seal, silent?: boolean, immediate?: boolean)
@@ -295,7 +260,7 @@ local Card = {}
 ---@field calculate_dollar_bonus fun(self: BALATRO.Card): number?
 ---@field open fun(self: BALATRO.Card)
 ---@field redeem fun(self: BALATRO.Card)
----@field apply_to_run fun(self: BALATRO.Card, center?: BALATRO.Card.Center)
+---@field apply_to_run fun(self: BALATRO.Card, center?: BALATRO.Center)
 ---@field explode fun(self: BALATRO.Card, dissolve_colours?: BALATRO.UI.Colour[], explode_time_fac?: number)
 ---@field start_materialize fun(self: BALATRO.Card, dissolve_colours?: BALATRO.UI.Colour[], silent?: boolean, timefac?: number)
 ---@field shatter fun(self: BALATRO.Card)
@@ -316,7 +281,7 @@ local Card = {}
 ---@field highlight fun(self: BALATRO.Card, is_higlighted?: boolean)
 ---@field click fun(self: BALATRO.Card)
 ---@field save fun(self: BALATRO.Card): BALATRO.Card.SaveTable
----@field load fun(self: BALATRO.Card, card: BALATRO.Card.SaveTable, other_card?: BALATRO.Card.Front)
+---@field load fun(self: BALATRO.Card, card: BALATRO.Card.SaveTable, other_card?: BALATRO.Prototype.Card)
 ---@field remove fun(self: BALATRO.Card)
 
 
@@ -326,8 +291,8 @@ local Card = {}
 ---@param Y number
 ---@param W number
 ---@param H number
----@param card BALATRO.Card.Front
----@param center BALATRO.Card.Center
+---@param card BALATRO.Prototype.Card
+---@param center BALATRO.Center
 ---@param params BALATRO.Card.Params
 Card.init = function(self, X, Y, W, H, card, center, params) end
 
@@ -337,8 +302,8 @@ Card.init = function(self, X, Y, W, H, card, center, params) end
 ---@param Y number
 ---@param W number
 ---@param H number
----@param card? BALATRO.Card.Front
----@param center BALATRO.Card.Center
+---@param card? BALATRO.Prototype.Card
+---@param center BALATRO.Center
 ---@param params? BALATRO.Card.Params
 ---@return BALATRO.Card
 _G.Card = function (X, Y, W, H, card, center, params) end

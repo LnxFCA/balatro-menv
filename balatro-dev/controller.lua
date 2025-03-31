@@ -22,6 +22,9 @@
 ---@field wipe? boolean
 ---@field frame_set? boolean
 ---@field frame? boolean
+---@field edition? boolean
+---@field seal? boolean
+---@field selling_card? boolean
 
 
 ---@class BALATRO.Controller.State.Base

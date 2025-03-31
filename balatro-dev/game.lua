@@ -130,6 +130,9 @@
 ---@field FONTS BALATRO.FONTS
 ---@field LANG BALATRO.Language
 ---@field localization BALATRO.LOCTABLE
+---@field animation_atli BALATRO.Atlas.Index.Animation[]
+---@field asset_atli BALATRO.Atlas.Index.Asset[]
+---@field asset_images BALATRO.Atlas.Index.Base[]
 ---@field tagid number
 ---@field sort_id number
 ---@field shop_demo? BALATRO.CardArea
@@ -144,6 +147,7 @@ local Game = {}
 ---@field load_profile fun(self: BALATRO.Game, profile: number)
 ---@field init_item_prototypes fun(self: BALATRO.Game)
 ---@field set_language fun(self: BALATRO.Game)
+---@field set_render_settings fun(self: BALATRO.Game)
 
 
 --- `Game()` - Creates a new [Game](lua://BALATRO.Game) object

@@ -1,26 +1,26 @@
 ---@meta
 
 
----@alias BALATRO.Proile.Usage.Type table<string, BALATRO.Profile.Usage.Item>
+---@alias BALATRO.Profile.Usage table<string, BALATRO.Profile.Usage.Item>
 ---@alias BALATRO.Profile.Usage.Joker table<string, BALATRO.Profile.Usage.Joker.Item>
 
 
----@class BALATRO.Profile.HighScores.Item
+---@class BALATRO.Profile.ScoresItem
 ---@field label string
 ---@field amt number
 ---@field tot? number
 
 
 ---@class BALATRO.Profile.HighScores
----@field collection BALATRO.Profile.HighScores.Item
----@field current_streak BALATRO.Profile.HighScores.Item
----@field win_streakk BALATRO.Profile.HighScores.Item
----@field furthest_round BALATRO.Profile.HighScores.Item
----@field furthest_ante BALATRO.Profile.HighScores.Item
----@field most_money BALATRO.Profile.HighScores.Item
----@field boss_streak BALATRO.Profile.HighScores.Item
----@field hand BALATRO.Profile.HighScores.Item
----@field poker_hand BALATRO.Profile.HighScores.Item
+---@field collection BALATRO.Profile.ScoresItem
+---@field current_streak BALATRO.Profile.ScoresItem
+---@field win_streakk BALATRO.Profile.ScoresItem
+---@field furthest_round BALATRO.Profile.ScoresItem
+---@field furthest_ante BALATRO.Profile.ScoresItem
+---@field most_money BALATRO.Profile.ScoresItem
+---@field boss_streak BALATRO.Profile.ScoresItem
+---@field hand BALATRO.Profile.ScoresItem
+---@field poker_hand BALATRO.Profile.ScoresItem
 
 
 ---@class BALATRO.Profile.Usage.Item
@@ -101,10 +101,10 @@
 
 ---@class BALATRO.Profile
 ---@field high_scores BALATRO.Profile.HighScores
----@field voucher_usage BALATRO.Proile.Usage.Type
+---@field voucher_usage BALATRO.Profile.Usage
 ---@field deck_usage BALATRO.Profile.Usage.Deck
 ---@field stake number
----@field consumeable_usage BALATRO.Proile.Usage.Type
+---@field consumeable_usage BALATRO.Profile.Usage
 ---@field career_stats BALATRO.Profile.CareerStats
 ---@field deck_stakes BALATRO.Profile.DeckStakes
 ---@field progress BALATRO.Profile.Progress

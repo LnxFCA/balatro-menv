@@ -25,6 +25,7 @@
 ---@field edition? boolean
 ---@field seal? boolean
 ---@field selling_card? boolean
+---@field load? boolean
 
 
 ---@class BALATRO.Controller.State.Base
@@ -164,6 +165,9 @@
 ---@field screen_keyboard? boolean
 ---@field no_holdcap? boolean
 ---@field using_touch? boolean
+---@field focus_cursor_stack? BALATRO.Controller.CursorContext.Context[]
+---@field focus_cursor_stack_level? number
+---@field lock_input? boolean
 local Controller = {}
 
 

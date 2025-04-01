@@ -28,7 +28,7 @@ local Sprite = {}
 ---@class BALATRO.AnimatedSprite.Class : BALATRO.Sprite.Super
 ---@field rescale fun(self: BALATRO.AnimatedSprite)
 ---@field draw_self fun(self: BALATRO.AnimatedSprite)
----@field animate fun(self: BALATRO.AnimatedSprite)
+---@field animate fun(self: BALATRO.AnimatedSprite, dt?: number)
 
 
 --- `AnimatedSprite()` - Creates a new [AnimatedSprite](lua://BALATRO.AnimatedSprite) object

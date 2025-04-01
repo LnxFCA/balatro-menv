@@ -132,6 +132,7 @@
 ---@field blueprint_compat? string
 ---@field discarded? boolean
 ---@field played_this_ante? boolean
+---@field booster_pos? number
 
 
 ---@class BALATRO.Card.SaveTable
@@ -302,6 +303,11 @@ Card.init = function(self, X, Y, W, H, card, center, params) end
 ---@param center? BALATRO.Center
 Card.apply_to_run = function(self, center) end
 
+
+--- Check if `T` is an instance of `Card`
+---@param self BALATRO.Card
+---@param T any
+Card.is = function(self, T) end
 
 --- `Card()` - Creates a new [Card](lua://BALATRO.Card) object
 ---@param X number

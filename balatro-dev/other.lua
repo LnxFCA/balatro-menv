@@ -29,6 +29,7 @@
 
 ---@alias BALATRO.ButtonMapping BALATRO.ButtonMapping.Base | table<string, string>
 ---@alias BALATRO.KeybindMapping BALATRO.KeybindMapping.Base | table<string, string>
+---@alias BALATRO.Sandbox BALATRO.Sandbox.Base | BALATRO.Sandbox.Extra
 
 
 ---@class BALATRO.Settings.TutorialProgress
@@ -130,6 +131,9 @@
 ---@field QUEUED_CHANGE BALATRO.Settings.QueuedChange
 ---@field music_control BALATRO.Settings.MusicControl
 ---@field reduced_motion? boolean
+---@field skip_splash? string | boolean
+---@field tutorial_complete? boolean
+---@field perf_mode? boolean
 
 
 ---@class BALATRO.Instances
@@ -163,6 +167,84 @@
 ---@field q string
 ---@field e string
 
+
+---@class BALATRO.FileHandler
+---@field settings? boolean
+---@field update_queued? boolean
+---@field progress? boolean
+---@field force? boolean
+---@field last_sent_stage? number
+---@field last_sent_time? number
+---@field last_sent_pause? boolean
+---@field metrics? boolean
+---@field run? boolean
+
+
+---@class BALATRO.ARGS.SaveProgress
+---@field UDA table<string, string>
+---@field SETTINGS BALATRO.Settings
+---@field PROFILE BALATRO.Profile
+
+
+---@class BALATRO.ARGS.Spin
+---@field amount number
+---@field real number
+---@field eased number
+
+
+---@class BALATRO.ARGS.EasedCursorPos
+---@field x number
+---@field y number
+---@field sy number
+---@field sx number
+
+
+---@class BALATRO.ARGS
+---@field collides_with_point_point BALATRO.Node.Point
+---@field collides_with_point_translation BALATRO.Node.Point
+---@field collides_with_point_rotation BALATRO.Node.Rotation
+---@field set_offset_point BALATRO.Node.Point
+---@field set_offset_translation BALATRO.Node.Point
+---@field drag_cursor_trans BALATRO.Node.Point
+---@field drag_translation BALATRO.Node.Point
+---@field get_major BALATRO.Moveable.ARGS.get_major
+---@field xywh_node_trans BALATRO.Node.Transform
+---@field text_parallax BALATRO.UIElement.Parallax
+---@field button_colours BALATRO.UI.Colour[]
+---@field FUNC_TRACKER table<string, number>
+---@field prep_shader BALATRO.ARGS.prep_shader
+---@field send_to_shader number[]
+---@field invisible_area_types? BALATRO.ARGS.area_types
+---@field draw_layers? string[]
+---@field draw_shadow_norm BALATRO.Node.Point
+---@field draw_from_offset? BALATRO.Node.Point
+---@field save_progress? BALATRO.ARGS.SaveProgress
+---@field save_settings? BALATRO.Settings
+---@field save_metrics? BALATRO.Game.METRICS
+---@field spin BALATRO.ARGS.Spin
+---@field HIGH_SCORE_RESPONSE? unknown
+---@field eased_cursor_pos? BALATRO.ARGS.EasedCursorPos
+
+
+---@class BALATRO.Sandbox.Base
+---@field vort_time number
+---@field vort_speed number
+---@field col_op string[]
+---@field col1 BALATRO.UI.Colour
+---@field col2 BALATRO.UI.Colour
+---@field mid_flash number
+---@field joker_text string
+---@field edition string
+---@field tilt number
+---@field card_size number
+---@field base_size BALATRO.UI.Resolution
+---@field gamespeed number
+
+
+---@class BALATRO.Sandbox.Extra
+---@field file_reload_timer? number
+---@field UI BALATRO.UIBox
+---@field joker? BALATRO.Card
 
 ------------------------------------------------------------------------------
 -- GAME
@@ -312,3 +394,23 @@
 ---@field w number
 ---@field orig_scale number
 ---@field orig_ratio number
+
+
+---@class BALATRO.Game.RunArgs
+---@field savetext? BALATRO.SavedGame
+---@field challenge? BALATRO.Challenge
+---@field stake? number
+---@field seed? string | number
+
+
+---@class BALATRO.Game.HandTextArea
+---@field chips BALATRO.UIElement
+---@field mult BALATRO.UIElement
+---@field ante BALATRO.UIElement
+---@field round BALATRO.UIElement
+---@field chip_total BALATRO.UIElement
+---@field handname BALATRO.UIElement
+---@field hand_level BALATRO.UIElement
+---@field game_chips BALATRO.UIElement
+---@field blind_chips BALATRO.UIElement
+---@field blind_spacer BALATRO.UIElement

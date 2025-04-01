@@ -139,13 +139,13 @@
 
 
 ---@class BALATRO.UI.Node.Common
----@field n BALATRO.UI.T
+---@field n BALATRO.UIT
 ---@field config BALATRO.UI.Definition.Config
 ---@field nodes BALATRO.UI.Node.Common[]
 
 
 ---@class BALATRO.UI.Definition
----@field n BALATRO.UI.T
+---@field n BALATRO.UIT
 ---@field config BALATRO.UI.Definition.Config
 ---@field nodes BALATRO.UI.Node.Common[]
 
@@ -154,7 +154,7 @@
 ---@field ARGS BALATRO.ARGS
 ---@field config BALATRO.UI.Definition.Config
 ---@field parent BALATRO.UI.Object
----@field UIT BALATRO.UI.T | number
+---@field UIT BALATRO.UIT
 ---@field UIBox BALATRO.UIBox
 ---@field children BALATRO.UI.Object[] | table<string, BALATRO.UI.Object>
 ---@field content_dimensions BALATRO.UI.Resolution
@@ -168,7 +168,7 @@ local UIELement = {}
 
 
 ---@class BALATRO.UIElement.Class : BALATRO.Moveable.Super
----@field init fun(self: BALATRO.UIElement, parent: BALATRO.UIElement, new_UIBox: BALATRO.UIBox, new_UIT: BALATRO.UI.T, config: BALATRO.UI.Definition.Config)
+---@field init fun(self: BALATRO.UIElement, parent: BALATRO.UIElement, new_UIBox: BALATRO.UIBox, new_UIT: BALATRO.UIT, config: BALATRO.UI.Definition.Config)
 ---@field set_values fun(self: BALATRO.UIElement, _T: BALATRO.Node.Transform, recalculate: boolean)
 ---@field print_topology fun(self: BALATRO.UIElement, indent?: number): string
 ---@field initialize_VT fun(self: BALATRO.UIElement, foo?: boolean)
@@ -193,7 +193,7 @@ UIELement.is = function(self, T) end
 --- `UIElement()` - Creates a new [UIElement](lua://BALATRO.UIElement) object
 ---@param parent BALATRO.UIElement
 ---@param new_UIBox BALATRO.UIBox
----@param new_UIT BALATRO.UI.T
+---@param new_UIT BALATRO.UIT
 ---@param config BALATRO.UI.Definition.Config
 ---@return BALATRO.UIElement
 _G.UIElement = function (parent, new_UIBox, new_UIT, config) end

@@ -36,6 +36,8 @@
 ---@field layered_parallax BALATRO.UI.Object
 ---@field Mid BALATRO.UI.Object
 ---@field UIRoot BALATRO.UIElement
+---@field attention_text? boolean
+---@field highlights? BALATRO.UIElement[]
 local UIBox = {}
 
 

@@ -54,6 +54,7 @@ local CardArea = {}
 ---@field unhighlight_all fun(self: BALATRO.CardArea)
 ---@field set_ranks fun(self: BALATRO.CardArea)
 ---@field align_cards fun(self: BALATRO.CardArea)
+---@field hard_set_T fun(self: BALATRO.CardArea, X?: number, Y?: number, W?: number, H?: number)
 ---@field hard_set_cards fun(self: BALATRO.CardArea)
 ---@field shuffle fun(self: BALATRO.CardArea, seed?: number | string)
 ---@field sort fun(self: BALATRO.CardArea, method?: BALATRO.CardArea.Sort)

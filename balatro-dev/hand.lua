@@ -23,3 +23,14 @@
 ---@field played number
 ---@field played_this_round number
 ---@field example BALATRO.Hand.Example[]
+
+
+---@class BALATRO.Hand.Round
+---@field chips number
+---@field chip_text string
+---@field mult number
+---@field mult_text string
+---@field chip_total number
+---@field chip_total_text string
+---@field hand_name BALATRO.Hand.Type
+---@field hand_level string

@@ -2,12 +2,12 @@
 
 
 --- Permanetly discover card
----@param card? BALATRO.Card.Center | BALATRO.Card
+---@param card? BALATRO.Center | BALATRO.Card
 _G.discover_card = function(card) end
 
 
 --- Permanetly unlock card
----@param card? BALATRO.Card.Center | BALATRO.Card
+---@param card? BALATRO.Center | BALATRO.Card
 _G.unlock_card = function(card) end
 
 

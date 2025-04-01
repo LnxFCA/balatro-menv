@@ -53,4 +53,5 @@ Tag.init = function(self, tag, for_collection, blind_type) end
 ---@param tag string
 ---@param for_collection? boolean
 ---@param blind_type? BALATRO.Blind.Type
+---@return BALATRO.Tag
 _G.Tag = function(tag, for_collection, blind_type) end

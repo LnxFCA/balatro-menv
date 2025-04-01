@@ -6,7 +6,7 @@
 ---@field y? number
 ---@field w? number
 ---@field h? number
----@field center? BALATRO.Center.Joker
+---@field center? BALATRO.Center
 
 
 ---@class BALATRO.Card_Character.Children
@@ -29,6 +29,7 @@
 ---@field talking? boolean
 ---@field last_said? number
 ---@field highlight? BALATRO.UIElement | BALATRO.UIBox
+---@field ui_object_updated? boolean
 local Card_Character = {}
 
 
@@ -55,7 +56,7 @@ Card_Character.add_button = function(self, button, func, colour, update_func, sn
 --- Add a speech bubble to `Card_Character` object
 ---@param self BALATRO.Card_Character
 ---@param text_key string
----@param align BALATRO.UI.Align
+---@param align? BALATRO.UI.Align
 ---@param loc_vars any
 Card_Character.add_speech_bubble = function(self, text_key, align, loc_vars) end
 

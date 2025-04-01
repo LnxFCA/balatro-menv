@@ -148,6 +148,8 @@ local Game = {}
 ---@field init_item_prototypes fun(self: BALATRO.Game)
 ---@field set_language fun(self: BALATRO.Game)
 ---@field set_render_settings fun(self: BALATRO.Game)
+---@field init_window fun(self: BALATRO.Game, reset?: boolean)
+---@field delete_run fun(self: BALATRO.Game)
 
 
 --- `Game()` - Creates a new [Game](lua://BALATRO.Game) object

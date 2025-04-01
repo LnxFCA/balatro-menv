@@ -40,3 +40,19 @@
 ---@class BALATRO.Atlas.Asset : BALATRO.Atlas.Base
 ---@field name BALATRO.Atlas.Asset.Key
 ---@field type string
+
+
+---@class BALATRO.Atlas.Index.Base
+---@field name string
+---@field path string
+---@field px number
+---@field py number
+---@field type? string
+
+
+---@class BALATRO.Atlas.Index.Animation : BALATRO.Atlas.Index.Base
+---@field frames number
+
+
+---@class BALATRO.Atlas.Index.Asset : BALATRO.Atlas.Index.Base
+---@field name BALATRO.Atlas.Asset.Key

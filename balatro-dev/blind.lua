@@ -2,6 +2,19 @@
 
 
 ---@alias BALATRO.Blind.Type string | "Boss" | "Big" | "Small"
+---@alias BALATRO.Blind.State.Type string | "Select" | "Upcoming"
+
+
+---@class BALATRO.Blind.States
+---@field Small BALATRO.Blind.State.Type
+---@field Big BALATRO.Blind.State.Type
+---@field Boss BALATRO.Blind.State.Type
+
+
+---@class BALATRO.Blind.Choices
+---@field Small string
+---@field Big string
+---@field Boss? string
 
 
 ---@class BALATRO.Blind.TiltVar : BALATRO.TiltVar

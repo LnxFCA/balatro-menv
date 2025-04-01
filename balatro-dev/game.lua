@@ -129,14 +129,83 @@
 ---@field LANGUAGES BALATRO.LANGUAGES
 ---@field FONTS BALATRO.FONTS
 ---@field LANG BALATRO.Language
----@field localization BALATRO.LOCTABLE
+---@field localization BALATRO.Localizations
 ---@field animation_atli BALATRO.Atlas.Index.Animation[]
 ---@field asset_atli BALATRO.Atlas.Index.Asset[]
 ---@field asset_images BALATRO.Atlas.Index.Base[]
+---@field load_shop_booster? BALATRO.CardArea.SaveTable
+---@field load_shop_jokers? BALATRO.CardArea.SaveTable
+---@field load_shop_vouchers? BALATRO.CardArea.SaveTable
+---@field buttons? BALATRO.UIBox
+---@field shop? BALATRO.UIBox
+---@field deck_preview? BALATRO.UIBox
+---@field blind_select? BALATRO.UIBox
+---@field booster_pack? BALATRO.UIBox
+---@field MAIN_MENU_UI? BALATRO.UIBox
+---@field SPLASH_FRONT? BALATRO.Sprite
+---@field SPLASH_BACK? BALATRO.Sprite
+---@field SPLASH_LOGO? BALATRO.Sprite
+---@field GAME_OVER_UI? BALATRO.UIBox
+---@field collection_alert? BALATRO.UIBox
+---@field HUD? BALATRO.UIBox
+---@field HUD_blind? BALATRO.UIBox
+---@field HUD_tags? BALATRO.UIBox[]
+---@field OVERLAY_MENU? boolean | BALATRO.UIBox
+---@field OVERLAY_TUTORIAL? BALATRO.UIBox
+---@field VIEWING_DECK? boolean
+---@field FILE_HANDLER? BALATRO.FileHandler
 ---@field tagid number
 ---@field sort_id number
 ---@field shop_demo? BALATRO.CardArea
 ---@field last_materialized? number
+---@field ROOM BALATRO.Node
+---@field ROOM_ATTACH BALATRO.Moveable
+---@field GAME BALATRO.GameObject
+---@field SANDBOX BALATRO.Sandbox
+---@field vortex_time? number
+---@field title_top? BALATRO.CardArea
+---@field REFRESH_ALERTS? boolean
+---@field SAVED_GAME? BALATRO.SavedGame
+---@field RESET_BLIND_STATES? boolean
+---@field consumeables BALATRO.CardArea
+---@field jokers BALATRO.CardArea
+---@field discard BALATRO.CardArea
+---@field deck BALATRO.CardArea
+---@field hand BALATRO.CardArea
+---@field play BALATRO.CardArea
+---@field playing_cards BALATRO.Card[]
+---@field MAJORS? number
+---@field MINORS? number
+---@field real_dt number
+---@field fbf? boolean
+---@field new_frame? boolean
+---@field ACC? number
+---@field ACC_state? number
+---@field boss_warning_text? BALATRO.UIBox
+---@field boss_throw_hand? boolean
+---@field prev_small_state? BALATRO.Blind.State.Type
+---@field prev_large_state? BALATRO.Blind.State.Type
+---@field prev_boss_state? BALATRO.Blind.State.Type
+---@field DEBUG_VALUE? string
+---@field under_overlay? boolean
+---@field CANVAS love.Canvas
+---@field screenwipe? BALATRO.UIBox
+---@field debug_tools? BALATRO.UIBox
+---@field online_leaderboard? BALATRO.UIBox
+---@field achievement_notification? BALATRO.UIBox
+---@field ALERT_ON_SCREEN? boolean
+---@field recording_mode? boolean
+---@field screenglitch? boolean
+---@field screenwipe_amt number
+---@field UIDEF table<string, function>
+---@field round_eval? BALATRO.UIBox
+---@field booster_pack_sparkles? BALATRO.Particles
+---@field booster_pack_stars? BALATRO.Particles
+---@field booster_pack_meteors? BALATRO.Particles
+---@field hand_text_area BALATRO.Game.HandTextArea
+---@field TAROT_INTERRUPT_PULSE? boolean
+---@field playing_card number
+---@field view_deck? BALATRO.CardArea[]
 local Game = {}
 
 
@@ -150,6 +219,35 @@ local Game = {}
 ---@field set_render_settings fun(self: BALATRO.Game)
 ---@field init_window fun(self: BALATRO.Game, reset?: boolean)
 ---@field delete_run fun(self: BALATRO.Game)
+---@field save_progress fun(self: BALATRO.Game)
+---@field save_notify fun(self: BALATRO.Game, card: BALATRO.Center)
+---@field save_settings fun(self: BALATRO.Game)
+---@field save_metrics fun(self: BALATRO.Game)
+---@field prep_stage fun(self: BALATRO.Game, new_stage?: number, new_state?: number, new_game_obj?: boolean)
+---@field sandbox fun(self: BALATRO.Game)
+---@field splash_screen fun(self: BALATRO.Game)
+---@field main_menu fun(self: BALATRO.Game, change_context?: string)
+---@field demo_cta fun(self: BALATRO.Game)
+---@field init_game_object fun(self: BALATRO.Game): BALATRO.GameObject
+---@field start_run fun(self: BALATRO.Game, args?: BALATRO.Game.RunArgs)
+---@field update fun(self: BALATRO.Game, dt: number)
+---@field draw fun(self: BALATRO.Game)
+---@field state_col fun(self: BALATRO.Game, state: number): number, number, number, number
+---@field update_selecting_hand fun(self: BALATRO.Game, dt?: number)
+---@field update_shop fun(self: BALATRO.Game, dt?: number)
+---@field update_play_tarot fun(self: BALATRO.Game, dt?: number)
+---@field update_hand_played fun(self: BALATRO.Game, dt?: number)
+---@field update_draw_to_hand fun(self: BALATRO.Game, dt?: number)
+---@field update_new_round fun(self: BALATRO.Game, dt?: number)
+---@field update_blind_select fun(self: BALATRO.Game, dt?: number)
+---@field update_round_eval fun(self: BALATRO.Game, dt?: number)
+---@field update_arcana_pack fun(self: BALATRO.Game, dt?: number)
+---@field update_spectral_pack fun(self: BALATRO.Game, dt?: number)
+---@field update_standard_pack fun(self: BALATRO.Game, dt?: number)
+---@field update_buffoon_pack fun(self: BALATRO.Game, dt?: number)
+---@field update_celestial_pack fun(self: BALATRO.Game, dt?: number)
+---@field update_game_over fun(self: BALATRO.Game, dt?: number)
+---@field update_menu fun(self: BALATRO.Game, dt?: number)
 
 
 --- `Game()` - Creates a new [Game](lua://BALATRO.Game) object

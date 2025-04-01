@@ -41,6 +41,8 @@
 ---@field hovering? boolean
 ---@field hover_tilt? number
 ---@field ability_UIBox_table? BALATRO.Card.AbilityUIBoxTable
+---@field dissolve_colours? BALATRO.UI.Colour[]
+---@field dissolve? number
 local Sprite = {}
 
 

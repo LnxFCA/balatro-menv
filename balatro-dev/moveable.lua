@@ -167,4 +167,5 @@ Moveable.set_role = function(self, args) end
 ---@param Y? number
 ---@param W? number
 ---@param H? number
+---@return BALATRO.Moveable
 _G.Moveable = function(X, Y, W, H) end

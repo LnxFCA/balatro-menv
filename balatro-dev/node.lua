@@ -93,6 +93,7 @@
 ---@field CALCING? boolean
 ---@field REMOVED? boolean
 ---@field jiggle? number
+---@field parent? BALATRO.Node
 local Node = {}
 
 

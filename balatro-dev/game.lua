@@ -206,6 +206,11 @@
 ---@field TAROT_INTERRUPT_PULSE? boolean
 ---@field playing_card number
 ---@field view_deck? BALATRO.CardArea[]
+---@field REFRESH_FRAME_MAJOR_CACHE? number
+---@field NO_MOD_CURSOR_STACK? boolean
+---@field shared_shadow? BALATRO.Sprite
+---@field from_boss_tag? boolean
+---@field orbital_hand? BALATRO.Hand.Type
 local Game = {}
 
 

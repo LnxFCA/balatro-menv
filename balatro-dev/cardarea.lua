@@ -36,7 +36,7 @@
 ---@field deck_height? number
 ---@field spread? boolean
 ---@field collection? boolean
----@field view_deck? BALATRO.UI.Object
+---@field view_deck? boolean
 
 
 ---@class BALATRO.CardArea : BALATRO.CardArea.Class

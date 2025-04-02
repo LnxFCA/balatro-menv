@@ -70,3 +70,6 @@
 
 ---@class BALATRO.Font.Extra
 ---@field FONT love.Font
+
+
+---@class BALATRO.Localizations

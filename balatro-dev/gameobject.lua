@@ -219,3 +219,5 @@
 ---@field starting_voucher_count number
 ---@field seeded boolean
 ---@field facing_blind? boolean
+---@field shop_free? boolean
+---@field shop_d6ed? boolean

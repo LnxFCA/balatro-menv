@@ -79,7 +79,7 @@
 ---@field T BALATRO.Node.Transform
 ---@field VT BALATRO.Node.Transform
 ---@field CT BALATRO.Node.Transform
----@field config BALATRO.UI.Definition.Config
+---@field config BALATRO.UI.Config
 ---@field click_offset BALATRO.Node.Point
 ---@field hover_offset BALATRO.Node.Point
 ---@field created_on_pause boolean

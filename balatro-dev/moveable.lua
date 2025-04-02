@@ -2,13 +2,13 @@
 
 
 ---@class BALATRO.Moveable.ARGS.get_major
----@field major BALATRO.UI.Object
+---@field major BALATRO.UIObject
 ---@field offset BALATRO.Node.Point
 
 
 ---@class BALATRO.Moveable.FRAME : BALATRO.UI.FRAME
----@field OLD_MAJOR BALATRO.UI.Object
----@field MAJOR BALATRO.UI.Object
+---@field OLD_MAJOR BALATRO.UIObject
+---@field MAJOR BALATRO.UIObject
 
 
 ---@class BALATRO.Moveable.Velocity : BALATRO.Node.Point
@@ -34,7 +34,7 @@
 
 
 ---@class BALATRO.Moveable.Role.Common
----@field major? BALATRO.UI.Object
+---@field major? BALATRO.UIObject
 ---@field xy_bond? BALATRO.Moveable.Role.Bond
 ---@field wh_bond? BALATRO.Moveable.Role.Bond
 ---@field r_bond? BALATRO.Moveable.Role.Bond
@@ -45,8 +45,8 @@
 ---@class BALATRO.Moveable.Role
 ---@field role_type BALATRO.Moveable.Role.Type
 ---@field offset BALATRO.Node.Point
----@field major? BALATRO.UI.Object
----@field draw_major BALATRO.UI.Object
+---@field major? BALATRO.UIObject
+---@field draw_major BALATRO.UIObject
 ---@field xy_bond BALATRO.Moveable.Role.Bond
 ---@field wh_bond BALATRO.Moveable.Role.Bond
 ---@field r_bond BALATRO.Moveable.Role.Bond
@@ -98,11 +98,11 @@
 ---@field shadow_parrallax BALATRO.Node.Point
 ---@field layered_parallax BALATRO.Node.Point
 ---@field shadow_height number
----@field children BALATRO.UI.Object[] | table<string, BALATRO.UI.Object>
+---@field children BALATRO.UIObject[] | table<string, BALATRO.UIObject>
 ---@field STATIONARY? boolean
----@field config BALATRO.UI.Definition.Config
+---@field config BALATRO.UI.Config
 ---@field temp_offs BALATRO.Node.Point
----@field major? BALATRO.UI.Object
+---@field major? BALATRO.UIObject
 ---@field zoom? boolean
 local Moveable = {}
 
@@ -118,14 +118,14 @@ local Moveable = {}
 ---@field move_juice fun(self: BALATRO.Moveable, dt: number) Moves the juice of the moveable.
 ---@field move fun(self: BALATRO.Moveable, dt: number) Moves the moveable.
 ---@field lr_clamp fun(self: BALATRO.Moveable)
----@field glue_to_major fun(self: BALATRO.Moveable, major_tab: BALATRO.UI.Object)
+---@field glue_to_major fun(self: BALATRO.Moveable, major_tab: BALATRO.UIObject)
 ---@field move_with_major fun(self: BALATRO.Moveable, dt: number)
 ---@field move_xy fun(self: BALATRO.Moveable, dt: number) Moves the moveable in the x and y direction.
 ---@field move_scale fun(self: BALATRO.Moveable, dt: number) Moves the moveable in the scale direction.
 ---@field move_wh fun(self: BALATRO.Moveable, dt: number) Moves the moveable in the width and height direction.
 ---@field move_r fun(self: BALATRO.Moveable, dt: number, vel: BALATRO.Moveable.Velocity) Moves the moveable in the rotation direction.
 ---@field calculate_parrallax fun(self: BALATRO.Moveable) Calculates the shadow parrallax of the moveable.
----@field get_major fun(self: BALATRO.Moveable): BALATRO.UI.Object | BALATRO.Moveable.ARGS.get_major
+---@field get_major fun(self: BALATRO.Moveable): BALATRO.UIObject | BALATRO.Moveable.ARGS.get_major
 ---@field remove fun(self: BALATRO.Moveable) Removes the moveable.
 
 
@@ -153,7 +153,7 @@ Moveable.set_alignment = function(self, args) end
 
 ---@class BALATRO.Moveable.set_role.Args : BALATRO.Moveable.Role.Common
 ---@field role_type? BALATRO.Moveable.Role.Type
----@field draw_major? BALATRO.UI.Object
+---@field draw_major? BALATRO.UIObject
 
 
 --- Sets the role of the moveable.

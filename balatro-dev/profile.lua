@@ -99,6 +99,12 @@
 ---@field losses unknown
 
 
+---@class BALATRO.Profile.DeckStakes
+
+
+---@class BALATRO.Profile.ChallengeProgress
+
+
 ---@class BALATRO.Profile
 ---@field high_scores BALATRO.Profile.HighScores
 ---@field voucher_usage BALATRO.Profile.Usage

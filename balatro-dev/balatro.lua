@@ -49,3 +49,6 @@ _G.pseudorandom = function(seed, min, max) end
 ---@param offset? BALATRO.Node.Point
 ---@param _? boolean
 _G.prep_draw = function(moveable, scale, rotate, offset, _) end
+
+
+_G.jit = {}

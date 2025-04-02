@@ -2,6 +2,11 @@
 
 
 ---@alias BALATRO.Card.Edition.Type string | "polychrome" | "negative" | "foil" | "holo"
+---@alias BALATRO.Card.Seal string | number
+---@alias BALATRO.Card.Ability.Set string | "Joker" | "Booster" | "Tarot" | "Planet" | "Edition" | "Spectral" | "Voucher" | "Default" | "Enhanced" | "Base" | "Tarot_Planet"
+---@alias BALATRO.Card.Config.Extra number | BALATRO.Center.Config
+---@alias BALATRO.Card.DrawLayer string | "both" | "front" | "back" | "shadow"
+
 
 ---@class BALATRO.TiltVar
 ---@field mx number
@@ -51,16 +56,12 @@
 ---@field x_mult? number
 
 
----@alias BALATRO.Card.Config.Extra number | BALATRO.Center.Config
----@alias BALATRO.Card.DrawLayer string | "both" | "front" | "back" | "shadow"
-
-
 ---@class (exact) BALATRO.Card.Config
 ---@field card? BALATRO.Prototype.Card
 ---@field center BALATRO.Center
 ---@field card_key? string
 ---@field center_key? string
----@field h_popup? BALATRO.UI.Object
+---@field h_popup? BALATRO.UI.Node
 ---@field h_popup_config? BALATRO.UIBox.Config
 
 
@@ -76,12 +77,6 @@
 ---@field times_played number
 ---@field original_value? string
 ---@field suit_nominal_original? number
-
-
----@alias BALATRO.Card.Seal string | number
-
-
----@alias BALATRO.Card.Ability.Set string | "Joker" | "Booster" | "Tarot" | "Planet" | "Edition" | "Spectral" | "Voucher" | "Default" | "Enhanced" | "Base" | "Tarot_Planet"
 
 
 ---@class BALATRO.Card.Ability
@@ -163,6 +158,9 @@
 ---@field bypass_lock? boolean
 
 
+---@class BALATRO.Card.AbilityUIBoxTable
+
+
 ---@class BALATRO.Card : BALATRO.Card.Class, BALATRO.Card.Params
 ---@field params BALATRO.Card.Params
 ---@field config BALATRO.Card.Config
@@ -197,7 +195,7 @@
 ---@field mouse_damping number
 ---@field seal? BALATRO.Card.Seal
 ---@field eternal? boolean
----@field ability_UIBox_table? UINode[]
+---@field ability_UIBox_table? BALATRO.Card.AbilityUIBoxTable
 ---@field vampired? boolean
 ---@field lucky_trigger? boolean
 ---@field opening? boolean
@@ -219,6 +217,7 @@
 ---@field removed? boolean
 ---@field jimbo? BALATRO.Card_Character
 ---@field from_tag? boolean
+---@field temp_edition? boolean
 local Card = {}
 
 
@@ -240,8 +239,8 @@ local Card = {}
 ---@field change_suit fun(self: BALATRO.Card, new_suit?: string)
 ---@field add_to_deck fun(self: BALATRO.Card, from_debuff?: boolean)
 ---@field remove_from_deck fun(self: BALATRO.Card, from_debuff?: boolean)
----@field generate_UIBox_unlock_table fun(self: BALATRO.Card, hidden?: boolean) : UINode[]
----@field generate_UIBox_ability_table fun(self: BALATRO.Card): UINode[]
+---@field generate_UIBox_unlock_table fun(self: BALATRO.Card, hidden?: boolean) : BALATRO.UI.Node[]
+---@field generate_UIBox_ability_table fun(self: BALATRO.Card): BALATRO.UI.Node[]
 ---@field get_nominal fun(self: BALATRO.Card, mod?: string): number
 ---@field get_id fun(self: BALATRO.Card): number
 ---@field is_face fun(self: BALATRO.Card, from_boss?: boolean): boolean?
@@ -252,7 +251,7 @@ local Card = {}
 ---@field get_chip_h_mult fun(self: BALATRO.Card): number
 ---@field get_chip_h_x_mult fun(self: BALATRO.Card): number
 ---@field get_edition fun(self: BALATRO.Card): BALATRO.Card.Edition.Ret?
----@field get_end_of_round_effect fun(self: BALATRO.Card, context?: BALATRO.Calc.Context)
+---@field get_end_of_round_effect fun(self: BALATRO.Card, context?: BALATRO.Calc.Context): BALATRO.Calc.Eval
 ---@field get_p_dollars fun(self: BALATRO.Card): number
 ---@field use_consumeable fun(self: BALATRO.Card, area: BALATRO.CardArea, copier?: BALATRO.Card): nil?
 ---@field can_use_consumeable fun(self: BALATRO.Card, any_state?: boolean, skip_check?: boolean): boolean
@@ -266,10 +265,10 @@ local Card = {}
 ---@field start_materialize fun(self: BALATRO.Card, dissolve_colours?: BALATRO.UI.Colour[], silent?: boolean, timefac?: number)
 ---@field shatter fun(self: BALATRO.Card)
 ---@field start_dissolve fun(self: BALATRO.Card, dissolve_colours?: BALATRO.UI.Colour[], silent?: boolean, dissolve_time_fac?: number, no_juice?: boolean)
----@field calculate_seal fun(self: BALATRO.Card, context?: BALATRO.Calc.Context): BALATRO.Calc.Ret?
+---@field calculate_seal fun(self: BALATRO.Card, context?: BALATRO.Calc.Context): BALATRO.Calc.Eval?
 ---@field calculate_rental fun(self: BALATRO.Card)
 ---@field calculate_perishable fun(self: BALATRO.Card)
----@field calculate_joker fun(self: BALATRO.Card, context?: BALATRO.Calc.Context): BALATRO.Calc.Ret?
+---@field calculate_joker fun(self: BALATRO.Card, context?: BALATRO.Calc.Context): boolean | BALATRO.Calc.Eval?
 ---@field is_suit fun(self: BALATRO.Card, suit?: string, bypass_debuff?: boolean, flush_calc?: boolean): boolean?
 ---@field set_card_area fun(self: BALATRO.Card, area?: BALATRO.CardArea)
 ---@field remove_from_area fun(self: BALATRO.Card)

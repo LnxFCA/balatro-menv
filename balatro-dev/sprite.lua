@@ -18,7 +18,7 @@
 ---@field shadow_height? number
 ---@field send? BALATRO.Sprite.DrawStep.Send[]
 ---@field no_tilt? boolean
----@field other_obj? BALATRO.UI.Object
+---@field other_obj? BALATRO.UIObject
 ---@field ms? number
 ---@field mr? number
 ---@field mx? number
@@ -60,7 +60,7 @@ local Sprite = {}
 ---@field define_draw_steps fun(self: BALATRO.Sprite, steps: BALATRO.Sprite.DrawStep[])
 ---@field draw_self fun(self: BALATRO.Sprite, overlay?: BALATRO.UI.Colour)
 ---@field draw fun(self: BALATRO.Sprite, overlay?: BALATRO.UI.Colour)
----@field draw_from fun(self: BALATRO.Sprite, other_obj: BALATRO.UI.Object, ms?: number, mr?: number, mx?: number, my?: number)
+---@field draw_from fun(self: BALATRO.Sprite, other_obj: BALATRO.UIObject, ms?: number, mr?: number, mx?: number, my?: number)
 ---@field hover fun(self: BALATRO.Sprite)
 ---@field stop_hover fun(self: BALATRO.Sprite)
 

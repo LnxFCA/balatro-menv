@@ -8,6 +8,7 @@
 
 
 ---@alias BALATRO.Hand.Example [string, boolean]
+---@alias BALATRO.Hand.Eval BALATRO.Card[][]
 
 
 ---@class BALATRO.PokerHand

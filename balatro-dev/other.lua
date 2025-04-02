@@ -199,6 +199,13 @@
 ---@field sx number
 
 
+---@class BALATRO.ARGS.EventManagerUpdate
+---@field blocking? boolean
+---@field completed? boolean
+---@field time_done? boolean
+---@field pause_skip? boolean
+
+
 ---@class BALATRO.ARGS
 ---@field collides_with_point_point BALATRO.Node.Point
 ---@field collides_with_point_translation BALATRO.Node.Point
@@ -224,6 +231,8 @@
 ---@field spin BALATRO.ARGS.Spin
 ---@field HIGH_SCORE_RESPONSE? unknown
 ---@field eased_cursor_pos? BALATRO.ARGS.EasedCursorPos
+---@field voucher_tag? table<string, boolean>
+---@field event_manager_update BALATRO.ARGS.EventManagerUpdate
 
 
 ---@class BALATRO.Sandbox.Base
@@ -414,3 +423,16 @@
 ---@field game_chips BALATRO.UIElement
 ---@field blind_chips BALATRO.UIElement
 ---@field blind_spacer BALATRO.UIElement
+
+
+------------------------------------------------------------------------------
+-- OTHER
+------------------------------------------------------------------------------
+
+---@alias BALATRO.SavedGame BALATRO.SavedGame.Base | BALATRO.SavedGame.Extra
+
+
+---@class BALATRO.SavedGame.Base
+
+
+---@class BALATRO.SavedGame.Extra

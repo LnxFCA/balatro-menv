@@ -22,7 +22,7 @@
 ---@class BALATRO.Particles.Config.Arg
 ---@field fill? boolean
 ---@field padding? number
----@field attach? BALATRO.UI.Object
+---@field attach? BALATRO.UIObject
 ---@field timer? number
 ---@field lifespan? number
 ---@field timer_type? string | "REAL"
@@ -38,7 +38,7 @@
 ---@class BALATRO.Particles : BALATRO.Particles.Class
 ---@field fill? boolean
 ---@field padding number
----@field parent BALATRO.UI.Object
+---@field parent BALATRO.UIObject
 ---@field timer number
 ---@field timer_type string | "REAL"
 ---@field last_real_time number

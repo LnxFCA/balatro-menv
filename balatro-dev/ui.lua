@@ -5,6 +5,7 @@
 ---@alias BALATRO.Colours BALATRO.Colours.Base | BALATRO.Colours.Extra
 ---@alias BALATRO.UIT.Key string | "T" | "B" | "C" | "R" | "O" | "ROOT" | "S" | "I" | "padding"
 ---@alias BALATRO.UIT number | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
+---@alias BALATRO.UI.Node BALATRO.UI.Node.BASE | BALATRO.UI.Node.ROOT
 
 ---@alias BALATRO.SHADERS BALATRO.SHADERS.Base | table<BALATRO.SHADERS.Key, love.Shader>
 ---@alias BALATRO.SHADERS.Key string
@@ -184,3 +185,14 @@
 ---@field splash love.Shader
 ---@field vortex love.Shader
 ---@field voucher love.Shader
+
+
+---@class BALATRO.UI.Node.BASE
+---@field n BALATRO.UIT
+---@field config BALATRO.UI.Config
+---@field nodes? BALATRO.UI.Node[]
+
+
+---@class BALATRO.UI.Node.ROOT
+---@field n BALATRO.UIT
+---@field config BALATRO.UI.Config

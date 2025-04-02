@@ -48,7 +48,7 @@
 ---@field start? number
 ---@field width? number
 
----@class BALATRO.DynaText.Config : BALATRO.UI.Definition.Config.ContainerT
+---@class BALATRO.DynaText.Config : BALATRO.UI.Config.C
 ---@field pop_in_rate? number
 ---@field bump_rate? number
 ---@field bump_amount? number

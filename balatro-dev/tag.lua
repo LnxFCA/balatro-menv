@@ -31,10 +31,10 @@ local Tag = {}
 ---@field nope fun(self: BALATRO.Tag)
 ---@field yep fun(self: BALATRO.Tag, message?: string, colour?: BALATRO.UI.Colour, func?: function)
 ---@field set_ability fun(self: BALATRO.Tag)
----@field apply_to_run fun(self: BALATRO.Tag, context: BALATRO.Calc.Context)
+---@field apply_to_run fun(self: BALATRO.Tag, context: BALATRO.Calc.Tag): BALATRO.Calc.Tag.Eval?
 ---@field save fun(self: BALATRO.Tag): BALATRO.Tag.SaveTable
 ---@field load fun(self: BALATRO.Tag, save_table: BALATRO.Tag.SaveTable)
----@field generate_UI fun(self: BALATRO.Tag, size?: number): UINode.Container, BALATRO.Sprite
+---@field generate_UI fun(self: BALATRO.Tag, size?: number): BALATRO.UI.Node, BALATRO.Sprite
 ---@field juice_up fun(self: BALATRO.Tag, scale?: number, rotation?: number)
 ---@field get_uibox_table fun(self: BALATRO.Tag, tag_sprite?: BALATRO.Sprite): BALATRO.Sprite
 ---@field remove_from_game fun(self: BALATRO.Tag)

@@ -57,24 +57,8 @@
 ---@field showdown? boolean
 
 
----@class BALATRO.Blind.Center
----@field name string
----@field defeated boolean
----@field order number
----@field dollars number
----@field mult number
----@field key? string
----@field debuff? BALATRO.Blind.Debuff
----@field pos BALATRO.Node.Point
----@field boss? BALATRO.Blind.Boss
----@field alerted? boolean
----@field discovered? boolean
----@field vars? table<number, string | number>
----@field boss_colour? BALATRO.UI.Colour
-
-
 ---@class BALATRO.Blind.Config
----@field blind BALATRO.Blind.Center
+---@field blind BALATRO.Prototype.Blind
 ---@field h_popup_config? BALATRO.UIBox.Config
 
 
@@ -142,7 +126,7 @@ Blind.init = function(self, X, Y, W, H) end
 
 --- Set Blind
 ---@param self BALATRO.Blind
----@param blind? BALATRO.Blind.Center
+---@param blind? BALATRO.Prototype.Blind
 ---@param reset? boolean
 ---@param silent? boolean
 Blind.set_blind = function(self, blind, reset, silent) end

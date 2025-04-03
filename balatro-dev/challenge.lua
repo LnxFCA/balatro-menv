@@ -57,3 +57,4 @@
 ---@field consumeables BALATRO.Challenge.ItemBase[]
 ---@field vouchers BALATRO.Challenge.ItemBase[]
 ---@field restrictions BALATRO.Challenge.Restrictions
+---@field deck? BALATRO.Challenge.Deck

@@ -52,3 +52,9 @@ _G.prep_draw = function(moveable, scale, rotate, offset, _) end
 
 
 _G.jit = {}
+_G.G.ARGS = {}
+_G.G.SETTINGS = {}
+_G.G.GAME = {}
+_G.G.GAME.modifiers = {}
+_G.G.GAME.starting_params = {}
+_G.G.GAME.current_round = {}

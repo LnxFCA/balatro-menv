@@ -11,6 +11,7 @@
 ---@alias BALATRO.UIObject.UI BALATRO.UIBox | BALATRO.UIElement
 ---@alias BALATRO.UIObject.Sprite BALATRO.Sprite | BALATRO.AnimatedSprite
 ---@alias BALATRO.UIObejct.BaseUI BALATRO.Node | BALATRO.Moveable | BALATRO.UIBox | BALATRO.UIElement
+---@alias BALATRO.ARGS BALATRO.ARGS.Base | BALATRO.ARGS.Extra | BALATRO.ARGS.Empty
 
 
 ---@alias BALATRO.UIObject
@@ -134,6 +135,7 @@
 ---@field skip_splash? string | boolean
 ---@field tutorial_complete? boolean
 ---@field perf_mode? boolean
+---@field current_setup? string
 
 
 ---@class BALATRO.Instances
@@ -206,7 +208,12 @@
 ---@field pause_skip? boolean
 
 
----@class BALATRO.ARGS
+---@class BALATRO.ARGS.FocusList
+---@field node BALATRO.UIObject
+---@field dist? number
+
+
+---@class BALATRO.ARGS.Base
 ---@field collides_with_point_point BALATRO.Node.Point
 ---@field collides_with_point_translation BALATRO.Node.Point
 ---@field collides_with_point_rotation BALATRO.Node.Rotation
@@ -230,9 +237,20 @@
 ---@field save_metrics? BALATRO.Game.METRICS
 ---@field spin BALATRO.ARGS.Spin
 ---@field HIGH_SCORE_RESPONSE? unknown
+---@field event_manager_update BALATRO.ARGS.EventManagerUpdate
+
+
+---@class BALATRO.ARGS.Extra
 ---@field eased_cursor_pos? BALATRO.ARGS.EasedCursorPos
 ---@field voucher_tag? table<string, boolean>
----@field event_manager_update BALATRO.ARGS.EventManagerUpdate
+---@field gamepad_patterns? table<string, string[]>
+---@field focus_list BALATRO.ARGS.FocusList[]
+---@field focusables BALATRO.UIObject[]
+---@field focus_cursor_pos BALATRO.Node.Point
+---@field focus_vec BALATRO.Node.Point
+
+
+---@class BALATRO.ARGS.Empty
 
 
 ---@class BALATRO.Sandbox.Base
@@ -430,9 +448,30 @@
 ------------------------------------------------------------------------------
 
 ---@alias BALATRO.SavedGame BALATRO.SavedGame.Base | BALATRO.SavedGame.Extra
+---@alias BALATRO.Seed string | number
+
+
+---@class BALATRO.SavedGame.Action
+---@field card? number
+
+
+---@class BALATRO.SavedGame.CardAreas
+---@field shop_jokers? BALATRO.CardArea.SaveTable
+---@field shop_boosters? BALATRO.CardArea.SaveTable
+---@field shop_vouchers? BALATRO.CardArea.SaveTable
+---@field jokers? BALATRO.CardArea.SaveTable
+---@field consumeables? BALATRO.CardArea.SaveTable
+---@field hand? BALATRO.CardArea.SaveTable
 
 
 ---@class BALATRO.SavedGame.Base
+---@field GAME? BALATRO.GameObject
+---@field STATE? number
+---@field BLIND? BALATRO.Blind.SaveTable
+---@field BACK? BALATRO.Back.SaveTable
+---@field ACTION? BALATRO.SavedGame.Action
 
 
 ---@class BALATRO.SavedGame.Extra
+---@field cardAreas? BALATRO.SavedGame.CardAreas
+---@field tags? BALATRO.Tag.SaveTable[]

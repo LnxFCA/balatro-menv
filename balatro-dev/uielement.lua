@@ -3,6 +3,7 @@
 
 ---@alias BALATRO.UIElement.Vertice { vertices: number[] }
 ---@alias BALATRO.UI.Config.FocusArgs.Type string | "none" | "tab" | "cycle" | "slide"
+---@alias BALATRO.UI.Config.FocusArgs BALATRO.UI.Config.FocusArgs.Base | BALATRO.UI.Config.FocusArgs.Extra
 
 
 ---@class BALATRO.UIElement.Parallax
@@ -24,16 +25,20 @@
 ---@field line_emboss BALATRO.UIElement.Vertice
 
 
----@class BALATRO.UI.Config.FocusArgs
+---@class BALATRO.UI.Config.FocusArgs.Base
 ---@field button? BALATRO.Controller.Button
----@field registered? boolean
----@field snap_to? boolean
----@field funnel_to? boolean | BALATRO.UIElement
----@field funnel_from? BALATRO.UIElement
 ---@field type? BALATRO.UI.Config.FocusArgs.Type
 ---@field set_button_pip? boolean
 ---@field orientation? string
+
+
+---@class BALATRO.UI.Config.FocusArgs.Extra
+---@field snap_to boolean
+---@field funnel_to boolean | BALATRO.UIElement
+---@field funnel_from BALATRO.UIElement
 ---@field no_loop? boolean
+---@field registered? boolean
+---@field nav? string
 
 
 ---@class BALATRO.UI.Config.ProgressBar

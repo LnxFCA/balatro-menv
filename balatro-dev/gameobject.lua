@@ -35,6 +35,9 @@
 ---@field inflation? number
 ---@field minus_hand_size_per_X_dollar? number
 ---@field flipped_cards? number
+---@field no_interest? boolean
+---@field money_per_hand? number
+---@field money_per_discard? number
 
 
 ---@class BALATRO.GameObject.StartParams
@@ -48,6 +51,7 @@
 ---@field erratic_suits_and_ranks? boolean
 ---@field no_faces? boolean
 ---@field extra_cards? table[]
+---@field ante_scaling? number
 
 
 ---@class BALATRO.GameObject.Probabilities
@@ -221,3 +225,6 @@
 ---@field facing_blind? boolean
 ---@field shop_free? boolean
 ---@field shop_d6ed? boolean
+---@field last_blind? BALATRO.Prototype.Blind
+---@field dollar_buffer number
+---@field pack_choices number

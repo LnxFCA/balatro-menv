@@ -78,6 +78,7 @@
 ---@field handlist BALATRO.HandList
 ---@field button_mapping BALATRO.ButtonMapping
 ---@field keybind_mapping BALATRO.KeybindMapping[]
+---@field CHALLENGES BALATRO.Challenge[]
 
 
 ---@class BALATRO.Game : BALATRO.Game.Class, BALATRO.Game.Globals
@@ -211,6 +212,27 @@
 ---@field shared_shadow? BALATRO.Sprite
 ---@field from_boss_tag? boolean
 ---@field orbital_hand? BALATRO.Hand.Type
+---@field DEADZONE? number
+---@field debug_UI_toggle? boolean
+---@field debug_splash_size_toggle? boolean
+---@field debug_tooltip_toggle? boolean
+---@field prof? table<string, any>
+---@field run_setup_seed? boolean
+---@field challenge_tab? BALATRO.Challenge
+---@field forced_seed? BALATRO.Seed
+---@field setup_seed? BALATRO.Seed
+---@field forced_stake? number
+---@field ID? number
+---@field jimboed? boolean
+---@field shop_jokers BALATRO.CardArea
+---@field shop_booster BALATRO.CardArea
+---@field shop_vouchers BALATRO.CardArea
+---@field SHOP_SIGN? BALATRO.UIBox
+---@field debug_background_toggle? boolean
+---@field debug_tool_config? table<unknown, unknown>
+---@field DT_jimbo? BALATRO.Card_Character
+---@field your_collection? table<number, BALATRO.CardArea>
+---@field sticker_card BALATRO.Card
 local Game = {}
 
 
@@ -234,7 +256,6 @@ local Game = {}
 ---@field main_menu fun(self: BALATRO.Game, change_context?: string)
 ---@field demo_cta fun(self: BALATRO.Game)
 ---@field init_game_object fun(self: BALATRO.Game): BALATRO.GameObject
----@field start_run fun(self: BALATRO.Game, args?: BALATRO.Game.RunArgs)
 ---@field update fun(self: BALATRO.Game, dt: number)
 ---@field draw fun(self: BALATRO.Game)
 ---@field state_col fun(self: BALATRO.Game, state: number): number, number, number, number
@@ -254,6 +275,11 @@ local Game = {}
 ---@field update_game_over fun(self: BALATRO.Game, dt?: number)
 ---@field update_menu fun(self: BALATRO.Game, dt?: number)
 
+
+---@overload fun(self: BALATRO.Game, args?: BALATRO.Game.RunArgs)
+---@param self BALATRO.Game
+---@param args BALATRO.Game.RunArgs
+Game.start_run = function(self, args) end
 
 --- `Game()` - Creates a new [Game](lua://BALATRO.Game) object
 ---@return BALATRO.Game

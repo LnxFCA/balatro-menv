@@ -54,6 +54,7 @@ Card_Character.add_button = function(self, button, func, colour, update_func, sn
 
 
 --- Add a speech bubble to `Card_Character` object
+---@overload fun(sefl: BALATRO.Card_Character, text_key: string[], align?: BALATRO.UI.Align, loc_vars?: unknown[])
 ---@param self BALATRO.Card_Character
 ---@param text_key string
 ---@param align? BALATRO.UI.Align

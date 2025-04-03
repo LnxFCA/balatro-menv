@@ -37,6 +37,6 @@ local Sprite = {}
 ---@param W? number
 ---@param H? number
 ---@param new_sprite_atlas BALATRO.Atlas.Animation
----@param sprite_pos BALATRO.Sprite.Position
+---@param sprite_pos BALATRO.Sprite.Position?
 ---@return BALATRO.AnimatedSprite
 _G.AnimatedSprite = function(X, Y, W, H, new_sprite_atlas, sprite_pos) end

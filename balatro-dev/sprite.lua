@@ -72,7 +72,7 @@ local Sprite = {}
 ---@param W? number
 ---@param H? number
 ---@param new_sprite_atlas BALATRO.Atlas
----@param sprite_pos BALATRO.Sprite.Position
+---@param sprite_pos BALATRO.Sprite.Position?
 Sprite.init = function(self, X, Y, W, H, new_sprite_atlas, sprite_pos) end
 
 
@@ -98,6 +98,6 @@ Sprite.draw_shader = function(self, shader, shadow_height, send, no_tilt, other_
 ---@param W? number
 ---@param H? number
 ---@param new_sprite_atlas BALATRO.Atlas.Asset
----@param sprite_pos BALATRO.Sprite.Position
+---@param sprite_pos BALATRO.Sprite.Position?
 ---@return BALATRO.Sprite
 _G.Sprite = function(X, Y, W, H, new_sprite_atlas, sprite_pos) end

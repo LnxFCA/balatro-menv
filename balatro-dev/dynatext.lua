@@ -73,7 +73,7 @@
 ---@field random_element? boolean
 ---@field min_cycle_time? number
 ---@field pitch_shift? number
----@field rotate? number
+---@field rotate? number | boolean
 ---@field pulse? BALATRO.DynaText.Config.Pulse
 ---@field quiver? BALATRO.DynaText.Config.Quiver
 ---@field float? boolean

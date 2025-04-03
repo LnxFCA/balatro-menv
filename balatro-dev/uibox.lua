@@ -43,7 +43,6 @@ local UIBox = {}
 
 ---@class BALATRO.UIBox.Class : BALATRO.Moveable.Super
 ---@field init fun(self: BALATRO.UIBox, args: BALATRO.UIBox.Arguments)
----@field get_UIE_by_ID fun(self: BALATRO.UIBox, id: string, node?: BALATRO.UIElement): BALATRO.UIElement | nil
 ---@field calculate_xywh fun(self: BALATRO.UIBox, node: BALATRO.UIElement, T: BALATRO.Node.Transform, recalculate?: boolean, scale?: number): number, number
 ---@field remove_group fun(self: BALATRO.UIBox, node?: BALATRO.UIElement, group?: number): boolean | nil
 ---@field get_group fun(self: BALATRO.UIBox, node?: BALATRO.UIElement, group?: number, ingroup?: BALATRO.UIElement[]): BALATRO.UIElement[]
@@ -56,6 +55,16 @@ local UIBox = {}
 ---@field add_child fun(self: BALATRO.UIBox, node: BALATRO.UI.Node, parent?: BALATRO.UIElement)
 ---@field set_container fun(self: BALATRO.UIBox, container: BALATRO.UIObject)
 ---@field print_topology fun(self: BALATRO.UIBox, indent?: number): string
+
+
+--- Get specific Node from UI tree matching `id`
+---@overload fun(self: BALATRO.UIBox, id: string): BALATRO.UIElement
+---@overload fun(self: BALATRO.UIBox, id: string, node?: BALATRO.UIElement): BALATRO.UIElement
+---@param self BALATRO.UIBox
+---@param id string
+---@param node BALATRO.UIElement
+---@return BALATRO.UIElement
+UIBox.get_UIE_by_ID = function(self, id, node) end
 
 
 --- `UIBox()` - Creates a new instance of [Moveable](lua://BALATRO.UIBox).

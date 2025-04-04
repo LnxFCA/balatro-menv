@@ -38,6 +38,8 @@
 ---@field UIRoot BALATRO.UIElement
 ---@field attention_text? boolean
 ---@field highlights? BALATRO.UIElement[]
+---@field step_complete? boolean
+---@field step? number
 local UIBox = {}
 
 

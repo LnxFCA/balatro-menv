@@ -136,6 +136,7 @@
 ---@field tutorial_complete? boolean
 ---@field perf_mode? boolean
 ---@field current_setup? string
+---@field screen_res? BALATRO.UI.Resolution
 
 
 ---@class BALATRO.Instances

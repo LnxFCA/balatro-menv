@@ -450,6 +450,7 @@
 
 ---@alias BALATRO.SavedGame BALATRO.SavedGame.Base | BALATRO.SavedGame.Extra
 ---@alias BALATRO.Seed string | number
+---@alias BALATRO.DiscoverTallies BALATRO.DiscoverTallies.Base | table<string, BALATRO.DiscoverTally>
 
 
 ---@class BALATRO.SavedGame.Action
@@ -476,3 +477,23 @@
 ---@class BALATRO.SavedGame.Extra
 ---@field cardAreas? BALATRO.SavedGame.CardAreas
 ---@field tags? BALATRO.Tag.SaveTable[]
+
+
+---@class BALATRO.DiscoverTally
+---@field tally number
+---@field of number
+
+
+---@class BALATRO.DiscoverTallies.Base
+---@field blinds BALATRO.DiscoverTally
+---@field tags BALATRO.DiscoverTally
+---@field jokers BALATRO.DiscoverTally
+---@field consumeables BALATRO.DiscoverTally
+---@field tarots BALATRO.DiscoverTally
+---@field planets BALATRO.DiscoverTally
+---@field spectrals BALATRO.DiscoverTally
+---@field vouchers BALATRO.DiscoverTally
+---@field boosters BALATRO.DiscoverTally
+---@field editions BALATRO.DiscoverTally
+---@field backs BALATRO.DiscoverTally
+---@field total BALATRO.DiscoverTally

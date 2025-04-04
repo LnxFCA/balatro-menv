@@ -233,6 +233,7 @@
 ---@field DT_jimbo? BALATRO.Card_Character
 ---@field your_collection? table<number, BALATRO.CardArea>
 ---@field sticker_card BALATRO.Card
+---@field DISCOVER_TALLIES? BALATRO.DiscoverTallies
 local Game = {}
 
 

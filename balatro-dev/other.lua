@@ -450,7 +450,8 @@
 
 ---@alias BALATRO.SavedGame BALATRO.SavedGame.Base | BALATRO.SavedGame.Extra
 ---@alias BALATRO.Seed string | number
----@alias BALATRO.DiscoverTallies BALATRO.DiscoverTallies.Base | table<string, BALATRO.DiscoverTally>
+---@alias BALATRO.DISCOVER_TALLIES BALATRO.DISCOVER_TALLIES.Base | table<string, BALATRO.ProgressTally>
+---@alias BALATRO.PROGRESS BALATRO.PROGRESS.Base | table<string, BALATRO.ProgressTally>
 
 
 ---@class BALATRO.SavedGame.Action
@@ -479,21 +480,27 @@
 ---@field tags? BALATRO.Tag.SaveTable[]
 
 
----@class BALATRO.DiscoverTally
+---@class BALATRO.ProgressTally
 ---@field tally number
 ---@field of number
 
 
----@class BALATRO.DiscoverTallies.Base
----@field blinds BALATRO.DiscoverTally
----@field tags BALATRO.DiscoverTally
----@field jokers BALATRO.DiscoverTally
----@field consumeables BALATRO.DiscoverTally
----@field tarots BALATRO.DiscoverTally
----@field planets BALATRO.DiscoverTally
----@field spectrals BALATRO.DiscoverTally
----@field vouchers BALATRO.DiscoverTally
----@field boosters BALATRO.DiscoverTally
----@field editions BALATRO.DiscoverTally
----@field backs BALATRO.DiscoverTally
----@field total BALATRO.DiscoverTally
+---@class BALATRO.DISCOVER_TALLIES.Base
+---@field blinds BALATRO.ProgressTally
+---@field tags BALATRO.ProgressTally
+---@field jokers BALATRO.ProgressTally
+---@field consumeables BALATRO.ProgressTally
+---@field tarots BALATRO.ProgressTally
+---@field planets BALATRO.ProgressTally
+---@field spectrals BALATRO.ProgressTally
+---@field vouchers BALATRO.ProgressTally
+---@field boosters BALATRO.ProgressTally
+---@field editions BALATRO.ProgressTally
+---@field backs BALATRO.ProgressTally
+---@field total BALATRO.ProgressTally
+
+
+---@class BALATRO.PROGRESS.Base
+---@field joker_stickers BALATRO.ProgressTally
+---@field deck_stakes BALATRO.ProgressTally
+---@field challenges BALATRO.ProgressTally

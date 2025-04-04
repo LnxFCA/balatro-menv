@@ -60,7 +60,7 @@
 ---@field TAROT_INTERRUPT? number
 ---@field STATE_COMPLETE boolean
 ---@field ARGS BALATRO.ARGS
----@field FUNCS BALATRO.FUNCS.Type
+---@field FUNCS BALATRO.FUNCS
 ---@field I BALATRO.Instances
 ---@field ANIMATION_ATLAS BALATRO.Game.Atlas.Animation
 ---@field ASSET_ATLAS BALATRO.Game.Atlas.Asset
@@ -233,7 +233,9 @@
 ---@field DT_jimbo? BALATRO.Card_Character
 ---@field your_collection? table<number, BALATRO.CardArea>
 ---@field sticker_card BALATRO.Card
----@field DISCOVER_TALLIES? BALATRO.DiscoverTallies
+---@field DISCOVER_TALLIES? BALATRO.DISCOVER_TALLIES
+---@field PROGRESS? BALATRO.PROGRESS
+---@field CHECK_PROFILE_DATA? { type: love.FileType, size: number, modtime: number } | boolean
 local Game = {}
 
 

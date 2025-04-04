@@ -3,6 +3,7 @@
 
 ---@alias BALATRO.Profile.Usage table<string, BALATRO.Profile.Usage.Item>
 ---@alias BALATRO.Profile.Usage.Joker table<string, BALATRO.Profile.Usage.Joker.Item>
+---@alias BALATRO.Profile BALATRO.Profile.Base
 
 
 ---@class BALATRO.Profile.ScoresItem
@@ -105,7 +106,7 @@
 ---@class BALATRO.Profile.ChallengeProgress
 
 
----@class BALATRO.Profile
+---@class BALATRO.Profile.Base
 ---@field high_scores BALATRO.Profile.HighScores
 ---@field voucher_usage BALATRO.Profile.Usage
 ---@field deck_usage BALATRO.Profile.Usage.Deck
@@ -119,3 +120,4 @@
 ---@field joker_usage BALATRO.Profile.Usage.Joker
 ---@field name string
 ---@field challenge_progress BALATRO.Profile.ChallengeProgress
+---@field all_unlocked? boolean

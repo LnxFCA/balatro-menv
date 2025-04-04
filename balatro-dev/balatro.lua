@@ -58,3 +58,4 @@ _G.G.GAME = {}
 _G.G.GAME.modifiers = {}
 _G.G.GAME.starting_params = {}
 _G.G.GAME.current_round = {}
+_G.G.CONTROLLER = {}

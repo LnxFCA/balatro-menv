@@ -132,6 +132,7 @@
 ---@field d_popup? BALATRO.UI.Node.ROOT
 ---@field d_popup_config? BALATRO.UIBox.Config
 ---@field refresh_movement? boolean
+---@field set? boolean
 
 
 ---@class BALATRO.UIElement : BALATRO.UIElement.Class

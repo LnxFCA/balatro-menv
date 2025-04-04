@@ -43,6 +43,7 @@ local Back = {}
 ---@param ui_scale? number
 ---@param min_dims? number
 ---@param challenge? BALATRO.Challenge
+---@return BALATRO.UI.Node
 Back.generate_UI = function(self, other, ui_scale, min_dims, challenge) end
 
 

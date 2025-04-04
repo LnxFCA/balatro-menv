@@ -236,6 +236,8 @@
 ---@field DISCOVER_TALLIES? BALATRO.DISCOVER_TALLIES
 ---@field PROGRESS? BALATRO.PROGRESS
 ---@field CHECK_PROFILE_DATA? { type: love.FileType, size: number, modtime: number } | boolean
+---@field viewed_stake number
+---@field viewed_collab? string
 local Game = {}
 
 

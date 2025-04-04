@@ -191,7 +191,7 @@ local Controller = {}
 ---@field button_press_update fun(self: BALATRO.Controller, button: BALATRO.Controller.Button, dt: number)
 ---@field button_hold_update fun(self: BALATRO.Controller, button: BALATRO.Controller.Button, dt: number)
 ---@field button_release_update fun(self: BALATRO.Controller, button: BALATRO.Controller.Button, dt?: number)
----@field key_press_update fun(self: BALATRO.Controller, key: BALATRO.Controller.Key, dt: number)
+---@field key_press_update fun(self: BALATRO.Controller, key: BALATRO.Controller.Key, dt?: number)
 ---@field key_hold_update fun(self: BALATRO.Controller, key: BALATRO.Controller.Key, dt: number)
 ---@field key_release_update fun(self: BALATRO.Controller, key: BALATRO.Controller.Key, dt?: number)
 ---@field key_press fun(self: BALATRO.Controller, key: BALATRO.Controller.Key)

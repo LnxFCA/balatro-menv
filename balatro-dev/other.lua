@@ -12,6 +12,7 @@
 ---@alias BALATRO.UIObject.Sprite BALATRO.Sprite | BALATRO.AnimatedSprite
 ---@alias BALATRO.UIObejct.BaseUI BALATRO.Node | BALATRO.Moveable | BALATRO.UIBox | BALATRO.UIElement
 ---@alias BALATRO.ARGS BALATRO.ARGS.Base | BALATRO.ARGS.Extra | BALATRO.ARGS.Empty
+---@alias BALATRO.Settings.WINDOW.Display BALATRO.Settings.WINDOW.Display.Base | BALATRO.Settings.WINDOW.Display.Extra
 
 
 ---@alias BALATRO.UIObject
@@ -59,10 +60,18 @@
 ---@field music_volume number
 ---@field game_sounds_volume number
 
+---@class BALATRO.Settings.WINDOW.Display.ScreenResolution
+---@field strings string[]
+---@field values BALATRO.UI.Resolution
 
----@class BALATRO.Settings.WINDOW.Display
+
+---@class BALATRO.Settings.WINDOW.Display.Base
 ---@field name string
 ---@field screen_res BALATRO.UI.Resolution
+
+
+---@class BALATRO.Settings.WINDOW.Display.Extra
+---@field screen_resolutions BALATRO.Settings.WINDOW.Display.ScreenResolution
 
 
 ---@class BALATRO.Settings.WINDOW
@@ -249,6 +258,7 @@
 ---@field focusables BALATRO.UIObject[]
 ---@field focus_cursor_pos BALATRO.Node.Point
 ---@field focus_vec BALATRO.Node.Point
+---@field screenmode_vals BALATRO.Settings.WINDOW.Screenmode[]
 
 
 ---@class BALATRO.ARGS.Empty

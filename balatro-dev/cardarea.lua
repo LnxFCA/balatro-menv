@@ -81,9 +81,11 @@ CardArea.emplace = function(self, card, location, stay_flipped) end
 
 
 --- Remove a matching Card object from the CardArea
+---@overload fun(self: BALATRO.CardArea, card: BALATRO.Card, discarded_only?: boolean): BALATRO.Card
 ---@param self BALATRO.CardArea
 ---@param card? BALATRO.Card
 ---@param discarded_only? boolean
+---@return BALATRO.Card?
 CardArea.remove_card = function(self, card, discarded_only) end
 
 

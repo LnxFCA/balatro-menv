@@ -72,6 +72,8 @@
 
 ---@class BALATRO.Settings.WINDOW.Display.Extra
 ---@field screen_resolutions BALATRO.Settings.WINDOW.Display.ScreenResolution
+---@field DPI_scale number
+---@field MONITOR_DIMS { width: number, height: number }
 
 
 ---@class BALATRO.Settings.WINDOW
@@ -223,6 +225,31 @@
 ---@field dist? number
 
 
+---@class BALATRO.ARGS.LocColours
+---@field red BALATRO.UI.Colour
+---@field mult BALATRO.UI.Colour
+---@field blue BALATRO.UI.Colour
+---@field chips BALATRO.UI.Colour
+---@field green BALATRO.UI.Colour
+---@field money BALATRO.UI.Colour
+---@field gold BALATRO.UI.Colour
+---@field attention BALATRO.UI.Colour
+---@field purple BALATRO.UI.Colour
+---@field white BALATRO.UI.Colour
+---@field inactive BALATRO.UI.Colour
+---@field spades BALATRO.UI.Colour
+---@field hearts BALATRO.UI.Colour
+---@field clubs BALATRO.UI.Colour
+---@field diamonds BALATRO.UI.Colour
+---@field tarot BALATRO.UI.Colour
+---@field planet BALATRO.UI.Colour
+---@field spectral BALATRO.UI.Colour
+---@field edition BALATRO.UI.Colour
+---@field dark_edition BALATRO.UI.Colour
+---@field legendary BALATRO.UI.Colour
+---@field enhanced BALATRO.UI.Colour
+
+
 ---@class BALATRO.ARGS.Base
 ---@field collides_with_point_point BALATRO.Node.Point
 ---@field collides_with_point_translation BALATRO.Node.Point
@@ -259,6 +286,9 @@
 ---@field focus_cursor_pos BALATRO.Node.Point
 ---@field focus_vec BALATRO.Node.Point
 ---@field screenmode_vals BALATRO.Settings.WINDOW.Screenmode[]
+---@field bt number
+---@field save_run? BALATRO.SavedGame
+---@field LOC_COLOURS BALATRO.ARGS.LocColours
 
 
 ---@class BALATRO.ARGS.Empty
@@ -465,6 +495,7 @@
 
 
 ---@class BALATRO.SavedGame.Action
+---@field type? string
 ---@field card? number
 
 
@@ -483,6 +514,7 @@
 ---@field BLIND? BALATRO.Blind.SaveTable
 ---@field BACK? BALATRO.Back.SaveTable
 ---@field ACTION? BALATRO.SavedGame.Action
+---@field VERSION? BALATRO.VersionType
 
 
 ---@class BALATRO.SavedGame.Extra

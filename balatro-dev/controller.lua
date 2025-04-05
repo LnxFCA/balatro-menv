@@ -26,6 +26,7 @@
 ---@field seal? boolean
 ---@field selling_card? boolean
 ---@field load? boolean
+---@field no_space? boolean
 
 
 ---@class BALATRO.Controller.State.Base

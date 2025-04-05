@@ -79,6 +79,7 @@
 ---@field button_mapping BALATRO.ButtonMapping
 ---@field keybind_mapping BALATRO.KeybindMapping[]
 ---@field CHALLENGES BALATRO.Challenge[]
+---@field F_STREAMER_EVENT? boolean
 
 
 ---@class BALATRO.Game : BALATRO.Game.Class, BALATRO.Game.Globals
@@ -238,6 +239,11 @@
 ---@field CHECK_PROFILE_DATA? { type: love.FileType, size: number, modtime: number } | boolean
 ---@field viewed_stake number
 ---@field viewed_collab? string
+---@field PREV_GARB number
+---@field SPLASH_VOL number
+---@field E_SWITCH_POINT? number
+---@field action? BALATRO.SavedGame.Action
+---@field culled_table? BALATRO.SavedGame
 local Game = {}
 
 

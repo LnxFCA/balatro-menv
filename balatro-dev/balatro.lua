@@ -51,7 +51,21 @@ _G.pseudorandom = function(seed, min, max) end
 _G.prep_draw = function(moveable, scale, rotate, offset, _) end
 
 
-_G.jit = {}
+--- Return a color for a localized string.
+--- Example:
+--- ```lua
+--- local mytext = {"Hello {C:green}wolrd{}"}
+--- ```
+--- returns the color `green`, if not matching color, it will return the default color.
+---
+---@overload fun(_c: string, _default?: BALATRO.UI.Colour): BALATRO.UI.Colour
+---@overload fun(_c?: string, _default?: BALATRO.UI.Colour): BALATRO.UI.Colour
+---@param _c string
+---@param _default BALATRO.UI.Colour
+---@return BALATRO.UI.Colour
+_G.loc_colour = function(_c, _default) end
+
+
 _G.G.ARGS = {}
 _G.G.SETTINGS = {}
 _G.G.GAME = {}

@@ -49,6 +49,12 @@ local Tag = {}
 Tag.init = function(self, tag, for_collection, blind_type) end
 
 
+--- Check if `T` is an instance of [Tag](lua://BALATRO.Tag)
+---@param self BALATRO.Tag
+---@param T any
+Tag.is = function(self, T) end
+
+
 --- `Tag()` - Creates a new [Tag](lua://BALATRO.Tag) object
 ---@param tag string
 ---@param for_collection? boolean

@@ -38,6 +38,7 @@
 ---@field no_interest? boolean
 ---@field money_per_hand? number
 ---@field money_per_discard? number
+---@field chips_dollar_cap? boolean
 
 
 ---@class BALATRO.GameObject.StartParams
@@ -152,6 +153,14 @@
 ---@field order? number
 
 
+---@class BALATRO.GameObject.ConsumeableUsage
+---@field all number
+---@field tarot number
+---@field planet number
+---@field spectral number
+---@field tarot_planet number
+
+
 ---@class BALATRO.GameObject.Base
 ---@field won boolean
 ---@field round_scores BALATRO.GameObject.Round.Scores
@@ -228,3 +237,4 @@
 ---@field last_blind? BALATRO.Prototype.Blind
 ---@field dollar_buffer number
 ---@field pack_choices number
+---@field consumeable_usage_total BALATRO.GameObject.ConsumeableUsage

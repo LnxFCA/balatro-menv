@@ -159,3 +159,4 @@ Blind.debuff_hand = function(self, cards, hand, handname, check) end
 ---@param H? number
 ---@return BALATRO.Blind
 _G.Blind = function(X, Y, W, H) end
+_G.Blind = Blind

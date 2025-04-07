@@ -318,3 +318,4 @@ Card.is = function(self, T) end
 ---@param params? BALATRO.Card.Params
 ---@return BALATRO.Card
 _G.Card = function (X, Y, W, H, card, center, params) end
+_G.Card = Card

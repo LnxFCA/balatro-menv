@@ -214,3 +214,4 @@ local Controller = {}
 --- `Controller()` - Creates a new [Controller](lua://BALATRO/Controller) object
 ---@return BALATRO.Controller
 _G.Controller = function() end
+_G.Controller = Controller

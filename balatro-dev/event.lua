@@ -94,6 +94,7 @@ Event.is = function(self, T) end
 ---@param config BALATRO.Event.Config
 ---@return BALATRO.Event
 _G.Event = function(config) end
+_G.Event = Event
 
 
 --- EventManager
@@ -134,3 +135,4 @@ EventManager.add_event = function(self, event, queue, front) end
 --- `EventManager()` - Creates a new [EventManager](lua://BALATRO.EventManager) object
 ---@return BALATRO.EventManager
 _G.EventManager = function() end
+_G.EventManager = EventManager

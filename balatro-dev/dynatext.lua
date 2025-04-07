@@ -120,3 +120,4 @@ local DynaText = {}
 ---@param config BALATRO.DynaText.Config
 ---@return BALATRO.DynaText
 _G.DynaText = function(config) end
+_G.DynaText = DynaText

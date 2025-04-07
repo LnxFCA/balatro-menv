@@ -182,3 +182,4 @@ UIELement.is = function(self, T) end
 ---@param config BALATRO.UI.Config
 ---@return BALATRO.UIElement
 _G.UIElement = function (parent, new_UIBox, new_UIT, config) end
+_G.UIElement = UIELement

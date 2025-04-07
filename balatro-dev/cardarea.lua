@@ -131,3 +131,4 @@ CardArea.is = function(self, T) end
 ---@param config? BALATRO.CardArea.Config.Arg
 ---@return BALATRO.CardArea
 _G.CardArea = function(X, Y, W, H, config) end
+_G.CardArea = CardArea

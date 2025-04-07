@@ -26,3 +26,4 @@ local Object = {}
 ---@param ... unknown
 ---@return BALATRO.Object.Instance
 _G.Object = function(...) end
+_G.Object = Object

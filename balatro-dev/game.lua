@@ -292,6 +292,8 @@ local Game = {}
 ---@param args BALATRO.Game.RunArgs
 Game.start_run = function(self, args) end
 
+
 --- `Game()` - Creates a new [Game](lua://BALATRO.Game) object
 ---@return BALATRO.Game
 _G.Game = function() end
+_G.Game = Game

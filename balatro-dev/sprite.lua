@@ -101,3 +101,4 @@ Sprite.draw_shader = function(self, shader, shadow_height, send, no_tilt, other_
 ---@param sprite_pos BALATRO.Sprite.Position?
 ---@return BALATRO.Sprite
 _G.Sprite = function(X, Y, W, H, new_sprite_atlas, sprite_pos) end
+_G.Sprite = Sprite

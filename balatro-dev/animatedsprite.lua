@@ -22,7 +22,7 @@
 ---@field current_animation BALATRO.AnimatedSprite.CurrentAnimation
 ---@field offset_seconds number
 ---@field float? boolean
-local Sprite = {}
+local AnimatedSprite = {}
 
 
 ---@class BALATRO.AnimatedSprite.Class : BALATRO.Sprite.Super
@@ -40,3 +40,4 @@ local Sprite = {}
 ---@param sprite_pos BALATRO.Sprite.Position?
 ---@return BALATRO.AnimatedSprite
 _G.AnimatedSprite = function(X, Y, W, H, new_sprite_atlas, sprite_pos) end
+_G.AnimatedSprite = AnimatedSprite

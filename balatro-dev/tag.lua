@@ -61,3 +61,4 @@ Tag.is = function(self, T) end
 ---@param blind_type? BALATRO.Blind.Type
 ---@return BALATRO.Tag
 _G.Tag = function(tag, for_collection, blind_type) end
+_G.Tag = Tag

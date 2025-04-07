@@ -79,3 +79,4 @@ Particles.init = function(self, X, Y, W, H, config) end
 ---@param config BALATRO.Particles.Config.Arg
 ---@return BALATRO.Particles
 _G.Particles = function(X, Y, W, H, config) end
+_G.Particles = Particles

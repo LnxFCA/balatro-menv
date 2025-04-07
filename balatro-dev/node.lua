@@ -129,3 +129,4 @@ local Node = {}
 ---@param args BALATRO.Node.Arguments
 ---@return BALATRO.Node
 _G.Node = function(args) end
+_G.Node = Node

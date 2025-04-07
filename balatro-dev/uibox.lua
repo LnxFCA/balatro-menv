@@ -73,6 +73,7 @@ UIBox.get_UIE_by_ID = function(self, id, node) end
 ---@param args BALATRO.UIBox.Arguments
 ---@return BALATRO.UIBox
 _G.UIBox = function(args) end
+_G.UIBox = UIBox
 
 
 _G.dt = 0

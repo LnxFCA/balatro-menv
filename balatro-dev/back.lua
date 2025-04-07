@@ -64,3 +64,4 @@ Back.trigger_effect = function(self, args) end
 ---@param selected_back BALATRO.Prototype.Back
 ---@return BALATRO.Back
 _G.Back = function(selected_back) end
+_G.Back = Back

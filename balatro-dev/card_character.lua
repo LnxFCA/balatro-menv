@@ -66,3 +66,4 @@ Card_Character.add_speech_bubble = function(self, text_key, align, loc_vars) end
 ---@param args BALATRO.Card_Character.Arguments
 ---@return BALATRO.Card_Character
 _G.Card_Character = function(args) end
+_G.Card_Character = Card_Character

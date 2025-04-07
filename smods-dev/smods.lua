@@ -1,6 +1,9 @@
 ---@meta
 
 
+---@alias SMODS.Stake.Type SMODS.Stake | BALATRO.Prototype.Stake
+
+
 ---@class SMODS
 ---@field GameObject SMODS.GameObject
 ---@field Languages SMODS.Language[]
@@ -63,8 +66,26 @@
 ---@field _Loc_Post SMDOS.LocPost
 ---@field DrawSteps SMODS.DrawStep[]
 ---@field DrawStep SMODS.DrawStep
+---@field injectItems fun()
+---@field id string
+---@field version string
+---@field can_load boolean
+---@field meta_mod boolean
+---@field config_file string
+---@field MODS_DIR string
+---@field path string
+---@field fetch_index fun(): boolean
+---@field index table<string, SMODS.Mod>
+---@field update_mod_files fun(id?: string): boolean
+---@field Mods table<string, SMODS.Mod>
+---@field mod_priorities table<number, SMODS.Mod[]>
+---@field provided_mods table<string, SMODS.ProvidedMod[]>
+---@field mod_list SMODS.Mod[]
+---@field dump_loc { path: string }
 ---@field OPENED_BOOSTER? BALATRO.Card
 ---@field current_mod SMODS.Mod
+---@field mod_button_alert? boolean
+---@field booted? boolean
 local SMODS = {}
 
 
@@ -83,8 +104,46 @@ SMODS.modify_key = function(obj, prefix, condition, key) end
 SMODS.add_prefixes = function(cls, obj, from_take_ownership) end
 
 
---- Injects the object into the class
+--- Inject all SMODS Objects that are part of this class or a subclass
 ---@param class SMODS.GObject
 SMODS.injectObjects = function(class) end
+
+
+---@param stake? SMODS.Stake.Type
+---@param applied? number[]
+---@return string[]? applied
+SMODS.build_stake_chain = function(stake, applied) end
+
+
+---@param index? number
+SMODS.setup_stake = function(index) end
+
+
+--- Injects a rarity into the game
+---@param object_type SMODS.ObjectType.Type
+---@param rarity SMODS.Rarity
+SMODS.inject_rarity = function(object_type, rarity) end
+
+
+
+--- Inject playing card into the game
+---@param suit SMODS.Suit
+---@param rank SMODS.Rank
+SMODS.inject_p_card = function(suit, rank) end
+
+
+--- Removes a playing card from the game
+---@param suit SMODS.Suit
+---@param rank SMODS.Rank
+SMODS.remove_p_card = function(suit, rank) end
+
+
+--- Loads `file` inside the mod context if called when the mod is being loaded,
+--- otherwise `mod_id` is needed to find the correct file.
+---@param path? string
+---@param mod_id? string
+---@return function?
+SMODS.load_file = function(path, mod_id) end
+
 
 _G.SMODS = SMODS

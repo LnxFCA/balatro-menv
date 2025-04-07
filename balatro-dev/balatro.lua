@@ -66,6 +66,12 @@ _G.prep_draw = function(moveable, scale, rotate, offset, _) end
 _G.loc_colour = function(_c, _default) end
 
 
+--- Convert a hex string to a [Colour](lua://BALATRO.UI.Colour)
+---@param hex string
+---@return BALATRO.UI.Colour
+_G.HEX = function(hex) end
+
+
 _G.G.ARGS = {}
 _G.G.SETTINGS = {}
 _G.G.GAME = {}
@@ -73,3 +79,4 @@ _G.G.GAME.modifiers = {}
 _G.G.GAME.starting_params = {}
 _G.G.GAME.current_round = {}
 _G.G.CONTROLLER = {}
+_G.G = Game()

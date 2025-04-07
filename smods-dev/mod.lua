@@ -1,44 +1,6 @@
 ---@meta
 
---- For full typing support use: `---@type SMODS_T.Mod | SMODS_T.GameObjectClass`
----@class SMODS_T.Mod
----@field id string The unique identifier for the mod.
----@field path string The file path to the mod.
----@field prefix string The prefix used for the mod.
----@field prefix_config table Configuration for prefixing keys.
----@field optional_dependencies table A table of optional dependencies for the mod.
----@field required_dependencies table A table of required dependencies for the mod.
----@field can_load boolean Indicates if the mod can be loaded.
----@field version string The version of the mod.
----@field meta_mod boolean | nil Indicates if the mod is a meta mod.
----@field name string The name of the mod.
----@field author table A table of authors of the mod.
----@field config table The mod configuration. Same as `config.lua`.
----@field description string A description of the mod.
----@field priority number The priority of the mod.
----@field badge_colour BALATRO_T.UIDef.Config.Colour The badge color of the mod.
----@field badge_text_colour BALATRO_T.UIDef.Config.Colour The badge text color of the mod.
----@field display_name string The display name of the mod.
----@field json boolean Indicates if the mod was loaded from a JSON file.
----@field dependencies table A table of dependencies for the mod.
----@field conflicts table | nil A table of conflicts for the mod.
----@field main_file string The main file of the mod.
----@field config_file string The configuration file of the mod.
----@field dump_loc boolean | nil Indicates if localization should be dumped.
----@field provides table | nil A table of provided features by the mod.
----@field disabled boolean | nil Indicates if the mod is disabled.
----@field load_issues table | nil A table of issues encountered during loading.
----@field lovely boolean | nil Indicates if the mod is a lovely mod.
----@field lovely_only boolean | nil Indicates if the mod is only for lovely compatibility.
----@field config_tab nil | fun(): UIDef A function to create a configuration tab for the mod.
----@field extra_tabs nil | fun(): SMODS_T.Mod.ExtraTab[] A function to create additional custom tabs for the mod.
----@field process_loc_text function | nil A function to process localization text for the mod.
----@field custom_collection_tabs function | nil A function to create custom collection tabs for the mod.
----@field description_loc_vars table | nil A table of localization variables for the mod's description.
----@field debug_info function | nil A function to provide debug information for the mod.
----@field reset_game_globals fun(run_start: boolean) | nil A function to reset game globals for the mod.
 
-
----@class SMODS_T.Mod.ExtraTab
----@field label string Tab label
----@field tab_definition_function fun(): UIDef A function that returns a UI definition table.
+---@class SMODS.Mod
+---@field prefix string
+---@field optional_dependencies table<string, boolean>

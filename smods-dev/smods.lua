@@ -1,57 +1,90 @@
 ---@meta
 
-SMODS = {}
+
+---@class SMODS
+---@field GameObject SMODS.GameObject
+---@field Languages SMODS.Language[]
+---@field Language SMODS.Language
+---@field _Loc_Pre SMDOS.LocPre
+---@field Atlases SMODS.Atlas[]
+---@field Atlas SMODS.Atlas
+---@field sounds SMODS.Sound[]
+---@field Sound SMODS.Sound
+---@field Stakes SMODS.Stake[]
+---@field Stake SMODS.Stake
+---@field Rarities SMODS.Rarity[]
+---@field Rarity SMODS.Rarity
+---@field ObjectTypes SMODS.ObjectType[]
+---@field ObjectType SMODS.ObjectType
+---@field ConsumableTypes SMODS.ConsumableType[]
+---@field ConsumableType SMODS.ConsumableType
+---@field Centers SMODS.Center[]
+---@field Center SMODS.Center
+---@field Joker SMODS.Joker
+---@field Consumable SMODS.Consumable
+---@field Tarot SMODS.Tarot
+---@field Planet SMODS.Planet
+---@field Spectral SMODS.Spectral
+---@field Voucher SMODS.Voucher
+---@field Back SMODS.Back
+---@field Booster SMODS.Booster
+---@field UndiscoveredSprites SMODS.UndiscoveredSprite[]
+---@field UndiscoveredSprite SMODS.UndiscoveredSprite
+---@field Blinds SMODS.Blind[]
+---@field Blind SMODS.Blind
+---@field Seals SMODS.Seal[]
+---@field Seal SMODS.Seal
+---@field Suits SMODS.Suit[]
+---@field Suit SMODS.Suit
+---@field Ranks SMODS.Rank[]
+---@field Rank SMODS.Rank
+---@field DeckSkins SMODS.DeckSkin[]
+---@field DeckSkin SMODS.DeckSkin
+---@field PokerHandParts SMODS.PokerHandPart[]
+---@field PokerHandPart SMODS.PokerHandPart
+---@field PokerHands SMODS.PokerHand[]
+---@field PokerHand SMODS.PokerHand
+---@field Challenges SMODS.Challenge[]
+---@field Challenge SMODS.Challenge
+---@field Tags SMODS.Tag[]
+---@field Tag SMODS.Tag
+---@field Stickers SMODS.Sticker[]
+---@field Sticker SMODS.Sticker
+---@field Enhancement SMODS.Enhancement
+---@field Shaders SMODS.Shader[]
+---@field Shader SMODS.Shader
+---@field Edition SMODS.Edition
+---@field Keybinds SMODS.Keybind[]
+---@field Keybind SMODS.Keybind
+---@field Achievements SMODS.Achievement[]
+---@field Achievement SMODS.Achievement
+---@field Gradients SMODS.Gradient[]
+---@field Gradient SMODS.Gradient
+---@field _Loc_Post SMDOS.LocPost
+---@field DrawSteps SMODS.DrawStep[]
+---@field DrawStep SMODS.DrawStep
+---@field OPENED_BOOSTER? BALATRO.Card
+---@field current_mod SMODS.Mod
+local SMODS = {}
 
 
----@type SMODS.Keybind[]
-SMODS.Keybinds = {}
-
----@see SMODS_T.Mod
----@type SMODS_T.Mod The mod being executed.
-SMODS.current_mod = {}
-
---- Save the configuration of a given `mod` to a file.
---- The configuration is serialized and written to a file in the config directory.
----@param mod SMODS_T.Mod The mod whose configuration is to be saved
----@return boolean Returns `true` if the configuration was successfully saved, otherwise `false`.
-function SMODS.save_mod_config(mod) end
+--- Modify internal object key
+---@param obj SMODS.GameObject.Subclasses
+---@param prefix? string
+---@param condition? boolean
+---@param key? string
+SMODS.modify_key = function(obj, prefix, condition, key) end
 
 
--- Saves the configuration for all loaded mods.
-function SMODS.save_all_config() end
-
---- Restarts the game.
---- It saves the current configuration and then restarts the game.
-function SMODS.restart_game() end
-
-
---- Given a path to a file in the context of the mod currently being loaded,
---- loads the file contents and returns them as a function.
---- If this function is called after the mod loading stage, a mod's `id`
---- must be specified in order to find the correct file.
----@param path string The path to the file to be loaded.
----@param id string The mod id.
----@return function
-function  SMODS.load_file(path, id) end
+--- Adds prefixes into the object. 
+---@param cls SMODS.GObject `obj` Base class
+---@param obj SMODS.GObject
+---@param from_take_ownership? boolean
+SMODS.add_prefixes = function(cls, obj, from_take_ownership) end
 
 
----@class SMODS_T.CreateCardArgs
----@field set string The card type to be generated, e.g. 'Joker', 'Tarot', 'Spectral'.
----@field area BALATRO_T.CardArea? The card area this will be emplaced into, e.g. G.jokers, G.consumeables. Default values are determined based on set.
----@field legendary boolean? Set to true to generate a card of Legendary rarity.
----@field rarity number? If specified, skip rarity polling and use this instead of a chance roll between 0 and 1. Under vanilla conditions, values up to 0.7 indicate Common rarity, values above 0.7 and up to 0.95 indicate Uncommon rarity, and values above 0.95 indicate Rare rarity.
----@field skip_materialize boolean? If `true`, a `start_materialize` animation will not be shown.
----@field soulable boolean? If `true`, hidden Soul-type cards are allowed to replace the generated card. Usually, this is the case for cards generated for booster packs.
----@field key string? If specified, generate a card with the given key instead of the random one.
----@field key_append string? An additional RNG seeding string. This should be used to put different sources of card generation on different queues.
----@field no_edition boolean? If `true`, the generated card is guaranteed to have no randomly generated edition.
----@field edition table? Applies the specified edition modifier to the card.
----@field enhancement string? Applies the specified enhancement modifier to the card.
----@field seal string? Applies the specified seal modifier to the card.
----@field stickers table? This should be an array of sticker keys. Applies all specified stickers to the card.
+--- Injects the object into the class
+---@param class SMODS.GObject
+SMODS.injectObjects = function(class) end
 
-
---- This function replaces `create_card`.
---- It provides a cleaner interface to the same functionality.
----@param args SMODS_T.CreateCardArgs
-function SMODS.create_card(args) end
+_G.SMODS = SMODS

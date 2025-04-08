@@ -3,7 +3,7 @@
 
 ---@alias BALATRO.VersionType string | "1.0.1n-FULL" | "1.0.1o-FULL"
 
----@alias BALATRO.Settings BALATRO.Settings.Base | BALATRO.Settings.Extra
+---@alias BALATRO.Settings BALATRO.Settings.Base | BALATRO.Settings.Extra | SMODS.Settings
 ---@alias BALATRO.Settings.WINDOW.Screenmode string | "Fullscreen" | "Windowed" | "Borderless"
 
 ---@alias BALATRO.UIObject.Animation BALATRO.Sprite | BALATRO.AnimatedSprite

@@ -18,7 +18,7 @@
 ---| "zh_CN"
 ---| "zh_TW"
 ---| "all"
----@alias BALATRO.Language BALATRO.Language.Base | BALATRO.Language.Lang
+---@alias BALATRO.Language BALATRO.Language.Base | BALATRO.Language.Lang | SMODS.Language
 ---@alias BALATRO.LANGUAGES BALATRO.LANGUAGES.Base | table<string, BALATRO.Language>
 ---@alias BALATRO.Font BALATRO.Font.Base | BALATRO.Font.Extra
 ---@alias BALATRO.FONTS BALATRO.Font[]

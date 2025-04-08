@@ -72,6 +72,13 @@ _G.loc_colour = function(_c, _default) end
 _G.HEX = function(hex) end
 
 
+
+--- Add a new object to the draw hash.
+--- This function is used to add a new object to the draw hash, which is a table that stores objects that need to be drawn on the screen.
+---@param obj BALATRO.UIObject
+_G.add_to_drawhash = function(obj) end
+
+
 _G.G.ARGS = {}
 _G.G.SETTINGS = {}
 _G.G.GAME = {}

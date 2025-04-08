@@ -12,7 +12,6 @@
 
 ---@class BALATRO.Object.Class
 ---@field init fun(self: BALATRO.Object) Initializes the object. This method can be overridden by subclasses.
----@field extend fun(self: BALATRO.Object): BALATRO.Object.Super Creates a new subclass of the object.
 ---@field is fun(self: BALATRO.Object, obj: BALATRO.Object.Instance): boolean Checks if the object is an instance of the given class.
 
 
@@ -20,6 +19,13 @@
 ---@class BALATRO.Object : BALATRO.Object.Class
 ---@field __index BALATRO.Object Metatable index pointing to the Object class itself, used for inheritance.
 local Object = {}
+
+
+--- Creates a new subclass of the [Object](lua://BALATRO.Object) class.
+---@overload fun(self: SMODS.GameObject): SMODS.GameObject.Super
+---@param obj BALATRO.Object
+---@return BALATRO.Object.Super
+Object.extend = function(obj) end
 
 
 --- `Object()` - creates a new instance of [Object](lua://BALATRO.Object).

@@ -21,9 +21,9 @@
 ---|"chips"
 ---| BALATRO.Atlas.Image.Key
 
----@alias BALATRO.Atlas BALATRO.Atlas.Asset | BALATRO.Atlas.Animation
----@alias BALATRO.Game.Atlas.Animation table<BALATRO.Atlas.Animation.Key, BALATRO.Atlas.Animation>
----@alias BALATRO.Game.Atlas.Asset table<BALATRO.Atlas.Asset.Key, BALATRO.Atlas.Asset>
+---@alias BALATRO.Atlas BALATRO.Atlas.Asset | BALATRO.Atlas.Animation | SMODS.Atlas
+---@alias BALATRO.Game.Atlas.Animation table<BALATRO.Atlas.Animation.Key, BALATRO.Atlas.Animation | SMODS.Atlas>
+---@alias BALATRO.Game.Atlas.Asset table<BALATRO.Atlas.Asset.Key, BALATRO.Atlas.Asset | SMODS.Atlas>
 
 
 ---@class BALATRO.Atlas.Base

@@ -38,7 +38,7 @@
 ---| "shop_start"
 
 
----@alias BALATRO.Prototype.Stake BALATRO.Prototype.Stake.Base | BALATRO.Prototype.Base
+---@alias BALATRO.Prototype.Stake BALATRO.Prototype.Stake.Base | BALATRO.Prototype.Stake.Extra | BALATRO.Prototype.Base
 ---@alias BALATRO.P_STAKES BALATRO.Prototype.STAKES | table<string, BALATRO.Prototype.Stake>
 ---@alias BALATRO.Prototype.Blind BALATRO.Prototype.Blind.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Blind.Empty
 ---@alias BALATRO.P_BLINDS BALATRO.Prototype.BLINDS | table<string, BALATRO.Prototype.Blind>
@@ -57,7 +57,7 @@
 ---@alias BALATRO.Prototype.Edition BALATRO.Prototype.Edition.Base | BALATRO.Prototype.Center
 ---@alias BALATRO.Prototype.Booster BALATRO.Prototype.Booster.Base | BALATRO.Prototype.Center
 ---@alias BALATRO.Prototype.Other BALATRO.Prototype.Other.Base | BALATRO.Prototype.Center
----@alias BALATRO.Prototype.Center BALATRO.Prototype.Base | BALATRO.Prototype.Center.Base
+---@alias BALATRO.Prototype.Center BALATRO.Prototype.Base | BALATRO.Prototype.Center.Base | SMODS.Center.Base
 ---@alias BALATRO.Center
 ---| BALATRO.Prototype.Default.Base
 ---| BALATRO.Prototype.Joker.Base
@@ -91,6 +91,8 @@
 ---@field demo? boolean
 ---@field wip? boolean
 ---@field soul_pos BALATRO.Node.Point
+--- SMODS-only
+---@field _discovered_unlocked_overwritten? boolean
 
 
 ---@class BALATRO.Prototype.Common
@@ -171,6 +173,10 @@
 ---@class BALATRO.Prototype.Stake.Base
 ---@field set BALATRO.Center.Set.Stake
 ---@field stake_level number
+
+
+---@class BALATRO.Prototype.Stake.Extra
+---@field applied_stakes? string[]
 
 
 ---@class BALATRO.Prototype.STAKES

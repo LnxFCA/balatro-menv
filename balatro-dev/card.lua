@@ -63,6 +63,9 @@
 ---@field center_key? string
 ---@field h_popup? BALATRO.UI.Node
 ---@field h_popup_config? BALATRO.UIBox.Config
+--- SMODS only
+---@field blind? BALATRO.Prototype.Blind
+---@field force_focus? boolean
 
 
 ---@class BALATRO.Card.Base
@@ -161,7 +164,7 @@
 ---@class BALATRO.Card.AbilityUIBoxTable
 
 
----@class BALATRO.Card : BALATRO.Card.Class, BALATRO.Card.Params
+---@class BALATRO.Card : BALATRO.Card.Class, BALATRO.Card.Params, SMODS.Center.Common
 ---@field params BALATRO.Card.Params
 ---@field config BALATRO.Card.Config
 ---@field tilt_var BALATRO.TiltVar

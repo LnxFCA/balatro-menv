@@ -28,7 +28,7 @@ local Center = {}
 
 ---@class SMODS.Center.Base : SMODS.Center.Common, SMODS.GameObject.Base, SMODS.GameObject.Common
 ---@field process_loc_text fun(self: SMODS.Center)
----@field loc_vars fun(self: SMODS.Center.All, info_queue: unknown[], card: BALATRO.Card)
+---@field loc_vars fun(self: SMODS.Center.All, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
 ---@field get_obj fun(self: SMODS.Center, key: string): BALATRO.Center
 ---@field delete fun(self: SMODS.Center): boolean
 ---@field create_fake_card fun(self: SMODS.Center): BALATRO.Card
@@ -77,7 +77,7 @@ _G.SMODS.Center = Center
 ------------------------------------------------------------------------------
 -- JOKER
 ------------------------------------------------------------------------------
----@alias SMODS.Joker.OwnershipType SMODS.Joker.Base | SMODS.GameObject.Empty
+---@alias SMODS.Joker.OwnershipType SMODS.Joker.Base.Class | SMODS.GameObject.Empty
 
 
 ---@class SMODS.Joker : SMODS.Joker.Class, BALATRO.Prototype.Joker.Base
@@ -94,28 +94,32 @@ local Joker = {}
 ---@field rarity number
 
 
----@class SMODS.Joker.Base : SMODS.Center.Base, SMODS.Joker.Common
----@field process_loc_text fun(self: SMODS.Joker)
----@field calculate fun(self: SMODS.Joker, card: BALATRO.Card, context: BALATRO.Calc.Context): BALATRO.Calc.Eval?
----@field loc_vars fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
----@field locked_loc_vars fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
----@field calc_dollar_bonus fun(self: SMODS.Joker, card: BALATRO.Card): number
----@field set_ability fun(self: SMODS.Joker, card: BALATRO.Card, initial?: boolean, delay_sprites?: boolean)
----@field add_to_deck fun(self: SMODS.Joker, card: BALATRO.Card, from_debuff?: boolean)
----@field remove_from_deck fun(self: SMODS.Joker, card: BALATRO.Card, from_debuff?: boolean)
----@field in_pool fun(self: SMODS.Joker, args: table): boolean, { allow_duplicates: boolean } | nil
----@field update fun(self: SMODS.Joker, card: BALATRO.Card, dt: number)
----@field set_sprites fun(self: SMODS.Joker, card: BALATRO.Card, front?: BALATRO.Prototype.Card)
----@field load fun(self: SMODS.Joker, card: BALATRO.Card, save_table: BALATRO.Card.SaveTable, other_card?: BALATRO.Prototype.Card)
----@field check_for_unlock fun(self: SMODS.Joker, args: table): boolean
----@field set_badges fun(self: SMODS.Joker, card: BALATRO.Card, badges: BALATRO.UI.Node[])
----@field set_card_type_badge fun(self: SMODS.Joker, card: BALATRO.Card, badges: BALATRO.UI.Node[])
----@field draw fun(self: SMODS.Joker, card: BALATRO.Card, layer?: BALATRO.Card.DrawLayer)
----@field inject fun(self: SMODS.Joker)
+---@class SMODS.Joker.Base : SMODS.Joker.Common
+---@field calculate? fun(self: SMODS.Joker, card: BALATRO.Card, context: BALATRO.Calc.Context): BALATRO.Calc.Eval?
+---@field loc_vars? fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
+---@field locked_loc_vars? fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
+---@field generate_ui? fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@field calc_dollar_bonus? fun(self: SMODS.Joker, card: BALATRO.Card): number
+---@field set_ability? fun(self: SMODS.Joker, card: BALATRO.Card, initial?: boolean, delay_sprites?: boolean)
+---@field add_to_deck? fun(self: SMODS.Joker, card: BALATRO.Card, from_debuff?: boolean)
+---@field remove_from_deck? fun(self: SMODS.Joker, card: BALATRO.Card, from_debuff?: boolean)
+---@field in_pool? fun(self: SMODS.Joker, args: table): boolean, { allow_duplicates: boolean } | nil
+---@field update? fun(self: SMODS.Joker, card: BALATRO.Card, dt: number)
+---@field set_sprites? fun(self: SMODS.Joker, card: BALATRO.Card, front?: BALATRO.Prototype.Card)
+---@field load? fun(self: SMODS.Joker, card: BALATRO.Card, save_table: BALATRO.Card.SaveTable, other_card?: BALATRO.Prototype.Card)
+---@field check_for_unlock? fun(self: SMODS.Joker, args: table): boolean
+---@field set_badges? fun(self: SMODS.Joker, card: BALATRO.Card, badges: BALATRO.UI.Node[])
+---@field set_card_type_badge? fun(self: SMODS.Joker, card: BALATRO.Card, badges: BALATRO.UI.Node[])
+---@field draw? fun(self: SMODS.Joker, card: BALATRO.Card, layer?: BALATRO.Card.DrawLayer)
+---@field process_loc_text? fun(self: SMODS.Joker)
 local JokerBase = {}
 
 
----@class SMODS.Joker.Class : SMODS.Center.Super, SMODS.Joker.Base
+---@class SMODS.Joker.Base.Class : SMODS.Joker.Base, SMODS.Center.Base
+---@field inject fun(self: SMODS.Joker)
+
+
+---@class SMODS.Joker.Class : SMODS.Center.Super, SMODS.Joker.Base.Class
 ---@field __index SMODS.Joker
 ---@field take_ownership fun(self: SMODS.Joker, key: string, obj: SMODS.Joker.OwnershipType, silent?: boolean): SMODS.Joker?
 ---@field pre_inject_class fun(self: SMODS.Joker)
@@ -129,7 +133,7 @@ local JokerBase = {}
 ---@field pools? table<string, boolean>
 
 
----@class SMODS.Joker.Arguments : SMODS.GameObject.Common, SMODS.Joker.Arguments.Base, SMODS.Center.Arguments
+---@class SMODS.Joker.Arguments : SMODS.GameObject.Common, SMODS.Joker.Arguments.Base, SMODS.Center.Arguments, SMODS.Joker.Base
 ---@field key string
 ---@field rarity? number
 ---@field config? BALATRO.Center.Config
@@ -157,7 +161,7 @@ _G.SMODS.Joker = Joker
 ------------------------------------------------------------------------------
 -- CONSUMABLE
 ------------------------------------------------------------------------------
----@alias SMODS.Consumable.OwnershipType SMODS.Consumable.Base | SMODS.GameObject.Empty
+---@alias SMODS.Consumable.OwnershipType SMODS.Consumable.Base.Class | SMODS.GameObject.Empty
 ---@alias SMODS.Consumable.All SMODS.Consumable | SMODS.Tarot | SMODS.Planet | SMODS.Spectral
 
 
@@ -170,7 +174,7 @@ _G.SMODS.Joker = Joker
 ---@field set "Tarot" | "Planet" | "Spectral"
 ---@field class_prefix string | "c"
 ---@field config? BALATRO.Center.Config
----@field legendaries SMODS.Consumable[]
+---@field legendaries SMODS.Consumable.All[]
 local Consumable = {}
 
 
@@ -179,27 +183,31 @@ local Consumable = {}
 ---@field cost number
 
 
----@class SMODS.Consumable.Base : SMODS.Center.Base, SMODS.Consumable.Common
----@field process_loc_text fun(self: SMODS.Consumable.All)
----@field calculate fun(self: SMODS.Consumable.All, card: BALATRO.Card, context: BALATRO.Calc.Context): BALATRO.Calc.Eval?
----@field loc_vars fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
----@field locked_loc_vars fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
----@field use fun(self: SMODS.Consumable.All, card: BALATRO.Card, area: BALATRO.CardArea, copier?: unknown)
----@field can_use fun(self: SMODS.Consumable.All, card: BALATRO.Card): boolean
----@field keep_on_use fun(self: SMODS.Consumable.All, card: BALATRO.Card): boolean
----@field set_ability fun(self: SMODS.Consumable.All, card: BALATRO.Card, initial?: boolean, delay_sprites?: boolean)
----@field add_to_deck fun(self: SMODS.Consumable.All, card: BALATRO.Card, from_debuff?: boolean)
----@field remove_from_deck fun(self: SMODS.Consumable.All, card: BALATRO.Card, from_debuff?: boolean)
----@field in_pool fun(self: SMODS.Consumable.All, args: table): boolean, { allow_duplicates: boolean } | nil
----@field update fun(self: SMODS.Consumable.All, card: BALATRO.Card, dt: number)
----@field set_sprites fun(self: SMODS.Consumable.All, card: BALATRO.Card, front?: BALATRO.Prototype.Card)
----@field load fun(self: SMODS.Consumable.All, card: BALATRO.Card, save_table: BALATRO.Card.SaveTable, other_card?: BALATRO.Prototype.Card)
----@field check_for_unlock fun(self: SMODS.Consumable.All, args: table): boolean
----@field set_badges fun(self: SMODS.Consumable.All, card: BALATRO.Card, badges: BALATRO.UI.Node[])
----@field set_card_type_badge fun(self: SMODS.Consumable.All, card: BALATRO.Card, badges: BALATRO.UI.Node[])
----@field draw fun(self: SMODS.Consumable.All, card: BALATRO.Card, layer?: BALATRO.Card.DrawLayer)
----@field inject fun(self: SMODS.Consumable.All)
+---@class SMODS.Consumable.Base : SMODS.Consumable.Common
+---@field calculate? fun(self: SMODS.Consumable.All, card: BALATRO.Card, context: BALATRO.Calc.Context): BALATRO.Calc.Eval?
+---@field loc_vars? fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
+---@field locked_loc_vars? fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
+---@field generate_ui? fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@field use? fun(self: SMODS.Consumable.All, card: BALATRO.Card, area: BALATRO.CardArea, copier?: unknown)
+---@field can_use? fun(self: SMODS.Consumable.All, card: BALATRO.Card): boolean
+---@field keep_on_use? fun(self: SMODS.Consumable.All, card: BALATRO.Card): boolean
+---@field set_ability? fun(self: SMODS.Consumable.All, card: BALATRO.Card, initial?: boolean, delay_sprites?: boolean)
+---@field add_to_deck? fun(self: SMODS.Consumable.All, card: BALATRO.Card, from_debuff?: boolean)
+---@field remove_from_deck? fun(self: SMODS.Consumable.All, card: BALATRO.Card, from_debuff?: boolean)
+---@field in_pool? fun(self: SMODS.Consumable.All, args: table): boolean, { allow_duplicates: boolean } | nil
+---@field update? fun(self: SMODS.Consumable.All, card: BALATRO.Card, dt: number)
+---@field set_sprites? fun(self: SMODS.Consumable.All, card: BALATRO.Card, front?: BALATRO.Prototype.Card)
+---@field load? fun(self: SMODS.Consumable.All, card: BALATRO.Card, save_table: BALATRO.Card.SaveTable, other_card?: BALATRO.Prototype.Card)
+---@field check_for_unlock? fun(self: SMODS.Consumable.All, args: table): boolean
+---@field set_badges? fun(self: SMODS.Consumable.All, card: BALATRO.Card, badges: BALATRO.UI.Node[])
+---@field set_card_type_badge? fun(self: SMODS.Consumable.All, card: BALATRO.Card, badges: BALATRO.UI.Node[])
+---@field draw? fun(self: SMODS.Consumable.All, card: BALATRO.Card, layer?: BALATRO.Card.DrawLayer)
+---@field process_loc_text? fun(self: SMODS.Consumable.All)
 local ConsumableBase = {}
+
+
+---@class SMODS.Consumable.Base.Class : SMODS.Consumable.Base, SMODS.Center.Base
+---@field inject fun(self: SMODS.Consumable.All)
 
 
 ---@class SMODS.Consumable.Class : SMODS.Center.Super, SMODS.Consumable.Base
@@ -220,7 +228,7 @@ local ConsumableBase = {}
 ---@field can_repeat_soul? boolean
 
 
----@class SMODS.Consumable.Arguments : SMODS.Consumable.Arguments.Base, SMODS.Center.Arguments
+---@class SMODS.Consumable.Arguments : SMODS.Consumable.Arguments.Base, SMODS.Center.Arguments, SMODS.Consumable.Base
 ---@field key string
 ---@field config? BALATRO.Center.Config
 
@@ -249,11 +257,8 @@ _G.SMODS.Consumable = Consumable
 
 
 ---@class SMODS.Tarot : SMODS.Tarot.Class
----@field obj_table SMODS.Center.All[]
 ---@field set "Tarot"
----@field class_prefix string | "c"
 ---@field config? BALATRO.Center.Config
----@field legendaries SMODS.Consumable[]
 local Tarot = {}
 
 
@@ -282,11 +287,8 @@ _G.SMODS.Tarot = Tarot
 
 
 ---@class SMODS.Planet : SMODS.Planet.Class
----@field obj_table SMODS.Center.All[]
 ---@field set "Planet"
----@field class_prefix string | "c"
 ---@field config? BALATRO.Center.Config
----@field legendaries SMODS.Consumable[]
 local Planet = {}
 
 
@@ -315,11 +317,8 @@ _G.SMODS.Planet = Planet
 
 
 ---@class SMODS.Spectral : SMODS.Spectral.Class
----@field obj_table SMODS.Center.All[]
 ---@field set "Spectral"
----@field class_prefix string | "c"
 ---@field config? BALATRO.Center.Config
----@field legendaries SMODS.Consumable[]
 local Spectral = {}
 
 

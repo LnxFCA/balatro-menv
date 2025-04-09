@@ -344,7 +344,7 @@ _G.SMODS.Spectral = Spectral
 ------------------------------------------------------------------------------
 -- VOUCHER
 ------------------------------------------------------------------------------
----@alias SMODS.Voucher.OwnershipType SMODS.Voucher.Base | SMODS.GameObject.Empty
+---@alias SMODS.Voucher.OwnershipType SMODS.Voucher.Base.Class | SMODS.GameObject.Empty
 
 
 ---@class SMODS.Voucher.Super : SMODS.Voucher
@@ -367,28 +367,32 @@ local Voucher = {}
 ---@field available boolean
 
 
----@class SMODS.Voucher.Base : SMODS.Center.Base, SMODS.Voucher.Common
----@field process_loc_text fun(self: SMODS.Voucher)
----@field calculate fun(self: SMODS.Voucher, card: BALATRO.Card, context: BALATRO.Calc.Context): BALATRO.Calc.Eval?
----@field loc_vars fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
----@field locked_loc_vars fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
----@field redeem fun(self: SMODS.Voucher, card: BALATRO.Card)
----@field set_ability fun(self: SMODS.Voucher, card: BALATRO.Card, initial?: boolean, delay_sprites?: boolean)
----@field add_to_deck fun(self: SMODS.Voucher, card: BALATRO.Card, from_debuff?: boolean)
----@field remove_from_deck fun(self: SMODS.Voucher, card: BALATRO.Card, from_debuff?: boolean)
----@field in_pool fun(self: SMODS.Voucher, args: table): boolean, { allow_duplicates: boolean } | nil
----@field update fun(self: SMODS.Voucher, card: BALATRO.Card, dt: number)
----@field set_sprites fun(self: SMODS.Voucher, card: BALATRO.Card, front?: BALATRO.Prototype.Card)
----@field load fun(self: SMODS.Voucher, card: BALATRO.Card, save_table: BALATRO.Card.SaveTable, other_card?: BALATRO.Prototype.Card)
----@field check_for_unlock fun(self: SMODS.Voucher, args: table): boolean
----@field set_badges fun(self: SMODS.Voucher, card: BALATRO.Card, badges: BALATRO.UI.Node[])
----@field set_card_type_badge fun(self: SMODS.Voucher, card: BALATRO.Card, badges: BALATRO.UI.Node[])
----@field draw fun(self: SMODS.Voucher, card: BALATRO.Card, layer?: BALATRO.Card.DrawLayer)
----@field inject fun(self: SMODS.Voucher)
+---@class SMODS.Voucher.Base : SMODS.Voucher.Common
+---@field process_loc_text? fun(self: SMODS.Voucher)
+---@field calculate? fun(self: SMODS.Voucher, card: BALATRO.Card, context: BALATRO.Calc.Context): BALATRO.Calc.Eval?
+---@field loc_vars? fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
+---@field locked_loc_vars? fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
+---@field generate_ui? fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@field redeem? fun(self: SMODS.Voucher, card: BALATRO.Card)
+---@field set_ability? fun(self: SMODS.Voucher, card: BALATRO.Card, initial?: boolean, delay_sprites?: boolean)
+---@field add_to_deck? fun(self: SMODS.Voucher, card: BALATRO.Card, from_debuff?: boolean)
+---@field remove_from_deck? fun(self: SMODS.Voucher, card: BALATRO.Card, from_debuff?: boolean)
+---@field in_pool? fun(self: SMODS.Voucher, args: table): boolean, { allow_duplicates: boolean } | nil
+---@field update? fun(self: SMODS.Voucher, card: BALATRO.Card, dt: number)
+---@field set_sprites? fun(self: SMODS.Voucher, card: BALATRO.Card, front?: BALATRO.Prototype.Card)
+---@field load? fun(self: SMODS.Voucher, card: BALATRO.Card, save_table: BALATRO.Card.SaveTable, other_card?: BALATRO.Prototype.Card)
+---@field check_for_unlock? fun(self: SMODS.Voucher, args: table): boolean
+---@field set_badges? fun(self: SMODS.Voucher, card: BALATRO.Card, badges: BALATRO.UI.Node[])
+---@field set_card_type_badge? fun(self: SMODS.Voucher, card: BALATRO.Card, badges: BALATRO.UI.Node[])
+---@field draw? fun(self: SMODS.Voucher, card: BALATRO.Card, layer?: BALATRO.Card.DrawLayer)
 local VoucherBase = {}
 
 
----@class SMODS.Voucher.Class : SMODS.Center.Super, SMODS.Voucher.Base
+---@class SMODS.Voucher.Base.Class : SMODS.Voucher.Base, SMODS.Center.Base
+---@field inject fun(self: SMODS.Voucher)
+
+
+---@class SMODS.Voucher.Class : SMODS.Center.Super, SMODS.Voucher.Base.Class
 ---@field __index SMODS.Voucher
 ---@field take_ownership fun(self: SMODS.Voucher, key: string, obj: SMODS.Voucher.OwnershipType, silent?: boolean): SMODS.Voucher?
 ---@field pre_inject_class fun(self: SMODS.Voucher)
@@ -400,9 +404,10 @@ local VoucherBase = {}
 ---@field requires? string[]
 
 
----@class SMODS.Voucher.Arguments : SMODS.Voucher.Arguments.Base, SMODS.Center.Arguments
+---@class SMODS.Voucher.Arguments : SMODS.Voucher.Arguments.Base, SMODS.Center.Arguments, SMODS.Voucher.Base
 ---@field key string
 ---@field config? BALATRO.Center.Config
+---@field available? boolean
 
 
 --- Generate card popup UI

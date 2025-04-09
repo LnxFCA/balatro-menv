@@ -14,6 +14,10 @@
 ---@field fake_card? boolean
 ---@field joker_added_to_deck_but_debuffed? boolean
 ---@field delay_edition? boolean
+---@field ignore_base_shader? table<string, boolean>
+---@field ignore_shadow? table<string, boolean>
+---@field should_draw_base_shader fun(self: BALATRO.Card): boolean
+---@field should_draw_shadow fun(self: BALATRO.Card): boolean
 
 
 ---@class SMODS.Center.Super : SMODS.Center

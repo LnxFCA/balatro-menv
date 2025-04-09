@@ -285,7 +285,7 @@ local Card = {}
 ---@field highlight fun(self: BALATRO.Card, is_higlighted?: boolean)
 ---@field click fun(self: BALATRO.Card)
 ---@field save fun(self: BALATRO.Card): BALATRO.Card.SaveTable
----@field load fun(self: BALATRO.Card, card: BALATRO.Card.SaveTable, other_card?: BALATRO.Prototype.Card)
+---@field load fun(self: BALATRO.Card, card: BALATRO.Card.SaveTable, other_card?: BALATRO.Prototype.Card): unknown?
 ---@field remove fun(self: BALATRO.Card)
 
 

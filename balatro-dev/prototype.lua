@@ -39,7 +39,7 @@
 
 
 ---@alias BALATRO.Prototype.Stake BALATRO.Prototype.Stake.Base | BALATRO.Prototype.Stake.Extra | BALATRO.Prototype.Base
----@alias BALATRO.P_STAKES BALATRO.Prototype.STAKES | table<string, BALATRO.Prototype.Stake>
+---@alias BALATRO.P_STAKES BALATRO.Prototype.STAKES | table<string, BALATRO.Prototype.Stake | SMODS.Stake>
 ---@alias BALATRO.Prototype.Blind BALATRO.Prototype.Blind.Base | BALATRO.Prototype.Base | BALATRO.Prototype.Blind.Empty
 ---@alias BALATRO.P_BLINDS BALATRO.Prototype.BLINDS | table<string, BALATRO.Prototype.Blind>
 ---@alias BALATRO.Prototype.Card BALATRO.Prototype.Card.Base | BALATRO.Prototype.Base
@@ -57,7 +57,7 @@
 ---@alias BALATRO.Prototype.Edition BALATRO.Prototype.Edition.Base | BALATRO.Prototype.Center
 ---@alias BALATRO.Prototype.Booster BALATRO.Prototype.Booster.Base | BALATRO.Prototype.Center
 ---@alias BALATRO.Prototype.Other BALATRO.Prototype.Other.Base | BALATRO.Prototype.Center
----@alias BALATRO.Prototype.Center BALATRO.Prototype.Base | BALATRO.Prototype.Center.Base | SMODS.Center.Base
+---@alias BALATRO.Prototype.Center BALATRO.Prototype.Base | BALATRO.Prototype.Center.Base | SMODS.Center.All
 ---@alias BALATRO.Center
 ---| BALATRO.Prototype.Default.Base
 ---| BALATRO.Prototype.Joker.Base
@@ -968,5 +968,5 @@
 ---@field Back BALATRO.Prototype.Back[]
 ---@field Tag BALATRO.Prototype.Tag[]
 ---@field Seal BALATRO.Prototype.Seal[]
----@field Stake BALATRO.Prototype.Stake[]
+---@field Stake BALATRO.Prototype.Stake[] | SMODS.Stake[]
 ---@field Demo BALATRO.Center[]

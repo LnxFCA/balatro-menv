@@ -64,6 +64,7 @@
 
 
 ---@class BALATRO.Calc.Context.Extra
+---@field other_consumeable? BALATRO.Card SMODS only
 
 
 ---@class BALATRO.Calc.Context.Empty

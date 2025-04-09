@@ -244,6 +244,8 @@
 ---@field E_SWITCH_POINT? number
 ---@field action? BALATRO.SavedGame.Action
 ---@field culled_table? BALATRO.SavedGame
+---@field ACTIVE_MOD_UI SMODS.Mod SMODS only
+---@field current_hands? BALATRO.UIElement[] SMODS only
 local Game = {}
 
 

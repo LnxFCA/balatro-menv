@@ -2,7 +2,7 @@
 
 
 ---@alias BALATRO.UI.Colour number[] | [number, number, number, number]
----@alias BALATRO.Colours BALATRO.Colours.Base | BALATRO.Colours.Extra
+---@alias BALATRO.Colours BALATRO.Colours.Base | BALATRO.Colours.Extra | SMODS.Colours
 ---@alias BALATRO.UIT.Key string | "T" | "B" | "C" | "R" | "O" | "ROOT" | "S" | "I" | "padding"
 ---@alias BALATRO.UIT number | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
 ---@alias BALATRO.UI.Node BALATRO.UI.Node.BASE | BALATRO.UI.Node.ROOT

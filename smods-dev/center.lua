@@ -7,6 +7,7 @@
 ---| SMODS.Joker
 ---| SMODS.Consumable.All
 ---| SMODS.Voucher
+---| SMODS.Edition
 
 
 ---@class SMODS.Card
@@ -25,7 +26,7 @@
 
 
 ---@class SMODS.Center : SMODS.Center.Class, BALATRO.Prototype.Center.Base
----@field obj_table SMODS.Center[]
+---@field obj_table table<string, SMODS.Center.All>
 ---@field set "Center"
 ---@field config? BALATRO.Center.Config
 local Center = {}
@@ -95,7 +96,7 @@ _G.SMODS.Center = Center
 
 
 ---@class SMODS.Joker : SMODS.Joker.Class, BALATRO.Prototype.Joker.Base
----@field obj_table SMODS.Center.All[]
+---@field obj_table table<string, SMODS.Center.All>
 ---@field set "Joker"
 ---@field class_prefix string | "j"
 ---@field config? BALATRO.Center.Config
@@ -184,7 +185,7 @@ _G.SMODS.Joker = Joker
 
 
 ---@class SMODS.Consumable : SMODS.Consumable.Class, BALATRO.Prototype.Tarot.Base, BALATRO.Prototype.Planet.Base, BALATRO.Prototype.Spectral.Base
----@field obj_table SMODS.Center.All[]
+---@field obj_table table<string, SMODS.Center.All>
 ---@field set "Tarot" | "Planet" | "Spectral"
 ---@field class_prefix string | "c"
 ---@field config? BALATRO.Center.Config
@@ -366,7 +367,7 @@ _G.SMODS.Spectral = Spectral
 
 
 ---@class SMODS.Voucher : SMODS.Voucher.Class, BALATRO.Prototype.Voucher.Base
----@field obj_table SMODS.Center.All[]
+---@field obj_table table<string, SMODS.Center.All>
 ---@field set "Voucher"
 ---@field class_prefix string | "v"
 ---@field config? BALATRO.Center.Config
@@ -443,7 +444,7 @@ _G.SMODS.Voucher = Voucher
 
 
 ------------------------------------------------------------------------------
--- VOUCHER
+-- EDITION
 ------------------------------------------------------------------------------
 ---@alias SMODS.Edition.OwnershipType SMODS.Edition.Base.Class | SMODS.GameObject.Empty
 
@@ -453,7 +454,7 @@ _G.SMODS.Voucher = Voucher
 
 
 ---@class SMODS.Edition : SMODS.Edition.Class, BALATRO.Prototype.Edition.Base
----@field obj_table SMODS.Center.All[]
+---@field obj_table table<string, SMODS.Center.All>
 ---@field set "Edition"
 ---@field class_prefix string | "e"
 ---@field config? BALATRO.Center.Config

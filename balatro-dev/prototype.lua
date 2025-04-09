@@ -19,6 +19,7 @@
 ---@alias BALATRO.Center.Set.Enhanced string | "Enhanced"
 ---@alias BALATRO.Center.Set.Edition string | "Edition"
 ---@alias BALATRO.Center.Set.Booster string | "Booster"
+---@alias BALATRO.Card.Set string | "Joker" | "Tarot" | "Planet" | "Spectral" | "Default" | "Voucher" | "Booster"
 
 
 ---@alias BALATRO.Prototype.Seal BALATRO.Prototype.Seal.Base | BALATRO.Prototype.Base

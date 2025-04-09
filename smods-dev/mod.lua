@@ -2,6 +2,12 @@
 
 
 ---@alias SMODS.Mod SMODS.Mod.Base | SMODS.Mod.Extra
+---@alias SMODS.Mod.TabFunc fun(): BALATRO.UI.Node.ROOT
+
+
+---@class SMODS.Mod.ExtraTab
+---@field label string
+---@field tab_definition_function SMODS.Mod.TabFunc
 
 
 ---@class SMODS.Mod.Base
@@ -36,6 +42,9 @@
 ---@field lovely? boolean
 ---@field lovely_only? boolean
 ---@field config? table
+---@field prefix_config? SMODS.GameObject.PrefixConfig
+---@field config_tag? SMODS.Mod.TabFunc
+---@field extra_tabs? fun(): SMODS.Mod.ExtraTab[]
 
 
 ---@class SMODS.ProvidedMod

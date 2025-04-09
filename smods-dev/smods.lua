@@ -11,7 +11,7 @@
 ---@field _Loc_Pre SMDOS.LocPre
 ---@field Atlases SMODS.Atlas[]
 ---@field Atlas SMODS.Atlas
----@field sounds SMODS.Sound[]
+---@field Sounds SMODS.Sound[]
 ---@field Sound SMODS.Sound
 ---@field Stakes SMODS.Stake[]
 ---@field Stake SMODS.Stake
@@ -86,10 +86,14 @@
 ---@field current_mod SMODS.Mod
 ---@field mod_button_alert? boolean
 ---@field booted? boolean
+---@field LAST_SELECTED_MOD_TAB? string
+--- Functions
+---@field add_prefixes fun(cls: SMODS.GObject, obj: SMODS.GObject, from_take_ownership?: boolean)
 local SMODS = {}
 
 
 --- Modify internal object key
+---@overload fun(obj: SMODS.GameObject.Subclasses, prefix?: string, condition?: any, key?: string)
 ---@param obj SMODS.GameObject.Subclasses
 ---@param prefix? string
 ---@param condition? boolean
@@ -97,7 +101,8 @@ local SMODS = {}
 SMODS.modify_key = function(obj, prefix, condition, key) end
 
 
---- Adds prefixes into the object. 
+--- Adds prefixes into the object.
+---@overload fun(cls: SMODS.GObject, obj: SMODS.GObject, from_take_ownership: boolean)
 ---@param cls SMODS.GObject `obj` Base class
 ---@param obj SMODS.GObject
 ---@param from_take_ownership? boolean
@@ -109,9 +114,10 @@ SMODS.add_prefixes = function(cls, obj, from_take_ownership) end
 SMODS.injectObjects = function(class) end
 
 
----@param stake? SMODS.Stake.Type
+---@overload fun(stake?: SMODS.Stake, applied?: number[]): string[] | nil
+---@param stake SMODS.Stake.Type
 ---@param applied? number[]
----@return string[]? applied
+---@return string[] applied
 SMODS.build_stake_chain = function(stake, applied) end
 
 
@@ -120,7 +126,7 @@ SMODS.setup_stake = function(index) end
 
 
 --- Injects a rarity into the game
----@param object_type SMODS.ObjectType.Type
+---@param object_type SMODS.ObjectType.All
 ---@param rarity SMODS.Rarity
 SMODS.inject_rarity = function(object_type, rarity) end
 
@@ -144,6 +150,13 @@ SMODS.remove_p_card = function(suit, rank) end
 ---@param mod_id? string
 ---@return function?
 SMODS.load_file = function(path, mod_id) end
+
+
+
+---@param index number
+---@param stake_desc_rows any
+---@param num_added any
+SMODS.applied_stakes_UI = function(index, stake_desc_rows, num_added) end
 
 
 _G.SMODS = SMODS

@@ -6,6 +6,7 @@
 ---@alias BALATRO.Card.Ability.Set string | "Joker" | "Booster" | "Tarot" | "Planet" | "Edition" | "Spectral" | "Voucher" | "Default" | "Enhanced" | "Base" | "Tarot_Planet"
 ---@alias BALATRO.Card.Config.Extra number | BALATRO.Center.Config
 ---@alias BALATRO.Card.DrawLayer string | "both" | "front" | "back" | "shadow"
+---@alias BALATRO.Card.Edition BALATRO.Card.Edition.Base | SMODS.Edition.Common
 
 
 ---@class BALATRO.TiltVar
@@ -45,7 +46,7 @@
 ---@field chip_mod? number
 
 
----@class BALATRO.Card.Edition
+---@class BALATRO.Card.Edition.Base
 ---@field polychrome? boolean
 ---@field negative? boolean
 ---@field foil? boolean
@@ -164,7 +165,7 @@
 ---@class BALATRO.Card.AbilityUIBoxTable
 
 
----@class BALATRO.Card : BALATRO.Card.Class, BALATRO.Card.Params, SMODS.Center.Common
+---@class BALATRO.Card : BALATRO.Card.Class, BALATRO.Card.Params, SMODS.Card
 ---@field params BALATRO.Card.Params
 ---@field config BALATRO.Card.Config
 ---@field tilt_var BALATRO.TiltVar
@@ -231,7 +232,7 @@ local Card = {}
 ---@field set_sprites fun(self: BALATRO.Card, center?: BALATRO.Center, front?: BALATRO.Prototype.Card)
 ---@field set_ability fun(self: BALATRO.Card, center?: BALATRO.Center, initial?: boolean, delay_sprites?: boolean)
 ---@field set_cost fun(self: BALATRO.Card)
----@field set_edition fun(self: BALATRO.Card, edition: BALATRO.Card.Edition.Arg, immediate?: boolean, silent?: boolean)
+---@field set_edition fun(self: BALATRO.Card, edition: BALATRO.Card.Edition.Arg | BALATRO.Card.Edition, immediate?: boolean, silent?: boolean, delay?: boolean)
 ---@field set_seal fun(self: BALATRO.Card, seal?: BALATRO.Card.Seal, silent?: boolean, immediate?: boolean)
 ---@field get_seal fun(self: BALATRO.Card, bypass_debug?: boolean): BALATRO.Card.Seal?
 ---@field set_eternal fun(self: BALATRO.Card, eternal?: boolean)

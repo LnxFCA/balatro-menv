@@ -9,6 +9,13 @@
 ---| SMODS.Voucher
 
 
+---@class SMODS.Card
+---@field hovering? boolean
+---@field fake_card? boolean
+---@field joker_added_to_deck_but_debuffed? boolean
+---@field delay_edition? boolean
+
+
 ---@class SMODS.Center.Super : SMODS.Center
 ---@field super SMODS.Center
 
@@ -24,6 +31,9 @@ local Center = {}
 ---@field atlas string
 ---@field fake_card? boolean
 ---@field config? BALATRO.Center.Config
+---@field undiscovered? SMODS.UndiscoveredSprite
+---@field lc_atlas? string
+---@field hc_atlas? string
 
 
 ---@class SMODS.Center.Base : SMODS.Center.Common, SMODS.GameObject.Base, SMODS.GameObject.Common
@@ -426,3 +436,94 @@ VoucherBase.generate_ui = function(self, info_queue, card, desc_nodes, specific_
 ---@return SMODS.Voucher
 _G.SMODS.Voucher = function(args) end
 _G.SMODS.Voucher = Voucher
+
+
+------------------------------------------------------------------------------
+-- VOUCHER
+------------------------------------------------------------------------------
+---@alias SMODS.Edition.OwnershipType SMODS.Edition.Base.Class | SMODS.GameObject.Empty
+
+
+---@class SMODS.Edition.Super : SMODS.Edition
+---@field super SMODS.Edition
+
+
+---@class SMODS.Edition : SMODS.Edition.Class, BALATRO.Prototype.Edition.Base
+---@field obj_table SMODS.Center.All[]
+---@field set "Edition"
+---@field class_prefix string | "e"
+---@field config? BALATRO.Center.Config
+---@field legendaries SMODS.Edition[]
+local Edition = {}
+
+
+---@class SMODS.Edition.Common : SMODS.Edition.Arguments.Base
+---@field shader? string
+---@field key string
+---@field badge_colour BALATRO.UI.Colour
+---@field sound SMODS.Sound.T
+---@field override_base_shader? boolean
+---@field no_shadow? boolean
+---@field card_limit? number
+
+
+---@class SMODS.Edition.Base : SMODS.Edition.Common
+---@field process_loc_text? fun(self: SMODS.Edition)
+---@field loc_vars? fun(self: SMODS.Edition, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
+---@field locked_loc_vars? fun(self: SMODS.Edition, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
+---@field generate_ui? fun(self: SMODS.Edition, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@field get_weight? fun(self: SMODS.Edition): number
+---@field on_apply? fun(card: BALATRO.Card)
+---@field on_remove? fun(card: BALATRO.Card)
+---@field on_load? fun(card: BALATRO.Card)
+---@field draw? fun(self: SMODS.Edition, card: BALATRO.Card, layer?: BALATRO.Card.DrawLayer)
+---@field in_pool? fun(self: SMODS.Edition, args: table): boolean, { allow_duplicates: boolean } | nil
+local EditionBase = {}
+
+
+---@class SMODS.Edition.Base.Class : SMODS.Edition.Base, SMODS.Center.Base
+---@field inject fun(self: SMODS.Edition)
+
+
+---@class SMODS.Edition.Class : SMODS.Center.Super, SMODS.Edition.Base.Class
+---@field __index SMODS.Edition
+---@field take_ownership fun(self: SMODS.Edition, key: string, obj: SMODS.Edition.OwnershipType, silent?: boolean): SMODS.Edition?
+---@field pre_inject_class fun(self: SMODS.Edition)
+
+
+---@class SMODS.Edition.Arguments.Base
+---@field config? BALATRO.Center.Config
+---@field loc_txt string | table
+---@field pools? table<string, boolean>
+---@field in_shop? boolean
+---@field weight? number
+---@field extra_cost? number
+---@field apply_to_float? boolean
+---@field badge_colour? BALATRO.UI.Colour
+---@field sound? SMODS.Sound.T
+---@field disable_shadow? boolean
+---@field disable_base_shader? boolean
+
+
+---@class SMODS.Edition.Arguments : SMODS.Edition.Arguments.Base, SMODS.Center.Arguments, SMODS.Edition.Base
+---@field key string
+---@field config? BALATRO.Center.Config
+---@field shader string | boolean
+
+
+--- Generate card popup UI
+---@overload fun(self: SMODS.Edition, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@param self SMODS.Edition
+---@param info_queue unknown[]
+---@param card BALATRO.Card
+---@param desc_nodes BALATRO.UI.Node[]
+---@param specific_vars table
+---@param full_UI_table BALATRO.Card.AbilityUIBoxTable
+EditionBase.generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table) end
+
+
+--- `SMODS.Edition()` - Creates a new [SMODS.Edition](lua://SMODS.Edition) object
+---@param args SMODS.Edition.Arguments
+---@return SMODS.Edition
+_G.SMODS.Edition = function(args) end
+_G.SMODS.Edition = Edition

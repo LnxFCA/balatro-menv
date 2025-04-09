@@ -54,7 +54,7 @@
 ---@alias BALATRO.Prototype.Voucher BALATRO.Prototype.Voucher.Base | BALATRO.Prototype.Center | BALATRO.Prototype.Empty.Voucher
 ---@alias BALATRO.Prototype.Back BALATRO.Prototype.Back.Base | BALATRO.Prototype.Center
 ---@alias BALATRO.Prototype.Enhanced BALATRO.Prototype.Enhanced.Base | BALATRO.Prototype.Center
----@alias BALATRO.Prototype.Edition BALATRO.Prototype.Edition.Base | BALATRO.Prototype.Center
+---@alias BALATRO.Prototype.Edition BALATRO.Prototype.Edition.Base | BALATRO.Prototype.Center | SMODS.Edition
 ---@alias BALATRO.Prototype.Booster BALATRO.Prototype.Booster.Base | BALATRO.Prototype.Center
 ---@alias BALATRO.Prototype.Other BALATRO.Prototype.Other.Base | BALATRO.Prototype.Center
 ---@alias BALATRO.Prototype.Center BALATRO.Prototype.Base | BALATRO.Prototype.Center.Base | SMODS.Center.All
@@ -72,6 +72,7 @@
 ---| BALATRO.Prototype.Other.Base
 ---| BALATRO.Prototype.Center
 
+---@alias BALATRO.Prototype.EDITIONS BALATRO.Prototype.EDITIONS.Base | table<string, BALATRO.Prototype.Edition>
 ---@alias BALATRO.P_CENTERS
 ---| BALATRO.Prototype.JOKERS
 ---| BALATRO.Prototype.TAROTS
@@ -903,7 +904,7 @@
 ---@field m_lucky BALATRO.Prototype.Enhanced
 
 
----@class BALATRO.Prototype.EDITIONS
+---@class BALATRO.Prototype.EDITIONS.Base
 ---@field e_base BALATRO.Prototype.Edition
 ---@field e_foil BALATRO.Prototype.Edition
 ---@field e_holo BALATRO.Prototype.Edition

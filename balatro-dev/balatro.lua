@@ -25,7 +25,9 @@ _G.create_card = function(_type, area, legendary, _rarity, skip_materialize, sou
 
 
 --- Create a pseudo random seed
----@param key string | number | "seed"
+---@overload fun(key: string, predict_seed?: string): number
+---@overload fun(key: string, predict_seeed?: any): number
+---@param key string | number
 ---@param predict_seed? number | string
 ---@return number
 _G.pseudoseed = function(key, predict_seed) end
@@ -77,6 +79,14 @@ _G.HEX = function(hex) end
 --- This function is used to add a new object to the draw hash, which is a table that stores objects that need to be drawn on the screen.
 ---@param obj BALATRO.UIObject
 _G.add_to_drawhash = function(obj) end
+
+
+--- Returns a random element `T` from a list of elements `T[]`.
+---@generic T
+---@param t T[]
+---@param seed? number | string
+---@return T, number | string
+_G.pseudorandom_element = function(t, seed) end
 
 
 _G.G.ARGS = {}

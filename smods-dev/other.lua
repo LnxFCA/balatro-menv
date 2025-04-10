@@ -18,7 +18,7 @@
 
 
 ---@class SMODS.LocVars.Base
----@field vars string[] | SMODS.LocVars.Other
+---@field vars string[] | number[] | SMODS.LocVars.Other
 ---@field key? string
 ---@field set string
 ---@field scale? number

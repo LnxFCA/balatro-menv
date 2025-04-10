@@ -89,6 +89,19 @@ _G.add_to_drawhash = function(obj) end
 _G.pseudorandom_element = function(t, seed) end
 
 
+
+---@alias SMODS.PollEdition.Options string[] | table<string, { name: string, weight: number }>
+
+--- Returna pseudorandom edition key if threshold is meet
+---@overload fun(key?: string, mod?: number, no_neg?: boolean, guaranteed?: boolean, options?: SMODS.Poll.Args): string?
+---@param key string
+---@param mod? number
+---@param no_neg? boolean
+---@param guaranteed? boolean
+---@return string?
+_G.poll_edition = function(key, mod, no_neg, guaranteed) end
+
+
 _G.G.ARGS = {}
 _G.G.SETTINGS = {}
 _G.G.GAME = {}

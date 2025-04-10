@@ -483,6 +483,7 @@ local Edition = {}
 ---@field on_load? fun(card: BALATRO.Card)
 ---@field draw? fun(self: SMODS.Edition, card: BALATRO.Card, layer?: BALATRO.Card.DrawLayer)
 ---@field in_pool? fun(self: SMODS.Edition, args: table): boolean, { allow_duplicates: boolean } | nil
+---@field get_edition_cards fun(self: SMODS.Edition, card_area: BALATRO.CardArea, edition?: boolean): BALATRO.Card[]
 local EditionBase = {}
 
 

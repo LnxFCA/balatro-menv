@@ -90,7 +90,7 @@ _G.pseudorandom_element = function(t, seed) end
 
 
 
----@alias SMODS.PollEdition.Options string[] | table<string, { name: string, weight: number }>
+---@alias SMODS.PollEdition.Options string[] | { name: string, weight: number }[]
 
 --- Returna pseudorandom edition key if threshold is meet
 ---@overload fun(key?: string, mod?: number, no_neg?: boolean, guaranteed?: boolean, options?: SMODS.PollEdition.Options): string?

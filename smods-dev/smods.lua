@@ -216,7 +216,7 @@ SMODS.poll_enhancement = function(args) end
 
 
 --- Returns a list of mods that either match the given mod ID or provide it, and are enabled and loaded.
---- 
+---
 --- The result of `next(SMODS.find_mod(id))` can be used to determine if a mod is present, akin to finding cards with `SMODS.find_card`.
 ---@param id? string
 ---@return SMODS.Mod[]
@@ -225,7 +225,7 @@ SMODS.find_mod = function(id) end
 
 --- Loads `file` inside the mod context if called when the mod is being loaded,
 --- otherwise `mod_id` is needed to find the correct file.
---- 
+---
 --- Example usage: `assert(SMODS.load_file('jokers.lua'))()`
 ---@param path? string
 ---@param mod_id? string
@@ -239,10 +239,10 @@ SMODS.juice_up_blind = function() end
 
 --- Given a [Card](lua://BALATRO.Card) representing a playing card, changes the card's suit, rank, or both.
 --- Either argument may be omitted to retain the original suit or rank.
---- 
+---
 --- This function returns `nil` if it fails, with the second argument being a `string` with an error message.
 ---  It is recommended to always wrap calls to it in assert so errors don't go unnoticed.
---- 
+---
 --- Example: `assert(SMODS.change_base(card, 'Hearts'))`
 ---@param card BALATRO.Card
 ---@param suit? BALATRO.Center.SuitType
@@ -253,10 +253,10 @@ SMODS.change_base = function(card, suit, rank) end
 
 --- Given a [Card](lua://BALATRO.Card) representing a playing card, increases or decreases the card's rank by the specified `amount`.
 --- The rank is increased if `amount` is positive and decreased if it is negative.
---- 
+---
 --- This function returns `nil` if it fails, with the second argument being a `string` with an error message.
 ---  It is recommended to always wrap calls to it in assert so errors don't go unnoticed.
---- 
+---
 --- Example: `assert(SMODS.modify_rank(card, 1))`
 ---@param card BALATRO.Card
 ---@param amount number
@@ -272,7 +272,6 @@ SMODS.modify_rank = function(card, amount) end
 ---@param count_debuffed? boolean
 ---@return BALATRO.Card[]
 SMODS.find_card = function(key, count_debuffed) end
-
 
 
 --- This function replaces `add_joker`. It takes the same input parameters as `SMODS.create_card` (below)

@@ -11,15 +11,15 @@
 ---@field _Loc_Pre SMODS.LocPre
 ---@field Atlases table<string, SMODS.Atlas>
 ---@field Atlas SMODS.Atlas
----@field Sounds SMODS.Sound[]
+---@field Sounds table<string, SMODS.Sound>
 ---@field Sound SMODS.Sound
----@field Stakes SMODS.Stake[]
+---@field Stakes table<string, SMODS.Stake>
 ---@field Stake SMODS.Stake
----@field Rarities SMODS.Rarity[]
+---@field Rarities table<string, SMODS.Rarity>
 ---@field Rarity SMODS.Rarity
----@field ObjectTypes SMODS.ObjectType[]
+---@field ObjectTypes table<string, SMODS.ObjectType>
 ---@field ObjectType SMODS.ObjectType
----@field ConsumableTypes SMODS.ConsumableType[]
+---@field ConsumableTypes table<string ,SMODS.ConsumableType>
 ---@field ConsumableType SMODS.ConsumableType
 ---@field Centers table<string, SMODS.Center.All>
 ---@field Center SMODS.Center
@@ -33,38 +33,38 @@
 ---@field Booster SMODS.Booster
 ---@field UndiscoveredSprites SMODS.UndiscoveredSprite[]
 ---@field UndiscoveredSprite SMODS.UndiscoveredSprite
----@field Blinds SMODS.Blind[]
+---@field Blinds table<string, SMODS.Blind>
 ---@field Blind SMODS.Blind
----@field Seals SMODS.Seal[]
+---@field Seals table<string, SMODS.Seal>
 ---@field Seal SMODS.Seal
 ---@field Suits table<string, SMODS.Suit>
 ---@field Suit SMODS.Suit
 ---@field Ranks table<string, SMODS.Rank>
 ---@field Rank SMODS.Rank
----@field DeckSkins SMODS.DeckSkin[]
+---@field DeckSkins table<string, SMODS.DeckSkin>
 ---@field DeckSkin SMODS.DeckSkin
----@field PokerHandParts SMODS.PokerHandPart[]
+---@field PokerHandParts table<string, SMODS.PokerHandPart>
 ---@field PokerHandPart SMODS.PokerHandPart
----@field PokerHands SMODS.PokerHand[]
+---@field PokerHands table<string, SMODS.PokerHand>
 ---@field PokerHand SMODS.PokerHand
----@field Challenges SMODS.Challenge[]
+---@field Challenges table<string, SMODS.Challenge>
 ---@field Challenge SMODS.Challenge
----@field Tags SMODS.Tag[]
+---@field Tags table<string, SMODS.Tag>
 ---@field Tag SMODS.Tag
 ---@field Stickers table<string, SMODS.Sticker>
 ---@field Sticker SMODS.Sticker
 ---@field Enhancement SMODS.Enhancement
----@field Shaders SMODS.Shader[]
+---@field Shaders table<string, SMODS.Shader>
 ---@field Shader SMODS.Shader
 ---@field Edition SMODS.Edition
----@field Keybinds SMODS.Keybind[]
+---@field Keybinds table<string, SMODS.Keybind>
 ---@field Keybind SMODS.Keybind
----@field Achievements SMODS.Achievement[]
+---@field Achievements table<string, SMODS.Achievement>
 ---@field Achievement SMODS.Achievement
----@field Gradients SMODS.Gradient[]
+---@field Gradients table<string, SMODS.Gradient>
 ---@field Gradient SMODS.Gradient
 ---@field _Loc_Post SMDOS.LocPost
----@field DrawSteps SMODS.DrawStep[]
+---@field DrawSteps table<string, SMODS.DrawStep>
 ---@field DrawStep SMODS.DrawStep
 ---@field injectItems fun()
 ---@field id string

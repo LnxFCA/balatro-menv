@@ -72,7 +72,7 @@ local CenterBase = {}
 
 
 --- Generate card popup UI
----@overload fun(self: SMODS.Center, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@overload fun(self: SMODS.Center, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table: BALATRO.Card.AbilityUIBoxTable)
 ---@param self SMODS.Center
 ---@param info_queue unknown[]
 ---@param card BALATRO.Card
@@ -113,7 +113,7 @@ local Joker = {}
 ---@field calculate? fun(self: SMODS.Joker, card: BALATRO.Card, context: BALATRO.Calc.Context): BALATRO.Calc.Eval?
 ---@field loc_vars? fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
 ---@field locked_loc_vars? fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
----@field generate_ui? fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@field generate_ui? fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table: BALATRO.Card.AbilityUIBoxTable)
 ---@field calc_dollar_bonus? fun(self: SMODS.Joker, card: BALATRO.Card): number
 ---@field set_ability? fun(self: SMODS.Joker, card: BALATRO.Card, initial?: boolean, delay_sprites?: boolean)
 ---@field add_to_deck? fun(self: SMODS.Joker, card: BALATRO.Card, from_debuff?: boolean)
@@ -156,7 +156,7 @@ local JokerBase = {}
 
 
 --- Generate card popup UI
----@overload fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@overload fun(self: SMODS.Joker, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table: BALATRO.Card.AbilityUIBoxTable)
 ---@param self SMODS.Joker
 ---@param info_queue unknown[]
 ---@param card BALATRO.Card
@@ -202,7 +202,7 @@ local Consumable = {}
 ---@field calculate? fun(self: SMODS.Consumable.All, card: BALATRO.Card, context: BALATRO.Calc.Context): BALATRO.Calc.Eval?
 ---@field loc_vars? fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
 ---@field locked_loc_vars? fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
----@field generate_ui? fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@field generate_ui? fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table: BALATRO.Card.AbilityUIBoxTable)
 ---@field use? fun(self: SMODS.Consumable.All, card: BALATRO.Card, area: BALATRO.CardArea, copier?: unknown)
 ---@field can_use? fun(self: SMODS.Consumable.All, card: BALATRO.Card): boolean
 ---@field keep_on_use? fun(self: SMODS.Consumable.All, card: BALATRO.Card): boolean
@@ -249,7 +249,7 @@ local ConsumableBase = {}
 
 
 --- Generate card popup UI
----@overload fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@overload fun(self: SMODS.Consumable.All, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table: BALATRO.Card.AbilityUIBoxTable)
 ---@param self SMODS.Consumable.All
 ---@param info_queue unknown[]
 ---@param card BALATRO.Card
@@ -387,7 +387,7 @@ local Voucher = {}
 ---@field calculate? fun(self: SMODS.Voucher, card: BALATRO.Card, context: BALATRO.Calc.Context): BALATRO.Calc.Eval?
 ---@field loc_vars? fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
 ---@field locked_loc_vars? fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
----@field generate_ui? fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@field generate_ui? fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table: BALATRO.Card.AbilityUIBoxTable)
 ---@field redeem? fun(self: SMODS.Voucher, card: BALATRO.Card)
 ---@field set_ability? fun(self: SMODS.Voucher, card: BALATRO.Card, initial?: boolean, delay_sprites?: boolean)
 ---@field add_to_deck? fun(self: SMODS.Voucher, card: BALATRO.Card, from_debuff?: boolean)
@@ -426,7 +426,7 @@ local VoucherBase = {}
 
 
 --- Generate card popup UI
----@overload fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@overload fun(self: SMODS.Voucher, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table: BALATRO.Card.AbilityUIBoxTable)
 ---@param self SMODS.Voucher
 ---@param info_queue unknown[]
 ---@param card BALATRO.Card
@@ -476,7 +476,7 @@ local Edition = {}
 ---@field process_loc_text? fun(self: SMODS.Edition)
 ---@field loc_vars? fun(self: SMODS.Edition, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
 ---@field locked_loc_vars? fun(self: SMODS.Edition, info_queue: unknown[], card: BALATRO.Card): SMODS.LocVars
----@field generate_ui? fun(self: SMODS.Edition, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@field generate_ui? fun(self: SMODS.Edition, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table: BALATRO.Card.AbilityUIBoxTable)
 ---@field get_weight? fun(self: SMODS.Edition): number
 ---@field on_apply? fun(card: BALATRO.Card)
 ---@field on_remove? fun(card: BALATRO.Card)
@@ -518,7 +518,7 @@ local EditionBase = {}
 
 
 --- Generate card popup UI
----@overload fun(self: SMODS.Edition, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table)
+---@overload fun(self: SMODS.Edition, info_queue: unknown[], card: BALATRO.Card, desc_nodes: BALATRO.UI.Node[], specific_vars: table, full_UI_table: BALATRO.Card.AbilityUIBoxTable)
 ---@param self SMODS.Edition
 ---@param info_queue unknown[]
 ---@param card BALATRO.Card

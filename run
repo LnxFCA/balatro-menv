@@ -29,7 +29,7 @@ else
   if [ ! -f "$_PRELOAD" ]
   then
     pushd "$DEVDIR/lovely" &>/dev/null || exit
-    cargo build --release
+    cargo build --release --package lovely-core --package lovely-unix
     popd || exit
   fi
 fi

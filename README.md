@@ -1,5 +1,7 @@
 # balatro-menv
 
+> !NOTICE: Develpment stopped until June 2025.
+
 A development environment for [Balatro](https://www.playbalatro.com/) mods,
 providing essential utilities and API definitions to streamline the modding process.
 

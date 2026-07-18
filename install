@@ -61,6 +61,7 @@ else
 
   echo ":: Installng common files..."
   do_install "$WORKSPACE/common" "$INSTALLDIR/common"
+  rm "$INSTALLDIR/common/common.json"
 
   echo ":: Creating release file..."
   BASEINSTALL="$(realpath "$INSTALLDIR/..")"
